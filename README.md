@@ -37,7 +37,7 @@ SmartOpsProject/
 ├── Controllers/         # ASP.NET Controllers
 ├── Models/              # Entity Framework Models
 ├── Views/               # Razor Views
-├── Data/                # DbContext και Seed Data (αν χρειαστεί)
+├── Data/                # DbContext και Seed Data 
 ├── wwwroot/             # Static αρχεία (CSS, JS, εικόνες)
 └── SmartOpsProject.csproj
 ```
@@ -48,9 +48,9 @@ SmartOpsProject/
 ## 👨‍🎓 Στοιχεία Διπλωματικής
 
 - 📚 **Τίτλος:** Ανάπτυξη Μικρού ERP Συστήματος με ASP.NET Core
-- 🧑‍💻 **Φοιτητής:** [Το Ονομά σου]
+- 🧑‍💻 **Φοιτητής:** [Γεροβασίλης Κωνσταντίνος]
 - 🎓 **Πρόγραμμα Σπουδών:** [Π.Μ.Σ. Επιστήμη Υπολογιστών / Πληροφορική]
-- 🏛 **Ίδρυμα:** [Πανεπιστήμιο / Τμήμα]
+- 🏛 **Ίδρυμα:** [Πειραιώς / Πληροφορικής]
 
 ---
 
