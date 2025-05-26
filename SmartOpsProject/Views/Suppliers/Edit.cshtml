@@ -1,0 +1,64 @@
+﻿@model SmartOpsProject.Models.Supplier
+
+@{
+    ViewData["Title"] = "Επεξεργασία Προμηθευτή";
+}
+
+<h2>Επεξεργασία Προμηθευτή</h2>
+
+<form asp-action="Edit">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label asp-for="SupplierCode" class="control-label"></label>
+        <input asp-for="SupplierCode" class="form-control" />
+        <span asp-validation-for="SupplierCode" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Name" class="control-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="TaxIdentificationNumber" class="control-label"></label>
+        <input asp-for="TaxIdentificationNumber" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Country" class="control-label"></label>
+        <input asp-for="Country" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Address" class="control-label"></label>
+        <input asp-for="Address" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="City" class="control-label"></label>
+        <input asp-for="City" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PostalCode" class="control-label"></label>
+        <input asp-for="PostalCode" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="SupplierCategory" class="control-label"></label>
+        <select asp-for="SupplierCategory" asp-items="ViewBag.SupplierCategories" class="form-control"></select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="VatStatus" class="control-label"></label>
+        <select asp-for="VatStatus" asp-items="ViewBag.VatStatuses" class="form-control"></select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Αποθήκευση</button>
+</form>
+
+<div>
+    <a asp-action="Index">Πίσω στη λίστα</a>
+</div>

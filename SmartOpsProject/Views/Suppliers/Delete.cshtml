@@ -1,0 +1,38 @@
+﻿@model SmartOpsProject.Models.Supplier
+
+@{
+    ViewData["Title"] = "Διαγραφή Προμηθευτή";
+}
+
+<h2>Διαγραφή Προμηθευτή</h2>
+
+<h4>Είσαι σίγουρος ότι θέλεις να διαγράψεις αυτόν τον προμηθευτή;</h4>
+<hr />
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-3">Κωδικός</dt>
+        <dd class="col-sm-9">@Model.SupplierCode</dd>
+
+        <dt class="col-sm-3">Επωνυμία</dt>
+        <dd class="col-sm-9">@Model.Name</dd>
+
+        <dt class="col-sm-3">ΑΦΜ</dt>
+        <dd class="col-sm-9">@Model.TaxIdentificationNumber</dd>
+
+        <dt class="col-sm-3">Χώρα</dt>
+        <dd class="col-sm-9">@Model.Country</dd>
+
+        <dt class="col-sm-3">Κατηγορία</dt>
+        <dd class="col-sm-9">@Model.SupplierCategory</dd>
+
+        <dt class="col-sm-3">Καθεστώς ΦΠΑ</dt>
+        <dd class="col-sm-9">@Model.VatStatus</dd>
+    </dl>
+</div>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Διαγραφή</button>
+    <a asp-action="Index" class="btn btn-secondary">Ακύρωση</a>
+</form>

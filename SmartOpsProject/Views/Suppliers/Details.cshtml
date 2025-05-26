@@ -1,0 +1,43 @@
+﻿@model SmartOpsProject.Models.Supplier
+
+@{
+    ViewData["Title"] = "Λεπτομέρειες Προμηθευτή";
+}
+
+<h2>Λεπτομέρειες Προμηθευτή</h2>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-3">Κωδικός</dt>
+        <dd class="col-sm-9">@Model.SupplierCode</dd>
+
+        <dt class="col-sm-3">Επωνυμία</dt>
+        <dd class="col-sm-9">@Model.Name</dd>
+
+        <dt class="col-sm-3">ΑΦΜ</dt>
+        <dd class="col-sm-9">@Model.TaxIdentificationNumber</dd>
+
+        <dt class="col-sm-3">Χώρα</dt>
+        <dd class="col-sm-9">@Model.Country</dd>
+
+        <dt class="col-sm-3">Διεύθυνση</dt>
+        <dd class="col-sm-9">@Model.Address</dd>
+
+        <dt class="col-sm-3">Πόλη</dt>
+        <dd class="col-sm-9">@Model.City</dd>
+
+        <dt class="col-sm-3">Τ.Κ.</dt>
+        <dd class="col-sm-9">@Model.PostalCode</dd>
+
+        <dt class="col-sm-3">Κατηγορία</dt>
+        <dd class="col-sm-9">@Model.SupplierCategory</dd>
+
+        <dt class="col-sm-3">Καθεστώς ΦΠΑ</dt>
+        <dd class="col-sm-9">@Model.VatStatus</dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Επεξεργασία</a>
+    <a asp-action="Index" class="btn btn-secondary">Πίσω</a>
+</div>

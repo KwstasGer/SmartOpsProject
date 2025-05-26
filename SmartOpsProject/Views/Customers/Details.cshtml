@@ -1,0 +1,28 @@
+﻿@model SmartOps.Models.Customers
+@{
+    ViewData["Title"] = "Λεπτομέρειες Πελάτη";
+}
+
+<h2>Λεπτομέρειες Πελάτη</h2>
+<dl class="row">
+    <dt class="col-sm-2">Κωδικός Πελάτη</dt>
+    <dd class="col-sm-10">@Model.CustomerCode</dd>
+    <dt class="col-sm-2">Όνομα</dt>
+    <dd class="col-sm-10">@Model.Name</dd>
+    <dt class="col-sm-2">ΑΦΜ</dt>
+    <dd class="col-sm-10">@Model.TaxIdentificationNumber</dd>
+    <dt class="col-sm-2">Χώρα</dt>
+    <dd class="col-sm-10">@Model.Country</dd>
+    <dt class="col-sm-2">Διεύθυνση</dt>
+    <dd class="col-sm-10">@Model.Address</dd>
+    <dt class="col-sm-2">Πόλη</dt>
+    <dd class="col-sm-10">@Model.City</dd>
+    <dt class="col-sm-2">Τ.Κ.</dt>
+    <dd class="col-sm-10">@Model.PostalCode</dd>
+    <dt class="col-sm-2">Καθεστώς ΦΠΑ</dt>
+    <dd class="col-sm-10">@Model.VatStatus</dd>
+    <dt class="col-sm-2">Κατηγορία</dt>
+    <dd class="col-sm-10">@Model.CustomerCategory</dd>
+</dl>
+<a asp-action="Edit" asp-route-id="@Model.Id">Επεξεργασία</a> |
+<a asp-action="Index">Επιστροφή</a>

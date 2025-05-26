@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Αρχική Σελίδα";
+}
+
+
+<div class="text-center">
+    <h1 class="display-4">Καλωσήλθατε στο SmartOps ERP</h1>
+    <p class="lead">Επιλέξτε μία ενότητα για διαχείριση:</p>
+</div>
+
+<div class="list-group mt-4">
+    <a class="list-group-item list-group-item-action list-group-item-success" asp-controller="Invoices" asp-action="Create">
+    ➕ Νέο Παραστατικού
+</a>
+    <a class="list-group-item list-group-item-action" asp-controller="Customers" asp-action="Index">👤 Πελάτες</a>
+    <a class="list-group-item list-group-item-action" asp-controller="Suppliers" asp-action="Index">🏢 Προμηθευτές</a>
+    <a class="list-group-item list-group-item-action" asp-controller="Products" asp-action="Index">📦 Προϊόντα</a>
+    <a class="list-group-item list-group-item-action" asp-controller="Services" asp-action="Index">🛠️ Υπηρεσίες</a>
+</div>

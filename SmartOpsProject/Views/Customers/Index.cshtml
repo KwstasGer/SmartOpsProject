@@ -1,0 +1,44 @@
+﻿@model IEnumerable<SmartOps.Models.Customers>
+@{
+    ViewData["Title"] = "Λίστα Πελατών";
+}
+
+<h2>Λίστα Πελατών</h2>
+<p>
+    <a asp-action="Create" class="btn btn-success">+ Νέος Πελάτης</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Κωδικός</th>
+            <th>Όνομα</th>
+            <th>ΑΦΜ</th>
+            <th>Χώρα</th>
+            <th>Πόλη</th>
+            <th>Τ.Κ.</th>
+            <th>ΦΠΑ</th>
+            <th>Κατηγορία</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.CustomerCode</td>
+                <td>@item.Name</td>
+                <td>@item.TaxIdentificationNumber</td>
+                <td>@item.Country</td>
+                <td>@item.City</td>
+                <td>@item.PostalCode</td>
+                <td>@item.VatStatus</td>
+                <td>@item.CustomerCategory</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

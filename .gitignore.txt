@@ -1,0 +1,44 @@
+## Visual Studio
+.vs/
+*.user
+*.suo
+
+## Build results
+bin/
+obj/
+out/
+
+## Rider / JetBrains
+.idea/
+
+## ASP.NET Core Secrets
+secrets.json
+
+## User-specific files
+*.userosscache
+*.sln.docstates
+
+## Logs
+*.log
+
+## IIS Express
+.vscode/
+.vscode/*
+.resharper/
+*.iisinuse
+
+## Visual Studio Code
+.vscode/
+.history/
+
+## OS generated files
+.DS_Store
+Thumbs.db
+
+## Entity Framework
+Migrations/
+
+## Environment-specific
+.env
+appsettings.Development.json
+appsettings.Local.json

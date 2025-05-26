@@ -1,0 +1,29 @@
+﻿@model SmartOps.Models.Product
+
+@{
+    ViewData["Title"] = "Διαγραφή Είδους";
+}
+
+<h2>Επιβεβαίωση Διαγραφής</h2>
+
+<div class="alert alert-danger">
+    <strong>Είσαι σίγουρος ότι θέλεις να διαγράψεις αυτό το προϊόν;</strong>
+</div>
+
+<div>
+    <h4>@Model.ProductCode - @Model.Description</h4>
+    <p><strong>Τιμή Λιανικής:</strong> @Model.RetailPrice?.ToString("0.00") € </p>
+    <p><strong>Τιμή Χονδρικής:</strong> @Model.WholesalePrice?.ToString("0.00") € </p>
+    <p><strong>Μονάδα Μέτρησης:</strong> @Model.Unit</p>
+    <p><strong>ΦΠΑ:</strong> @Model.VAT %</p>
+    @if (!string.IsNullOrEmpty(Model.ImagePath))
+    {
+            <p><img src="@Model.ImagePath" width="150" /></p>
+    }
+</div>
+
+<form asp-action="DeleteConfirmed">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Ναι, διαγραφή</button>
+    <a asp-action="Index" class="btn btn-secondary">Ακύρωση</a>
+</form>

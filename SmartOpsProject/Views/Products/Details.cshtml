@@ -1,0 +1,42 @@
+﻿@model SmartOps.Models.Product
+
+@{
+    ViewData["Title"] = "Λεπτομέρειες Είδους";
+}
+
+<h2>Λεπτομέρειες Προϊόντος</h2>
+
+<div class="card" style="max-width: 600px;">
+    <div class="card-body">
+        <h5 class="card-title">@Model.ProductCode - @Model.Description</h5>
+
+        <dl class="row">
+            <dt class="col-sm-4">Τιμή Λιανικής:</dt>
+            <dd class="col-sm-8">@Model.RetailPrice?.ToString("0.00") € </dd>
+
+            <dt class="col-sm-4">Τιμή Χονδρικής:</dt>
+            <dd class="col-sm-8">@Model.WholesalePrice?.ToString("0.00") € </dd>
+
+            <dt class="col-sm-4">Μονάδα Μέτρησης:</dt>
+            <dd class="col-sm-8">@Model.Unit</dd>
+
+            <dt class="col-sm-4">ΦΠΑ:</dt>
+            <dd class="col-sm-8">@Model.VAT %</dd>
+
+            <dt class="col-sm-4">Εικόνα:</dt>
+            <dd class="col-sm-8">
+                @if (!string.IsNullOrEmpty(Model.ImagePath))
+                {
+                        <img src="@Model.ImagePath" width="200" alt="Εικόνα προϊόντος" />
+                }
+                else
+                {
+                        <span class="text-muted">Δεν έχει οριστεί εικόνα.</span>
+                }
+            </dd>
+        </dl>
+
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Επεξεργασία</a>
+        <a asp-action="Index" class="btn btn-secondary">Πίσω στη λίστα</a>
+    </div>
+</div>

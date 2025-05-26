@@ -1,0 +1,68 @@
+﻿@model SmartOps.Models.Product
+
+@{
+    ViewData["Title"] = "Επεξεργασία Είδους";
+}
+
+<h2>Επεξεργασία Προϊόντος</h2>
+
+<form asp-action="Edit" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label asp-for="ProductCode"></label>
+        <input asp-for="ProductCode" class="form-control" />
+        <span asp-validation-for="ProductCode" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <input asp-for="Description" class="form-control" />
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="RetailPrice"></label>
+        <input asp-for="RetailPrice" class="form-control" type="number" step="0.01" value="0.00" placeholder="0.00" />
+        <span asp-validation-for="RetailPrice" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="WholesalePrice"></label>
+        <input asp-for="WholesalePrice" class="form-control" type="number" step="0.01" value="0.00" placeholder="0.00"/>
+        <span asp-validation-for="WholesalePrice" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Unit"></label>
+        <select asp-for="Unit" class="form-control" asp-items="ViewBag.Units"></select>
+        <span asp-validation-for="Unit" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="VAT"></label>
+        <select asp-for="VAT" class="form-control" asp-items="ViewBag.VATOptions"></select>
+        <span asp-validation-for="VAT" class="text-danger"></span>
+    </div>
+
+
+    <div class="form-group">
+        <label>Τρέχουσα Εικόνα</label><br />
+        @if (!string.IsNullOrEmpty(Model.ImagePath))
+        {
+                <img src="@Model.ImagePath" alt="Εικόνα προϊόντος" width="150" />
+        }
+        else
+        {
+                <span class="text-muted">Δεν έχει οριστεί εικόνα.</span>
+        }
+    </div>
+
+    <div class="form-group">
+        <label>Νέα Εικόνα (προαιρετική)</label>
+        <input type="file" name="imageFile" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Αποθήκευση</button>
+    <a asp-action="Index" class="btn btn-secondary">Ακύρωση</a>
+</form>

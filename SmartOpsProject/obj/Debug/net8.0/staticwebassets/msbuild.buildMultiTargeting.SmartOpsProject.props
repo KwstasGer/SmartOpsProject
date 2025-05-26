@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\SmartOpsProject.props" />
+</Project>

@@ -1,0 +1,18 @@
+﻿@model SmartOps.Models.Customers
+@{
+    ViewData["Title"] = "Διαγραφή Πελάτη";
+}
+
+<h2>Διαγραφή Πελάτη</h2>
+<h4>Είσαι σίγουρος ότι θέλεις να διαγράψεις τον παρακάτω πελάτη;</h4>
+<dl class="row">
+    <dt class="col-sm-2">Κωδικός</dt>
+    <dd class="col-sm-10">@Model.CustomerCode</dd>
+    <dt class="col-sm-2">Όνομα</dt>
+    <dd class="col-sm-10">@Model.Name</dd>
+</dl>
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="Id" />
+    <input type="submit" value="Διαγραφή" class="btn btn-danger" />
+    <a asp-action="Index" class="btn btn-secondary">Άκυρο</a>
+</form>
