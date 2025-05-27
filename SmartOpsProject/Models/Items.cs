@@ -2,23 +2,18 @@
 
 namespace SmartOps.Models
 {
-    public class Product
+    public class Item
     {
         public int Id { get; set; }
 
         [Required]
-        [Display(Name = "Κωδικός Προϊόντος")]
-        public string ProductCode { get; set; }
+        [Display(Name = "Κωδικός Είδους")]
+        public string ItemCode { get; set; }
 
         [Required]
         [Display(Name = "Περιγραφή")]
         public string Description { get; set; }
 
-        [Display(Name = "Τιμή Λιανικής")]
-        public decimal? RetailPrice { get; set; } 
-
-        [Display(Name = "Τιμή Χονδρικής")]
-        public decimal? WholesalePrice { get; set; } 
 
         [Required]
         [Display(Name = "Μονάδα Μέτρησης")]
@@ -27,6 +22,12 @@ namespace SmartOps.Models
         [Required]
         [Display(Name = "ΦΠΑ")]
         public decimal VAT { get; set; }
+
+        [Display(Name = "Τιμή Λιανικής")]
+        public decimal? RetailPrice { get; set; }
+
+        [Display(Name = "Τιμή Χονδρικής")]
+        public decimal? WholesalePrice { get; set; }
 
         [Display(Name = "Εικόνα Προϊόντος")]
         public string? ImagePath { get; set; }

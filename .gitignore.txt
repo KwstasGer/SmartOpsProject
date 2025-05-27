@@ -42,3 +42,6 @@ Migrations/
 .env
 appsettings.Development.json
 appsettings.Local.json
+
+## Custom Ignored Files
+*.vsidx

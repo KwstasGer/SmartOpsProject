@@ -9,8 +9,8 @@ namespace SmartOps.Data
     {
         public SmartOpsDbContext(DbContextOptions<SmartOpsDbContext> options) : base(options) { }
 
-        public DbSet<Customers> Customers { get; set; }
-        public DbSet<Product> Product  { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Item> Items  { get; set; }
         public DbSet<Service> Services { get; set; }
        // public DbSet<Invoice> Invoices { get; set; }
        // public DbSet<InvoiceLine> InvoiceLines { get; set; }

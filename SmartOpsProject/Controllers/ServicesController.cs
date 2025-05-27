@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SmartOps.Models;
+using SmartOps.Services;
 using SmartOpsProject.Models;
 using SmartOpsProject.Services;
 
-namespace SmartOpsProject.Controllers
+namespace SmartOps.Controllers
 {
     public class ServicesController : Controller
     {
@@ -40,7 +42,6 @@ namespace SmartOpsProject.Controllers
         {
             var service = await _serviceService.GetByIdAsync(id);
             if (service == null) return NotFound();
-
             return View(service);
         }
 
@@ -48,7 +49,7 @@ namespace SmartOpsProject.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Service service)
         {
-            if (id != service.ServiceId) return NotFound();
+            if (id != service.Id) return NotFound();
 
             if (ModelState.IsValid)
             {
@@ -62,7 +63,6 @@ namespace SmartOpsProject.Controllers
         {
             var service = await _serviceService.GetByIdAsync(id);
             if (service == null) return NotFound();
-
             return View(service);
         }
 
@@ -78,7 +78,6 @@ namespace SmartOpsProject.Controllers
         {
             var service = await _serviceService.GetByIdAsync(id);
             if (service == null) return NotFound();
-
             return View(service);
         }
     }

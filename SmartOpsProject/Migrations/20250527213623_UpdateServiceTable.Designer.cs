@@ -11,8 +11,8 @@ using SmartOps.Data;
 namespace SmartOpsProject.Migrations
 {
     [DbContext(typeof(SmartOpsDbContext))]
-    [Migration("20250526222241_RemoveInvoices")]
-    partial class RemoveInvoices
+    [Migration("20250527213623_UpdateServiceTable")]
+    partial class UpdateServiceTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,7 +24,7 @@ namespace SmartOpsProject.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("SmartOps.Models.Customers", b =>
+            modelBuilder.Entity("SmartOps.Models.Customer", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -73,7 +73,7 @@ namespace SmartOpsProject.Migrations
                     b.ToTable("Customers");
                 });
 
-            modelBuilder.Entity("SmartOps.Models.Product", b =>
+            modelBuilder.Entity("SmartOps.Models.Item", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -88,7 +88,7 @@ namespace SmartOpsProject.Migrations
                     b.Property<string>("ImagePath")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ProductCode")
+                    b.Property<string>("ItemCode")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -107,28 +107,39 @@ namespace SmartOpsProject.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Product");
+                    b.ToTable("Items");
                 });
 
             modelBuilder.Entity("SmartOpsProject.Models.Service", b =>
                 {
-                    b.Property<int>("ServiceId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ServiceId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Price")
+                    b.Property<decimal?>("RetailPrice")
                         .HasColumnType("decimal(18,2)");
 
-                    b.HasKey("ServiceId");
+                    b.Property<string>("ServiceCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Unit")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("VAT")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal?>("WholesalePrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
 
                     b.ToTable("Services");
                 });

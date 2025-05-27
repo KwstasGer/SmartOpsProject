@@ -4,18 +4,31 @@ namespace SmartOpsProject.Models
 {
     public class Service
     {
-        public int ServiceId { get; set; }
+        public int Id { get; set; }
 
         [Required]
-        public string Name { get; set; }
+        [Display(Name = "Κωδικός Υπηρεσίας")]
+        public string ServiceCode { get; set; }
 
-        public string? Description { get; set; }
+        [Required]
+        [Display(Name = "Περιγραφή")]
+        public string Description { get; set; }
 
+        [Required]
+        [Display(Name = "Μονάδα Μέτρησης")]
+        public string Unit { get; set; }
+
+        [Required]
+        [Display(Name = "ΦΠΑ")]
+        public decimal VAT { get; set; }
+
+        [Display(Name = "Τιμή Λιανικής")]
         [Range(0, double.MaxValue)]
-        public decimal Price { get; set; }
+        public decimal? RetailPrice { get; set; }
 
-        // Σχέση με InvoiceLine (προαιρετική)
-        // public ICollection<InvoiceLine>? InvoiceLines { get; set; }
-    }
+        [Display(Name = "Τιμή Χονδρικής")]
+        [Range(0, double.MaxValue)]
+        public decimal? WholesalePrice { get; set; }
+            }
 
 }

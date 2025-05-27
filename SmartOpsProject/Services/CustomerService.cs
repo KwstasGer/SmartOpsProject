@@ -1,6 +1,7 @@
 ﻿using SmartOps.Models;
 using SmartOps.Data;
 using Microsoft.EntityFrameworkCore;
+using System.Xml.Linq;
 
 namespace SmartOps.Services
 {
@@ -13,40 +14,38 @@ namespace SmartOps.Services
             _context = context;
         }
 
-        public async Task<List<Customers>> GetAllAsync() =>
+        public async Task<List<Customer>> GetAllAsync() =>
             await _context.Customers.ToListAsync();
 
-        public async Task<Customers?> GetByIdAsync(int id) =>
+        public async Task<Customer?> GetByIdAsync(int id) =>
             await _context.Customers.FindAsync(id);
 
-        public async Task AddAsync(Customers client)
+        public async Task AddAsync(Customer customer)
         {
-            _context.Customers.Add(client);
+            _context.Customers.Add(customer);
             await _context.SaveChangesAsync();
         }
 
-        public async Task UpdateAsync(Customers client)
+        public async Task UpdateAsync(Customer customer)
         {
-            _context.Customers.Update(client);
+            _context.Customers.Update(customer);
             await _context.SaveChangesAsync();
         }
 
         public async Task DeleteAsync(int id)
         {
-            var client = await _context.Customers.FindAsync(id);
-            if (client != null)
+            var customer = await _context.Customers.FindAsync(id);
+            if (customer != null)
             {
-                _context.Customers.Remove(client);
+                _context.Customers.Remove(customer);
                 await _context.SaveChangesAsync();
             }
         }
 
-        internal async Task DeleteAsync(Customers customer)
+        public async Task DeleteAsync(Customer customer)
         {
-
             _context.Customers.Remove(customer);
             await _context.SaveChangesAsync();
-            throw new NotImplementedException();
         }
     }
 }

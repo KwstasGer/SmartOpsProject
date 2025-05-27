@@ -7,35 +7,35 @@ using System.Threading.Tasks;
 
 namespace SmartOps.Controllers
 {
-    public class ProductsController : Controller
+    public class ItemsController : Controller
     {
-        private readonly ProductService _productService;
+        private readonly ItemService _itemService;
         private readonly IWebHostEnvironment _env;
 
-        public ProductsController(ProductService productService, IWebHostEnvironment env)
+        public ItemsController(ItemService itemService, IWebHostEnvironment env)
         {
-            _productService = productService;
+            _itemService = itemService;
             _env = env;
         }
 
-        // GET: /Products
+        // GET: /Items
         public async Task<IActionResult> Index()
         {
-            var products = await _productService.GetAllAsync();
-            return View(products);
+            var items = await _itemService.GetAllAsync();
+            return View(items);
         }
 
-        // GET: /Products/Details/5
+        // GET: /Items/Details/5
         public async Task<IActionResult> Details(int id)
         {
-            var product = await _productService.GetByIdAsync(id);
-            if (product == null)
+            var item = await _itemService.GetByIdAsync(id);
+            if (item == null)
                 return NotFound();
 
-            return View(product);
+            return View(item);
         }
 
-        // GET: /Products/Create
+        // GET: /Items/Create
         public IActionResult Create()
         {
             ViewBag.Units = GetUnits();
@@ -43,19 +43,15 @@ namespace SmartOps.Controllers
             return View();
         }
 
-        // POST: /Products/Create
+        // POST: /Items/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Product product, IFormFile? imageFile)
+        public async Task<IActionResult> Create(Item item, IFormFile? imageFile)
         {
             if (ModelState.IsValid)
             {
-                // Αν δεν δόθηκαν τιμές, βεβαιωνόμαστε ότι μπαίνουν 0.00
-                if (product.RetailPrice == null)
-                    product.RetailPrice = 0.00m;
-
-                if (product.WholesalePrice == null)
-                    product.WholesalePrice = 0.00m;
+                item.RetailPrice ??= 0.00m;
+                item.WholesalePrice ??= 0.00m;
 
                 if (imageFile != null && imageFile.Length > 0)
                 {
@@ -67,59 +63,46 @@ namespace SmartOps.Controllers
                         await imageFile.CopyToAsync(stream);
                     }
 
-                    product.ImagePath = "/images/products/" + fileName;
+                    item.ImagePath = "/images/products/" + fileName;
                 }
-
                 else
                 {
-                    product.ImagePath = null; // ή null αν προτιμάς
+                    item.ImagePath = null;
                 }
-                
 
-                await _productService.AddAsync(product);
+                await _itemService.AddAsync(item);
                 return RedirectToAction(nameof(Index));
-            }
-
-            foreach (var error in ModelState)
-            {
-                foreach (var subError in error.Value.Errors)
-                {
-                    Console.WriteLine($"[Model Error] Field: {error.Key} → {subError.ErrorMessage}");
-                }
             }
 
             ViewBag.Units = GetUnits();
             ViewBag.VATOptions = GetVATOptions();
-            return View(product);
+            return View(item);
         }
 
-        // GET: /Products/Edit/5
+        // GET: /Items/Edit/5
         public async Task<IActionResult> Edit(int id)
         {
-            var product = await _productService.GetByIdAsync(id);
-            if (product == null)
+            var item = await _itemService.GetByIdAsync(id);
+            if (item == null)
                 return NotFound();
 
             ViewBag.Units = GetUnits();
             ViewBag.VATOptions = GetVATOptions();
-            return View(product);
+            return View(item);
         }
 
-        // POST: /Products/Edit/5
+        // POST: /Items/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Product product, IFormFile imageFile)
+        public async Task<IActionResult> Edit(int id, Item item, IFormFile imageFile)
         {
-            if (id != product.Id)
+            if (id != item.Id)
                 return BadRequest();
 
             if (ModelState.IsValid)
             {
-                if (product.RetailPrice == null)
-                    product.RetailPrice = 0.00m;
-
-                if (product.WholesalePrice == null)
-                    product.WholesalePrice = 0.00m;
+                item.RetailPrice ??= 0.00m;
+                item.WholesalePrice ??= 0.00m;
 
                 if (imageFile != null && imageFile.Length > 0)
                 {
@@ -131,39 +114,38 @@ namespace SmartOps.Controllers
                         await imageFile.CopyToAsync(stream);
                     }
 
-                    product.ImagePath = "/images/products/" + fileName;
+                    item.ImagePath = "/images/products/" + fileName;
                 }
-
                 else
                 {
-                    product.ImagePath = null; // ή null αν προτιμάς
+                    item.ImagePath = null;
                 }
 
-                await _productService.UpdateAsync(product);
+                await _itemService.UpdateAsync(item);
                 return RedirectToAction(nameof(Index));
             }
 
             ViewBag.Units = GetUnits();
             ViewBag.VATOptions = GetVATOptions();
-            return View(product);
+            return View(item);
         }
 
-        // GET: /Products/Delete/5
+        // GET: /Items/Delete/5
         public async Task<IActionResult> Delete(int id)
         {
-            var product = await _productService.GetByIdAsync(id);
-            if (product == null)
+            var item = await _itemService.GetByIdAsync(id);
+            if (item == null)
                 return NotFound();
 
-            return View(product);
+            return View(item);
         }
 
-        // POST: /Products/Delete/5
+        // POST: /Items/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            await _productService.DeleteAsync(id);
+            await _itemService.DeleteAsync(id);
             return RedirectToAction(nameof(Index));
         }
 

@@ -16,7 +16,7 @@ builder.Services.AddDbContext<SmartOpsDbContext>(options =>
 
 
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<ProductService>();
+builder.Services.AddScoped<ItemService>();
 builder.Services.AddScoped<CustomerService>();
 builder.Services.AddScoped<ServiceService>();
 //builder.Services.AddDbContext > ();

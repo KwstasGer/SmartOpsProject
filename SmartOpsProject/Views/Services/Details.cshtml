@@ -1,36 +1,34 @@
 ﻿@model SmartOpsProject.Models.Service
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Λεπτομέρειες Υπηρεσίας";
 }
 
-<h1>Details</h1>
+<h1>Λεπτομέρειες Υπηρεσίας</h1>
 
 <div>
-    <h4>Service</h4>
-    <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Price)
-        </dd>
+        <dt class="col-sm-2">Κωδικός</dt>
+        <dd class="col-sm-10">@Model.ServiceCode</dd>
+
+        <dt class="col-sm-2">Περιγραφή</dt>
+        <dd class="col-sm-10">@Model.Description</dd>
+
+        <dt class="col-sm-2">Μονάδα</dt>
+        <dd class="col-sm-10">@Model.Unit</dd>
+
+        <dt class="col-sm-2">ΦΠΑ</dt>
+        <dd class="col-sm-10">@Model.VAT</dd>
+
+        <dt class="col-sm-2">Τιμή Λιανικής</dt>
+        <dd class="col-sm-10">@Model.RetailPrice?.ToString("0.00")</dd>
+
+        <dt class="col-sm-2">Τιμή Χονδρικής</dt>
+        <dd class="col-sm-10">@Model.WholesalePrice?.ToString("0.00")</dd>
     </dl>
 </div>
+
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.ServiceId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Επεξεργασία</a>
+    <a asp-action="Index" class="btn btn-secondary">Πίσω στη λίστα</a>
 </div>

@@ -2,7 +2,7 @@
 
 namespace SmartOps.Models
 {
-    public class Customers
+    public class Customer
     {
         public int Id { get; set; }
 

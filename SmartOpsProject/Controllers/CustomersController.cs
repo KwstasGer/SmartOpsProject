@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using SmartOps.Models;
 using SmartOps.Services;
 
@@ -10,15 +9,15 @@ namespace SmartOps.Controllers
     {
         private readonly CustomerService _CustomerService;
 
-        public CustomersController(CustomerService clientService)
+        public CustomersController(CustomerService customerService)
         {
-            _CustomerService = clientService;
+            _CustomerService = customerService;
         }
 
         public async Task<IActionResult> Index()
         {
-            var clients = await _CustomerService.GetAllAsync();
-            return View(clients);
+            var customers = await _CustomerService.GetAllAsync();
+            return View(customers);
         }
 
         public IActionResult Create()
@@ -41,74 +40,74 @@ namespace SmartOps.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Customers client)
+        public async Task<IActionResult> Create(Customer customer)
         {
             if (ModelState.IsValid)
             {
-                await _CustomerService.AddAsync(client);
+                await _CustomerService.AddAsync(customer);
                 return RedirectToAction(nameof(Index));
             }
 
             ViewBag.VatStatuses = new SelectList(
                 new List<string> { "Κανονικό", "Μειωμένο", "Απαλλασσόμενο" },
-                selectedValue: client.VatStatus
+                selectedValue: customer.VatStatus
             );
 
             ViewBag.CustomerCategories = new SelectList(
                 new List<string> { "Λιανικής", "Χονδρικής" },
-                selectedValue: client.CustomerCategory
+                selectedValue: customer.CustomerCategory
             );
 
-            return View(client);
+            return View(customer);
         }
 
         public async Task<IActionResult> Edit(int id)
         {
-            var client = await _CustomerService.GetByIdAsync(id);
-            if (client == null) return NotFound();
+            var customer = await _CustomerService.GetByIdAsync(id);
+            if (customer == null) return NotFound();
 
             ViewBag.VatStatuses = new SelectList(
                 new List<string> { "Κανονικό", "Μειωμένο", "Απαλλασσόμενο" },
-                selectedValue: client.VatStatus
+                selectedValue: customer.VatStatus
             );
 
             ViewBag.CustomerCategories = new SelectList(
                 new List<string> { "Λιανικής", "Χονδρικής" },
-                selectedValue: client.CustomerCategory
+                selectedValue: customer.CustomerCategory
             );
 
-            return View(client);
+            return View(customer);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Customers client)
+        public async Task<IActionResult> Edit(int id, Customer customer)
         {
-            if (id != client.Id) return BadRequest();
+            if (id != customer.Id) return BadRequest();
+
+            if (ModelState.IsValid)
+            {
+                await _CustomerService.UpdateAsync(customer);
+                return RedirectToAction(nameof(Index));
+            }
 
             ViewBag.VatStatuses = new SelectList(
                 new List<string> { "Κανονικό", "Μειωμένο", "Απαλλασσόμενο" },
-                selectedValue: client.VatStatus
+                selectedValue: customer.VatStatus
             );
 
             ViewBag.CustomerCategories = new SelectList(
                 new List<string> { "Λιανικής", "Χονδρικής" },
-                selectedValue: client.CustomerCategory
+                selectedValue: customer.CustomerCategory
             );
 
-            if (ModelState.IsValid)
-            {
-                await _CustomerService.UpdateAsync(client);
-                return RedirectToAction(nameof(Index));
-            }
-
-            return View(client);
+            return View(customer);
         }
 
         public async Task<IActionResult> Delete(int id)
         {
-            var client = await _CustomerService.GetByIdAsync(id);
-            return client == null ? NotFound() : View(client);
+            var customer = await _CustomerService.GetByIdAsync(id);
+            return customer == null ? NotFound() : View(customer);
         }
 
         [HttpPost, ActionName("Delete")]
@@ -125,8 +124,8 @@ namespace SmartOps.Controllers
 
         public async Task<IActionResult> Details(int id)
         {
-            var client = await _CustomerService.GetByIdAsync(id);
-            return client == null ? NotFound() : View(client);
+            var customer = await _CustomerService.GetByIdAsync(id);
+            return customer == null ? NotFound() : View(customer);
         }
     }
 }

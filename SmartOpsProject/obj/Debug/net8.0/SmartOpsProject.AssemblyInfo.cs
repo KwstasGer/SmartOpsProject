@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SmartOpsProject")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3a54f07505a9bbc7ae54e11a5770085e552dabb4")]
 [assembly: System.Reflection.AssemblyProductAttribute("SmartOpsProject")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SmartOpsProject")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -49,7 +49,7 @@ namespace SmartOpsProject.Controllers
         // POST: Suppliers/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,SupplierCode,Name,TaxIdentificationNumber,Country,Address,City,PostalCode,SupplierCategory,VatStatus")] Supplier supplier)
+        public async Task<IActionResult> Create([Bind("Id,Κωδικός Προμηθευτή,Περιγραφή,ΦΠΑ,Χώρα,Διεύθυνσης,Πόλη,ΤΚ,Κατηγορία,Καθεστώς ΦΠΑ")] Supplier supplier)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace SmartOpsProject.Controllers
         // POST: Suppliers/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,SupplierCode,Name,TaxIdentificationNumber,Country,Address,City,PostalCode,SupplierCategory,VatStatus")] Supplier supplier)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Κωδικός Προμηθευτή,Περιγραφή,ΦΠΑ,Χώρα,Διεύθυνσης,Πόλη,ΤΚ,Κατηγορία,Καθεστώς ΦΠΑ")] Supplier supplier)
         {
             if (id != supplier.Id)
                 return NotFound();
@@ -149,7 +149,7 @@ namespace SmartOpsProject.Controllers
 
             ViewBag.VatStatuses = new List<SelectListItem>
             {
-                new SelectListItem { Text = "Κανονικά", Value = "Κανονικά" },
+                new SelectListItem { Text = "Κανονικό", Value = "Κανονικο" },
                 new SelectListItem { Text = "Μειωμένο", Value = "Μειωμένο" },
                 new SelectListItem { Text = "Απαλλάσσεται", Value = "Απαλλάσσεται" }
             };

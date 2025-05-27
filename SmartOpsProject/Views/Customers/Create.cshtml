@@ -1,4 +1,4 @@
-﻿@model SmartOps.Models.Customers
+﻿@model SmartOps.Models.Customer
 @{
     ViewData["Title"] = "Δημιουργία Πελάτη";
 }
@@ -53,5 +53,6 @@
     </div>
     <div class="form-group">
         <input type="submit" value="Αποθήκευση" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-secondary">Ακύρωση</a>
     </div>
 </form>

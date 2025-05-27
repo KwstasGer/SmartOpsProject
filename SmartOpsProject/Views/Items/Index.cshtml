@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SmartOps.Models.Product>
+﻿@model IEnumerable<SmartOps.Models.Item>
 
 @{
     ViewData["Title"] = "Προϊόντα";
@@ -37,7 +37,7 @@
                             <span class="text-muted">Καμία εικόνα</span>
                     }
                 </td>
-                <td>@item.ProductCode</td>
+                <td>@item.ItemCode</td>
                 <td>@item.Description</td>
                 <td>@item.RetailPrice?.ToString("0.00") € </td>
                 <td>@item.WholesalePrice?.ToString("0.00") € </td>

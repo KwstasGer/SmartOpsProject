@@ -1,4 +1,4 @@
-﻿@model SmartOps.Models.Product
+﻿@model SmartOps.Models.Item
 
 @{
     ViewData["Title"] = "Διαγραφή Είδους";
@@ -11,7 +11,7 @@
 </div>
 
 <div>
-    <h4>@Model.ProductCode - @Model.Description</h4>
+    <h4>@Model.ItemCode - @Model.Description</h4>
     <p><strong>Τιμή Λιανικής:</strong> @Model.RetailPrice?.ToString("0.00") € </p>
     <p><strong>Τιμή Χονδρικής:</strong> @Model.WholesalePrice?.ToString("0.00") € </p>
     <p><strong>Μονάδα Μέτρησης:</strong> @Model.Unit</p>
