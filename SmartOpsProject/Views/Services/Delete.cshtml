@@ -4,22 +4,36 @@
     ViewData["Title"] = "Διαγραφή Υπηρεσίας";
 }
 
-<h1>Διαγραφή Υπηρεσίας</h1>
+<h1>@ViewData["Title"]</h1>
 
-<h4>Είσαι σίγουρος ότι θέλεις να διαγράψεις αυτή την υπηρεσία;</h4>
+<h4 class="text-danger">Είσαι σίγουρος ότι θέλεις να διαγράψεις αυτή την υπηρεσία;</h4>
 
-<div>
-    <dl class="row">
-        <dt class="col-sm-2">Κωδικός</dt>
-        <dd class="col-sm-10">@Model.ServiceCode</dd>
+<div class="card mt-3 mb-3">
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">Κωδικός</dt>
+            <dd class="col-sm-9">@Model.ServiceCode</dd>
 
-        <dt class="col-sm-2">Περιγραφή</dt>
-        <dd class="col-sm-10">@Model.Description</dd>
-    </dl>
+            <dt class="col-sm-3">Περιγραφή</dt>
+            <dd class="col-sm-9">@Model.Description</dd>
+
+            <dt class="col-sm-3">Μονάδα</dt>
+            <dd class="col-sm-9">@Model.Unit</dd>
+
+            <dt class="col-sm-3">ΦΠΑ</dt>
+            <dd class="col-sm-9">@Model.VAT %</dd>
+
+            <dt class="col-sm-3">Λιανική Τιμή</dt>
+            <dd class="col-sm-9">@Model.RetailPrice?.ToString("0.00")</dd>
+
+            <dt class="col-sm-3">Χονδρική Τιμή</dt>
+            <dd class="col-sm-9">@Model.WholesalePrice?.ToString("0.00")</dd>
+        </dl>
+    </div>
 </div>
 
-<form asp-action="DeleteConfirmed">
+<form asp-action="Delete" method="post">
     <input type="hidden" asp-for="Id" />
-    <input type="submit" value="Διαγραφή" class="btn btn-danger" />
+    <button type="submit" class="btn btn-danger">Διαγραφή</button>
     <a asp-action="Index" class="btn btn-secondary">Ακύρωση</a>
 </form>

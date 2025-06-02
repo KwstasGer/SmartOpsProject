@@ -7,19 +7,19 @@ namespace SmartOpsProject.Models
         public int Id { get; set; }
 
         [Required]
-        [Display(Name = "Κωδικός Υπηρεσίας")]
+        [Display(Name = "Κωδικός Υπηρεσίας *")]
         public string ServiceCode { get; set; }
 
         [Required]
-        [Display(Name = "Περιγραφή")]
+        [Display(Name = "Περιγραφή *")]
         public string Description { get; set; }
 
         [Required]
-        [Display(Name = "Μονάδα Μέτρησης")]
+        [Display(Name = "Μονάδα Μέτρησης *")]
         public string Unit { get; set; }
 
         [Required]
-        [Display(Name = "ΦΠΑ")]
+        [Display(Name = "ΦΠΑ *")]
         public decimal VAT { get; set; }
 
         [Display(Name = "Τιμή Λιανικής")]

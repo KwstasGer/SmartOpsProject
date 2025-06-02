@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SmartOps.Data;
@@ -18,71 +15,61 @@ namespace SmartOpsProject.Controllers
             _context = context;
         }
 
-        // GET: Suppliers
         public async Task<IActionResult> Index()
         {
             return View(await _context.Suppliers.ToListAsync());
         }
 
-        // GET: Suppliers/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
-                return NotFound();
+            if (id is null or <= 0)
+                return BadRequest();
 
-            var supplier = await _context.Suppliers
-                .FirstOrDefaultAsync(m => m.Id == id);
-
-            if (supplier == null)
-                return NotFound();
-
-            return View(supplier);
+            var supplier = await _context.Suppliers.FirstOrDefaultAsync(m => m.Id == id);
+            return supplier == null ? NotFound() : View(supplier);
         }
 
-        // GET: Suppliers/Create
         public IActionResult Create()
         {
             SetDropDowns();
             return View();
         }
 
-        // POST: Suppliers/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Κωδικός Προμηθευτή,Περιγραφή,ΦΠΑ,Χώρα,Διεύθυνσης,Πόλη,ΤΚ,Κατηγορία,Καθεστώς ΦΠΑ")] Supplier supplier)
+        public async Task<IActionResult> Create(Supplier supplier)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(supplier);
                 await _context.SaveChangesAsync();
+                TempData["SuccessMessage"] = "Ο προμηθευτής δημιουργήθηκε με επιτυχία.";
                 return RedirectToAction(nameof(Index));
             }
 
-            SetDropDowns();
+            SetDropDowns(supplier.VatStatus, supplier.SupplierCategory);
             return View(supplier);
         }
 
-        // GET: Suppliers/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
-                return NotFound();
+            if (id is null or <= 0)
+                return BadRequest();
 
             var supplier = await _context.Suppliers.FindAsync(id);
             if (supplier == null)
                 return NotFound();
 
-            SetDropDowns();
+            SetDropDowns(supplier.VatStatus, supplier.SupplierCategory);
             return View(supplier);
         }
 
-        // POST: Suppliers/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Κωδικός Προμηθευτή,Περιγραφή,ΦΠΑ,Χώρα,Διεύθυνσης,Πόλη,ΤΚ,Κατηγορία,Καθεστώς ΦΠΑ")] Supplier supplier)
+        public async Task<IActionResult> Edit(int id, Supplier supplier)
         {
             if (id != supplier.Id)
-                return NotFound();
+                return BadRequest();
 
             if (ModelState.IsValid)
             {
@@ -90,69 +77,62 @@ namespace SmartOpsProject.Controllers
                 {
                     _context.Update(supplier);
                     await _context.SaveChangesAsync();
+                    TempData["SuccessMessage"] = "Ο προμηθευτής ενημερώθηκε με επιτυχία.";
+                    return RedirectToAction(nameof(Index));
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!SupplierExists(supplier.Id))
+                    if (!await SupplierExistsAsync(supplier.Id))
                         return NotFound();
                     else
                         throw;
                 }
-                return RedirectToAction(nameof(Index));
             }
 
-            SetDropDowns();
-            return View(supplier);
+            SetDropDowns(supplier.VatStatus, supplier.SupplierCategory);
+            return View(supplier); 
         }
 
-        // GET: Suppliers/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null)
-                return NotFound();
+            if (id is null or <= 0)
+                return BadRequest();
 
-            var supplier = await _context.Suppliers
-                .FirstOrDefaultAsync(m => m.Id == id);
-
-            if (supplier == null)
-                return NotFound();
-
-            return View(supplier);
+            var supplier = await _context.Suppliers.FirstOrDefaultAsync(m => m.Id == id);
+            return supplier == null ? NotFound() : View(supplier);
         }
 
-        // POST: Suppliers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var supplier = await _context.Suppliers.FindAsync(id);
-            if (supplier != null)
-                _context.Suppliers.Remove(supplier);
+            if (supplier == null)
+                return NotFound();
 
+            _context.Suppliers.Remove(supplier);
             await _context.SaveChangesAsync();
+
+            TempData["SuccessMessage"] = "Ο προμηθευτής διαγράφηκε με επιτυχία.";
             return RedirectToAction(nameof(Index));
         }
 
-        private bool SupplierExists(int id)
+        private async Task<bool> SupplierExistsAsync(int id)
         {
-            return _context.Suppliers.Any(e => e.Id == id);
+            return await _context.Suppliers.AnyAsync(e => e.Id == id);
         }
 
-        private void SetDropDowns()
+        private void SetDropDowns(string? selectedVat = null, string? selectedCategory = null)
         {
-            ViewBag.SupplierCategories = new List<SelectListItem>
-            {
-                new SelectListItem { Text = "Εσωτερικού", Value = "Εσωτερικού" },
-                new SelectListItem { Text = "ΕΕ", Value = "ΕΕ" },
-                new SelectListItem { Text = "Τρίτων Χωρών", Value = "Τρίτων Χωρών" }
-            };
+            ViewBag.VatStatuses = new SelectList(
+                new List<string> { "Κανονικό", "Μειωμένο", "Απαλλάσσεται" },
+                selectedVat
+            );
 
-            ViewBag.VatStatuses = new List<SelectListItem>
-            {
-                new SelectListItem { Text = "Κανονικό", Value = "Κανονικο" },
-                new SelectListItem { Text = "Μειωμένο", Value = "Μειωμένο" },
-                new SelectListItem { Text = "Απαλλάσσεται", Value = "Απαλλάσσεται" }
-            };
+            ViewBag.SupplierCategories = new SelectList(
+                new List<string> { "Εσωτερικού", "ΕΕ", "Τρίτων Χωρών" },
+                selectedCategory
+            );
         }
     }
 }

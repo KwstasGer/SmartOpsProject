@@ -3,11 +3,19 @@
     ViewData["Title"] = "Λίστα Πελατών";
 }
 
+@if (TempData["SuccessMessage"] != null)
+{
+                <div id="success-message" class="alert alert-success">
+        @TempData["SuccessMessage"]
+                </div>
+}
+
+
 <h2>Λίστα Πελατών</h2>
 <p>
     <a asp-action="Create" class="btn btn-success">+ Νέος Πελάτης</a>
 </p>
-<table class="table">
+<table class="table table-bordered">
     <thead>
         <tr>
             <th>Κωδικός</th>
@@ -34,11 +42,12 @@
                 <td>@item.VatStatus</td>
                 <td>@item.CustomerCategory</td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Επεξεργασία</a>
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Λεπτομέρειες</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id"class="btn btn-sm btn-danger">Διαγραφή</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+

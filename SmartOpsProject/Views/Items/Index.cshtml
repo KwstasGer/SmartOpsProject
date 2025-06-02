@@ -4,6 +4,15 @@
     ViewData["Title"] = "Προϊόντα";
 }
 
+
+@if (TempData["SuccessMessage"] != null)
+{
+                    <div id="success-message" class="alert alert-success">
+        @TempData["SuccessMessage"]
+                    </div>
+}
+
+
 <h2>Προϊόντα</h2>
 
 <p>
@@ -45,7 +54,7 @@
                 <td>@item.Unit</td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Επεξεργασία</a>
-                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Λεπτομέρειες</a>
+                    <a asp-action="Details" asp-route-id="@item.Id"  class="btn btn-sm btn-info">Λεπτομέρειες</a>
                     <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Διαγραφή</a>
                 </td>
             </tr>

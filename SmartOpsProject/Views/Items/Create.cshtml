@@ -20,19 +20,7 @@
         <span asp-validation-for="Description" class="text-danger"></span>
     </div>
 
-    <div class="form-group">
-        <label asp-for="RetailPrice"></label>
-        <input asp-for="RetailPrice" class="form-control" type="number" step="0.01" value="0.00" placeholder="0.00"/>
-        <span asp-validation-for="RetailPrice" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="WholesalePrice"></label>
-        <input asp-for="WholesalePrice" class="form-control" type="number" step="0.01" value="0.00" placeholder="0.00"/>
-        <span asp-validation-for="WholesalePrice" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
+        <div class="form-group">
         <label asp-for="Unit"></label>
         <select asp-for="Unit" class="form-control" asp-items="ViewBag.Units"></select>
         <span asp-validation-for="Unit" class="text-danger"></span>
@@ -46,10 +34,23 @@
 
 
     <div class="form-group">
+        <label asp-for="RetailPrice"></label>
+        <input asp-for="RetailPrice" class="form-control" type="number" step="0.01" value="0.00" placeholder="0.00"/>
+        <span asp-validation-for="RetailPrice" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="WholesalePrice"></label>
+        <input asp-for="WholesalePrice" class="form-control" type="number" step="0.01" value="0.00" placeholder="0.00"/>
+        <span asp-validation-for="WholesalePrice" class="text-danger"></span>
+    </div>
+
+
+    <div class="form-group">
         <label>Φωτογραφία Προϊόντος</label>
         <input type="file" name="imageFile" class="form-control" />
     </div>
 
-    <button type="submit" class="btn btn-success">Αποθήκευση</button>
+    <button type="submit" class="btn btn-primary">Αποθήκευση</button>
     <a asp-action="Index" class="btn btn-secondary">Ακύρωση</a>
 </form>

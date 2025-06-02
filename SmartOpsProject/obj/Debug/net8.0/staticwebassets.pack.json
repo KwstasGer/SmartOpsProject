@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\user\\source\\repos\\SmartOpsProject\\SmartOpsProject\\wwwroot\\images\\products\\101775b2-4fdb-447d-91d8-dd75b907254f.jpg",
+      "PackagePath": "staticwebassets\\images\\products\\101775b2-4fdb-447d-91d8-dd75b907254f.jpg"
+    },
+    {
       "Id": "C:\\Users\\user\\source\\repos\\SmartOpsProject\\SmartOpsProject\\wwwroot\\images\\products\\6e5cea25-7ba9-4359-951c-6ac74f6a188e.jpg",
       "PackagePath": "staticwebassets\\images\\products\\6e5cea25-7ba9-4359-951c-6ac74f6a188e.jpg"
     },

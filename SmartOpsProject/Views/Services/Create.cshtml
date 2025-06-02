@@ -4,61 +4,54 @@
     ViewData["Title"] = "Νέα Υπηρεσία";
 }
 
-<h1>Νέα Υπηρεσία</h1>
+<h1>@ViewData["Title"]</h1>
 
-<form asp-action="Create">
-    <div class="row">
-        <div class="col-md-4">
+<form asp-action="Create" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="ServiceCode" class="control-label"></label>
+        <input asp-for="ServiceCode" class="form-control" />
+        <span asp-validation-for="ServiceCode" class="text-danger"></span>
+    </div>
 
-            <div class="form-group">
-                <label asp-for="ServiceCode" class="control-label"></label>
-                <input asp-for="ServiceCode" class="form-control" />
-                <span asp-validation-for="ServiceCode" class="text-danger"></span>
-            </div>
+    <div class="form-group">
+        <label asp-for="Description" class="control-label"></label>
+        <input asp-for="Description" class="form-control" />
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
 
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
+    <div class="form-group">
+        <label asp-for="Unit" class="control-label"></label>
+        <select asp-for="Unit" class="form-control" asp-items="ViewBag.Units"></select>
+        <span asp-validation-for="Unit" class="text-danger"></span>
+    </div>
 
-            <div class="form-group">
-                <label asp-for="Unit" class="control-label"></label>
-                <input asp-for="Unit" class="form-control" />
-                <span asp-validation-for="Unit" class="text-danger"></span>
-            </div>
+    <div class="form-group">
+        <label asp-for="VAT" class="control-label"></label>
+        <select asp-for="VAT" class="form-control" asp-items="ViewBag.VATOptions"></select>
+        <span asp-validation-for="VAT" class="text-danger"></span>
+    </div>
 
-            <div class="form-group">
-                <label asp-for="VAT" class="control-label"></label>
-                <input asp-for="VAT" class="form-control" />
-                <span asp-validation-for="VAT" class="text-danger"></span>
-            </div>
+    <div class="form-group">
+        <label asp-for="RetailPrice" class="control-label"></label>
+        <input asp-for="RetailPrice" class="form-control" type="number" step="0.01" value="0.00" placeholder="0.00"/>
+        <span asp-validation-for="RetailPrice" class="text-danger"></span>
+    </div>
 
-            <div class="form-group">
-                <label asp-for="RetailPrice" class="control-label"></label>
-                <input asp-for="RetailPrice" class="form-control" />
-                <span asp-validation-for="RetailPrice" class="text-danger"></span>
-            </div>
+    <div class="form-group">
+        <label asp-for="WholesalePrice" class="control-label"></label>
+        <input asp-for="WholesalePrice" class="form-control" type="number" step="0.01" value="0.00" placeholder="0.00"/>
+        <span asp-validation-for="WholesalePrice" class="text-danger"></span>
+    </div>
 
-            <div class="form-group">
-                <label asp-for="WholesalePrice" class="control-label"></label>
-                <input asp-for="WholesalePrice" class="form-control" />
-                <span asp-validation-for="WholesalePrice" class="text-danger"></span>
-            </div>
-
-            <div class="form-group mt-3">
-                <buttton type="submit" class="btn btn-primary">Αποθήκευση</buttton> 
-                <a asp-action="Index" class="btn btn-secondary">Ακύρωση</a>
-            </div>
-
-        </div>
+    <div class="form-group mt-3">
+        <button type="submit" class="btn btn-primary">Αποθήκευση</button>
+        <a asp-action="Index" class="btn btn-secondary">Ακύρωση</a>
     </div>
 </form>
 
 @section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
+        <!-- Χρησιμοποιούμε partial αντί για RenderPartialAsync, γιατί είναι πιο απλό, καθαρό και αποφεύγουμε CS1503 -->
+        <partial name="_ValidationScriptsPartial" />
 }

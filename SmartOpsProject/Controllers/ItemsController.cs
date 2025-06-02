@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using SmartOps.Models;
 using SmartOps.Services;
 using System.IO;
-using System.Threading.Tasks;
 
 namespace SmartOps.Controllers
 {
@@ -18,32 +17,27 @@ namespace SmartOps.Controllers
             _env = env;
         }
 
-        // GET: /Items
         public async Task<IActionResult> Index()
         {
             var items = await _itemService.GetAllAsync();
             return View(items);
         }
 
-        // GET: /Items/Details/5
         public async Task<IActionResult> Details(int id)
         {
-            var item = await _itemService.GetByIdAsync(id);
-            if (item == null)
-                return NotFound();
+            if (id <= 0)
+                return BadRequest();
 
-            return View(item);
+            var item = await _itemService.GetByIdAsync(id);
+            return item == null ? NotFound() : View(item);
         }
 
-        // GET: /Items/Create
         public IActionResult Create()
         {
-            ViewBag.Units = GetUnits();
-            ViewBag.VATOptions = GetVATOptions();
+            SetDropDowns();
             return View();
         }
 
-        // POST: /Items/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Item item, IFormFile? imageFile)
@@ -58,43 +52,36 @@ namespace SmartOps.Controllers
                     var fileName = Guid.NewGuid() + Path.GetExtension(imageFile.FileName);
                     var path = Path.Combine(_env.WebRootPath, "images", "products", fileName);
 
-                    using (var stream = new FileStream(path, FileMode.Create))
-                    {
-                        await imageFile.CopyToAsync(stream);
-                    }
-
+                    using var stream = new FileStream(path, FileMode.Create);
+                    await imageFile.CopyToAsync(stream);
                     item.ImagePath = "/images/products/" + fileName;
-                }
-                else
-                {
-                    item.ImagePath = null;
                 }
 
                 await _itemService.AddAsync(item);
+                TempData["SuccessMessage"] = "Το είδος δημιουργήθηκε με επιτυχία.";
                 return RedirectToAction(nameof(Index));
             }
 
-            ViewBag.Units = GetUnits();
-            ViewBag.VATOptions = GetVATOptions();
+            SetDropDowns();
             return View(item);
         }
 
-        // GET: /Items/Edit/5
         public async Task<IActionResult> Edit(int id)
         {
+            if (id <= 0)
+                return BadRequest();
+
             var item = await _itemService.GetByIdAsync(id);
             if (item == null)
                 return NotFound();
 
-            ViewBag.Units = GetUnits();
-            ViewBag.VATOptions = GetVATOptions();
+            SetDropDowns();
             return View(item);
         }
 
-        // POST: /Items/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Item item, IFormFile imageFile)
+        public async Task<IActionResult> Edit(int id, Item item, IFormFile? imageFile)
         {
             if (id != item.Id)
                 return BadRequest();
@@ -109,60 +96,53 @@ namespace SmartOps.Controllers
                     var fileName = Guid.NewGuid() + Path.GetExtension(imageFile.FileName);
                     var path = Path.Combine(_env.WebRootPath, "images", "products", fileName);
 
-                    using (var stream = new FileStream(path, FileMode.Create))
-                    {
-                        await imageFile.CopyToAsync(stream);
-                    }
-
+                    using var stream = new FileStream(path, FileMode.Create);
+                    await imageFile.CopyToAsync(stream);
                     item.ImagePath = "/images/products/" + fileName;
-                }
-                else
-                {
-                    item.ImagePath = null;
                 }
 
                 await _itemService.UpdateAsync(item);
+                TempData["SuccessMessage"] = "Το είδος ενημερώθηκε με επιτυχία.";
                 return RedirectToAction(nameof(Index));
             }
 
-            ViewBag.Units = GetUnits();
-            ViewBag.VATOptions = GetVATOptions();
+            SetDropDowns();
             return View(item);
         }
 
-        // GET: /Items/Delete/5
         public async Task<IActionResult> Delete(int id)
+        {
+            if (id <= 0)
+                return BadRequest();
+
+            var item = await _itemService.GetByIdAsync(id);
+            return item == null ? NotFound() : View(item);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var item = await _itemService.GetByIdAsync(id);
             if (item == null)
                 return NotFound();
 
-            return View(item);
-        }
-
-        // POST: /Items/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
             await _itemService.DeleteAsync(id);
+            TempData["SuccessMessage"] = "Το είδος διαγράφηκε με επιτυχία.";
             return RedirectToAction(nameof(Index));
         }
 
-        private List<SelectListItem> GetUnits()
+        private void SetDropDowns()
         {
-            return new List<SelectListItem>
+            ViewBag.Units = new List<SelectListItem>
             {
                 new SelectListItem { Value = "Τεμάχια", Text = "Τεμάχια" },
                 new SelectListItem { Value = "Κιλά", Text = "Κιλά" },
                 new SelectListItem { Value = "Λίτρα", Text = "Λίτρα" },
                 new SelectListItem { Value = "Μέτρα", Text = "Μέτρα" }
             };
-        }
 
-        private List<SelectListItem> GetVATOptions()
-        {
-            return new List<SelectListItem>
+            ViewBag.VATOptions = new List<SelectListItem>
             {
                 new SelectListItem { Text = "0%", Value = "0" },
                 new SelectListItem { Text = "6%", Value = "6" },

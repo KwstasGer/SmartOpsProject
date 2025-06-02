@@ -3,11 +3,17 @@
 @{
     ViewData["Title"] = "Υπηρεσίες";
 }
+@if (TempData["SuccessMessage"] != null)
+{
+                    <div id="success-message" class="alert alert-success">
+        @TempData["SuccessMessage"]
+                    </div>
+}
 
 <h1>Υπηρεσίες</h1>
 
 <p>
-    <a asp-action="Create" class="btn btn-primary">Νέα Υπηρεσία</a>
+    <a asp-action="Create" class="btn btn-success">+ Νέα Υπηρεσία</a>
 </p>
 
 <table class="table table-bordered">
@@ -15,7 +21,7 @@
         <tr>
             <th>Κωδικός</th>
             <th>Περιγραφή</th>
-            <th>Μονάδα</th>
+            <th>Μονάδα Μέτρησης</th>
             <th>ΦΠΑ</th>
             <th>Τιμή Λιανικής</th>
             <th>Τιμή Χονδρικής</th>
@@ -33,9 +39,9 @@
                 <td>@item.RetailPrice?.ToString("0.00")</td>
                 <td>@item.WholesalePrice?.ToString("0.00")</td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Επεξεργασία</a>
+                        <a asp-action="Details" asp-route-id="@item.Id"  class="btn btn-sm btn-info">Λεπτομέρειες</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Διαγραφή</a>
                 </td>
             </tr>
         }
