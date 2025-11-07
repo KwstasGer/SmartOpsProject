@@ -1,7 +1,6 @@
 ﻿using SmartOps.Models;
 using SmartOps.Data;
 using Microsoft.EntityFrameworkCore;
-using System.Xml.Linq;
 
 namespace SmartOps.Services
 {
