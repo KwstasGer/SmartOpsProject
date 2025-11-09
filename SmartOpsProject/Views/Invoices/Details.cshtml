@@ -1,0 +1,51 @@
+﻿@model SmartOpsProject.Models.Invoice
+@{
+    ViewData["Title"] = $"Παραστατικό {Model.Series}-{Model.Number}/{Model.Year}";
+}
+<h2>@ViewData["Title"]</h2>
+
+<div class="card">
+  <div class="card-body">
+    <div class="row mb-2">
+      <div class="col-md-3"><strong>Πελάτης:</strong> @Model.Customer?.Name</div>
+      <div class="col-md-3"><strong>Ημ/νία:</strong> @Model.IssueDate.ToString("dd/MM/yyyy")</div>
+      <div class="col-md-3"><strong>Σειρά:</strong> @Model.Series</div>
+      <div class="col-md-3"><strong>Αριθμός:</strong> @Model.Number</div>
+    </div>
+    <table class="table table-sm">
+      <thead>
+        <tr>
+          <th>Περιγραφή</th>
+          <th class="text-end">Ποσότητα</th>
+          <th class="text-end">Τιμή</th>
+          <th class="text-end">ΦΠΑ %</th>
+          <th class="text-end">Καθαρή</th>
+          <th class="text-end">ΦΠΑ</th>
+          <th class="text-end">Σύνολο</th>
+        </tr>
+      </thead>
+      <tbody>
+                @foreach (var li in Model.Items)
+                {
+            <tr>
+              <td>@li.Description</td>
+              <td class="text-end">@li.Quantity</td>
+              <td class="text-end">@li.UnitPrice.ToString("N2")</td>
+              <td class="text-end">@li.VatRate</td>
+              <td class="text-end">@li.LineNet.ToString("N2")</td>
+              <td class="text-end">@li.LineVat.ToString("N2")</td>
+              <td class="text-end">@li.LineGross.ToString("N2")</td>
+            </tr>
+                }
+      </tbody>
+      <tfoot>
+        <tr>
+          <th colspan="4" class="text-end">Σύνολα:</th>
+          <th class="text-end">@Model.TotalNet.ToString("N2")</th>
+          <th class="text-end">@Model.TotalVat.ToString("N2")</th>
+          <th class="text-end">@Model.TotalGross.ToString("N2")</th>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>

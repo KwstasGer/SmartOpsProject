@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation; // για να μην γίνεται validate το navigation User
 
 namespace SmartOpsProject.Models
 {
@@ -6,37 +7,52 @@ namespace SmartOpsProject.Models
     {
         public int Id { get; set; }
 
-        [Required]
-        [Display(Name = "Κωδικός Προμηθευτή *")]
-        public string SupplierCode { get; set; }
+        // 🔸 Υποχρεωτικό
+        [Required(ErrorMessage = "Ο Κωδικός είναι υποχρεωτικός.")]
+        [StringLength(20, ErrorMessage = "Ο Κωδικός μπορεί να έχει έως 20 χαρακτήρες.")]
+        [Display(Name = "Κωδικός *")]
+        public string SupplierCode { get; set; } = string.Empty;
 
-        [Required]
+        // 🔸 Υποχρεωτικό
+        [Required(ErrorMessage = "Η Περιγραφή είναι υποχρεωτική.")]
+        [StringLength(200, ErrorMessage = "Η Περιγραφή μπορεί να έχει έως 200 χαρακτήρες.")]
         [Display(Name = "Περιγραφή *")]
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
-        [Required]
-        [Display(Name = "ΑΦΜ *")]
-        public string TaxIdentificationNumber { get; set; }
+        // ▫️ Προαιρετικά πεδία
+        [Display(Name = "ΑΦΜ")]
+        [StringLength(20)]
+        public string? TaxIdentificationNumber { get; set; }
 
         [Display(Name = "Χώρα")]
-        public string Country { get; set; }
+        [StringLength(100)]
+        public string? Country { get; set; }
 
         [Display(Name = "Διεύθυνση")]
-        public string Address { get; set; }
+        [StringLength(200)]
+        public string? Address { get; set; }
 
         [Display(Name = "Πόλη")]
-        public string City { get; set; }
+        [StringLength(100)]
+        public string? City { get; set; }
 
         [Display(Name = "Τ.Κ.")]
-        public string PostalCode { get; set; }
+        [StringLength(20)]
+        public string? PostalCode { get; set; }
 
-        [Required]
-        [Display(Name = "Κατηγορία *")]
-        public string SupplierCategory { get; set; } // Εσωτερικού, ΕΕ, Τρίτων Χωρών
+        [Display(Name = "Κατηγορία")]
+        [StringLength(50)]
+        public string? SupplierCategory { get; set; } // Εσωτερικού, ΕΕ, Τρίτων Χωρών
 
-        [Required]
-        [Display(Name = "Καθεστώς ΦΠΑ *")]
-        public string VatStatus { get; set; } // Κανονικά, Μειωμένο, Απαλλάσσεται
+        [Display(Name = "Καθεστώς ΦΠΑ")]
+        [StringLength(50)]
+        public string? VatStatus { get; set; } // Κανονικά, Μειωμένο, Απαλλάσσεται
+
+        // 🔹 Per-user scoping (ορίζεται server-side στον controller)
+        [Display(Name = "Χρήστης")]
+        public int? UserId { get; set; }
+
+        [ValidateNever]
+        public User? User { get; set; }
     }
 }
-

@@ -58,5 +58,37 @@ namespace SmartOps.Services
         {
             return _context.Items.Any(i => i.Id == id);
         }
+
+        // -------------------- User-scoped μέθοδοι --------------------
+
+        // Λήψη όλων των αντικειμένων για συγκεκριμένο χρήστη
+        public async Task<List<Item>> GetAllByUserAsync(int userId)
+        {
+            return await _context.Items
+                .Where(i => i.UserId == userId)
+                .OrderBy(i => i.Description)
+                .ToListAsync();
+        }
+
+        // Λήψη αντικειμένου βάσει ID μόνο αν ανήκει στον χρήστη
+        public async Task<Item?> GetByIdForUserAsync(int id, int userId)
+        {
+            return await _context.Items
+                .FirstOrDefaultAsync(i => i.Id == id && i.UserId == userId);
+        }
+
+        // Έλεγχος ύπαρξης αντικειμένου που ανήκει στον χρήστη
+        public async Task<bool> ExistsForUserAsync(int id, int userId)
+        {
+            return await _context.Items
+                .AnyAsync(i => i.Id == id && i.UserId == userId);
+        }
+
+        // Διαγραφή με entity (χρήσιμο όταν έχει προηγηθεί έλεγχος ιδιοκτησίας)
+        public async Task DeleteAsync(Item item)
+        {
+            _context.Items.Remove(item);
+            await _context.SaveChangesAsync();
+        }
     }
 }

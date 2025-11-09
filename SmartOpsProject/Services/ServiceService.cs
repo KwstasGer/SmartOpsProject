@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SmartOps.Data;
+using SmartOps.Models;
 using SmartOpsProject.Models;
 
 namespace SmartOpsProject.Services
@@ -43,6 +44,34 @@ namespace SmartOpsProject.Services
                 _context.Services.Remove(service);
                 await _context.SaveChangesAsync();
             }
+        }
+
+        // ——— User-scoped βελτιώσεις ———
+
+        public async Task<List<Service>> GetAllByUserAsync(int userId)
+        {
+            return await _context.Services
+                .Where(s => s.UserId == userId)
+                .OrderBy(s => s.Description)
+                .ToListAsync();
+        }
+
+        public async Task<Service?> GetByIdForUserAsync(int id, int userId)
+        {
+            return await _context.Services
+                .FirstOrDefaultAsync(s => s.Id == id && s.UserId == userId);
+        }
+
+        public async Task<bool> ExistsForUserAsync(int id, int userId)
+        {
+            return await _context.Services
+                .AnyAsync(s => s.Id == id && s.UserId == userId);
+        }
+
+        public async Task DeleteAsync(Service service)
+        {
+            _context.Services.Remove(service);
+            await _context.SaveChangesAsync();
         }
     }
 }

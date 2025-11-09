@@ -1,47 +1,40 @@
 ﻿@model IEnumerable<SmartOpsProject.Models.Service>
-
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     ViewData["Title"] = "Υπηρεσίες";
 }
-@if (TempData["SuccessMessage"] != null)
-{
-                    <div id="success-message" class="alert alert-success">
-        @TempData["SuccessMessage"]
-                    </div>
-}
 
-<h1>Υπηρεσίες</h1>
-
-<p>
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Υπηρεσίες</h2>
     <a asp-action="Create" class="btn btn-success">+ Νέα Υπηρεσία</a>
-</p>
+</div>
 
-<table class="table table-bordered">
+<table class="table table-sm table-striped align-middle">
     <thead>
         <tr>
             <th>Κωδικός</th>
             <th>Περιγραφή</th>
-            <th>Μονάδα Μέτρησης</th>
+            <th>Μ.Μ.</th>
             <th>ΦΠΑ</th>
-            <th>Τιμή Λιανικής</th>
-            <th>Τιμή Χονδρικής</th>
-            <th></th>
+            <th>Λιανική</th>
+            <th>Χονδρική</th>
+            <th style="width:160px;"></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var s in Model)
         {
             <tr>
-                <td>@item.ServiceCode</td>
-                <td>@item.Description</td>
-                <td>@item.Unit</td>
-                <td>@item.VAT</td>
-                <td>@item.RetailPrice?.ToString("0.00")</td>
-                <td>@item.WholesalePrice?.ToString("0.00")</td>
-                <td>
-                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Επεξεργασία</a>
-                        <a asp-action="Details" asp-route-id="@item.Id"  class="btn btn-sm btn-info">Λεπτομέρειες</a>
-                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Διαγραφή</a>
+                <td>@s.ServiceCode</td>
+                <td>@s.Description</td>
+                <td>@s.Unit</td>
+                <td>@s.VAT</td>
+                <td>@(s.RetailPrice?.ToString("0.00"))</td>
+                <td>@(s.WholesalePrice?.ToString("0.00"))</td>
+                <td class="text-end">
+                    <a asp-action="Details" asp-route-id="@s.Id" class="btn btn-outline-secondary btn-sm">Λεπτομέρειες</a>
+                    <a asp-action="Edit" asp-route-id="@s.Id" class="btn btn-primary btn-sm">Επεξεργασία</a>
+                    <a asp-action="Delete" asp-route-id="@s.Id" class="btn btn-outline-danger btn-sm">Διαγραφή</a>
                 </td>
             </tr>
         }

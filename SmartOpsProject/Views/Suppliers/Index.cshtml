@@ -1,49 +1,172 @@
 ﻿@model IEnumerable<SmartOpsProject.Models.Supplier>
-
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     ViewData["Title"] = "Προμηθευτές";
 }
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Προμηθευτές</h2>
+    <a asp-action="Create" class="btn btn-success">+ Νέος Προμηθευτής</a>
+</div>
+
+<!-- 🔹 Μήνυμα επιτυχίας / σφάλματος -->
 @if (TempData["SuccessMessage"] != null)
 {
-                    <div id="success-message" class="alert alert-success">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
         @TempData["SuccessMessage"]
-                    </div>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @TempData["ErrorMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
 }
 
-<h2>Προμηθευτές</h2>
+<!-- 🔎 Αναζήτηση -->
+<div class="card shadow-sm border-0 mb-3">
+    <div class="card-body">
+        <div class="row g-2 align-items-center">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-search"></i></span>
+                    <input id="supplierSearch" type="text" class="form-control" placeholder="Αναζήτηση Προμηθευτή… (κωδικός, περιγραφή, ΑΦΜ, χώρα, πόλη, διεύθυνση)">
+                    <button id="clearSearch" type="button" class="btn btn-outline-secondary">Καθαρισμός</button>
+                </div>
+            </div>
+            <div class="col-md-6 text-md-end mt-2 mt-md-0">
+                <small class="text-muted">
+                    Εμφανίζονται <span id="rowsCount">0</span> από <span id="rowsTotal">0</span> προμηθευτές
+                </small>
+            </div>
+        </div>
+    </div>
+</div>
 
-<p>
-    <a asp-action="Create" class="btn btn-success">+ Νέος Προμηθευτής</a>
-</p>
-
-<table class="table table-bordered">
-    <thead>
+<table id="suppliersTable" class="table table-sm table-striped align-middle shadow-sm">
+    <thead class="table-light">
         <tr>
             <th>Κωδικός</th>
-            <th>Επωνυμία</th>
+            <th>Περιγραφή</th>
             <th>ΑΦΜ</th>
             <th>Χώρα</th>
+            <th>Διεύθυνση</th>
+            <th>Πόλη</th>
+            <th>Τ.Κ.</th>
             <th>Κατηγορία</th>
             <th>Καθεστώς ΦΠΑ</th>
-            <th></th>
+            <th class="text-end" style="width:150px;">Ενέργειες</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @if (Model != null && Model.Any())
+        {
+            foreach (var s in Model)
+            {
+                <tr>
+                    <td>
+                        @s.SupplierCode
+                        @if (!string.IsNullOrEmpty(s.SupplierCode) && s.SupplierCode.StartsWith("0"))
+                        {
+                            <span class="badge bg-secondary ms-1">auto</span>
+                        }
+                    </td>
+                    <td>@s.Name</td>
+                    <td>@s.TaxIdentificationNumber</td>
+                    <td>@s.Country</td>
+                    <td>@s.Address</td>
+                    <td>@s.City</td>
+                    <td>@s.PostalCode</td>
+                    <td>@s.SupplierCategory</td>
+                    <td>@s.VatStatus</td>
+                    <td class="text-end">
+                        <div class="btn-group-vertical btn-group-sm action-stack" role="group" aria-label="Actions">
+                            <a asp-action="Details" asp-route-id="@s.Id" class="btn btn-primary">Λεπτομέρειες</a>
+                            <a asp-action="Edit" asp-route-id="@s.Id" class="btn btn-secondary">Επεξεργασία</a>
+                            <a asp-action="Delete" asp-route-id="@s.Id" class="btn btn-outline-danger">Διαγραφή</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        }
+        else
         {
             <tr>
-                <td>@item.SupplierCode</td>
-                <td>@item.Name</td>
-                <td>@item.TaxIdentificationNumber</td>
-                <td>@item.Country</td>
-                <td>@item.SupplierCategory</td>
-                <td>@item.VatStatus</td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-primary">Επεξεργασία</a>
-                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Λεπτομέρειες</a>
-                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Διαγραφή</a>
+                <td colspan="10" class="text-center text-muted py-4">
+                    Δεν υπάρχουν προμηθευτές καταχωρημένοι.
                 </td>
             </tr>
         }
     </tbody>
 </table>
+
+@section Scripts {
+    <script>
+        (function() {
+            const input = document.getElementById('supplierSearch');
+            const clearBtn = document.getElementById('clearSearch');
+            const table = document.getElementById('suppliersTable');
+            const tbody = table.querySelector('tbody');
+            const rows = Array.from(tbody.querySelectorAll('tr'));
+            const rowsTotalEl = document.getElementById('rowsTotal');
+            const rowsCountEl = document.getElementById('rowsCount');
+
+            // Μέτρηση αρχικού πλήθους (αγνόησε τη γραμμή "Δεν υπάρχουν...")
+            const dataRows = rows.filter(r => !r.querySelector('td[colspan]'));
+            rowsTotalEl.textContent = dataRows.length.toString();
+
+            // Normalize κειμένου (χωρίς τόνους/κεφαλαία) για ελληνικά
+            const normalize = (str) => (str || '')
+                .toString()
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '') // remove diacritics
+                .toLowerCase()
+                .trim();
+
+            // Ποιες στήλες φιλτράρουμε (0=Κωδ.,1=Περιγραφή,2=ΑΦΜ,3=Χώρα,4=Διεύθυνση,5=Πόλη)
+            const filterCols = [0,1,2,3,4,5];
+
+            // Debounce
+            let t = null;
+            const onSearch = () => {
+                const q = normalize(input.value);
+                let visible = 0;
+
+                dataRows.forEach(tr => {
+                    let text = '';
+                    filterCols.forEach(idx => {
+                        const td = tr.children[idx];
+                        if (td) text += ' ' + normalize(td.textContent);
+                    });
+
+                    const match = q.length === 0 || text.includes(q);
+                    tr.style.display = match ? '' : 'none';
+                    if (match) visible++;
+                });
+
+                // Απόκρυψη/εμφάνιση της "Δεν υπάρχουν…" γραμμής
+                const emptyRow = rows.find(r => r.querySelector('td[colspan]'));
+                if (emptyRow) emptyRow.style.display = (visible === 0 ? '' : 'none');
+
+                rowsCountEl.textContent = visible.toString();
+            };
+
+            const debounced = () => {
+                clearTimeout(t);
+                t = setTimeout(onSearch, 150);
+            };
+
+            input.addEventListener('input', debounced);
+            clearBtn.addEventListener('click', () => {
+                input.value = '';
+                onSearch();
+                input.focus();
+            });
+
+            // Πρώτη ενημέρωση με αρχική τιμή
+            onSearch();
+        })();
+    </script>
+}

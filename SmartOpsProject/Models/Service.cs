@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation; // για να μη γίνεται validate το navigation User
 
 namespace SmartOpsProject.Models
 {
@@ -29,6 +30,12 @@ namespace SmartOpsProject.Models
         [Display(Name = "Τιμή Χονδρικής")]
         [Range(0, double.MaxValue)]
         public decimal? WholesalePrice { get; set; }
-            }
 
+        // 🔹 Προσθήκες για per-user scoping
+        [Required]
+        public int UserId { get; set; }
+
+        [ValidateNever]
+        public User? User { get; set; }
+    }
 }

@@ -1,14 +1,18 @@
-﻿namespace SmartOpsProject.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace SmartOpsProject.Models
 {
     public class User
     {
         public int Id { get; set; }
 
-        public string Username { get; set; }
-        public string Email { get; set; }
+        [Required]
+        [EmailAddress]
+        [MaxLength(160)]
+        public string Username { get; set; } = string.Empty; // Email ως username
 
-        public string PasswordHash { get; set; }
-        public string Role { get; set; } // π.χ. Admin, User
+        [Required]
+        [MaxLength(256)]
+        public string PasswordHash { get; set; } = string.Empty; // Θα αποθηκεύεται ως hash
     }
-
 }

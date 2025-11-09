@@ -13,11 +13,15 @@ namespace SmartOps.Services
             _context = context;
         }
 
-        public async Task<List<Customer>> GetAllAsync() =>
-            await _context.Customers.ToListAsync();
+        public async Task<List<Customer>> GetAllAsync()
+        {
+            return await _context.Customers.ToListAsync();
+        }
 
-        public async Task<Customer?> GetByIdAsync(int id) =>
-            await _context.Customers.FindAsync(id);
+        public async Task<Customer?> GetByIdAsync(int id)
+        {
+            return await _context.Customers.FindAsync(id);
+        }
 
         public async Task AddAsync(Customer customer)
         {
@@ -45,6 +49,28 @@ namespace SmartOps.Services
         {
             _context.Customers.Remove(customer);
             await _context.SaveChangesAsync();
+        }
+
+        // 🔹 Βελτιώσεις για user-scoped queries
+
+        public async Task<List<Customer>> GetAllByUserAsync(int userId)
+        {
+            return await _context.Customers
+                .Where(c => c.UserId == userId)
+                .OrderBy(c => c.Name)
+                .ToListAsync();
+        }
+
+        public async Task<Customer?> GetByIdForUserAsync(int id, int userId)
+        {
+            return await _context.Customers
+                .FirstOrDefaultAsync(c => c.Id == id && c.UserId == userId);
+        }
+
+        public async Task<bool> ExistsForUserAsync(int id, int userId)
+        {
+            return await _context.Customers
+                .AnyAsync(c => c.Id == id && c.UserId == userId);
         }
     }
 }

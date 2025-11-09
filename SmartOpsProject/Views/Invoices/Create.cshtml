@@ -1,0 +1,155 @@
+﻿@model SmartOps.ViewModels.InvoiceCreateVm
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Νέο Παραστατικό";
+}
+
+<h3>Νέο Παραστατικό</h3>
+
+<form asp-action="Create" method="post">
+    @Html.AntiForgeryToken()
+
+    <div class="row g-3 align-items-start">
+        <!-- Αριστερά: Σειρά, Πελάτης, Τρόπος Πληρωμής -->
+        <div class="col-md-9">
+            <div class="row g-3">
+                <div class="col-md-3">
+                    <label asp-for="Series" class="form-label"></label>
+                    <select asp-for="Series" class="form-control" asp-items="ViewBag.SeriesOptions">
+                        <option value="">-- Επιλέξτε --</option>
+                    </select>
+                    <span asp-validation-for="Series" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-5">
+                    <label asp-for="CustomerId" class="form-label"></label>
+                    <select asp-for="CustomerId" class="form-control" asp-items="Model.Customers">
+                        <option value="">-- Επιλέξτε --</option>
+                    </select>
+                    <span asp-validation-for="CustomerId" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-4">
+                    <label asp-for="PaymentMethod" class="form-label"></label>
+                    <select asp-for="PaymentMethod" class="form-control" asp-items="ViewBag.PaymentOptions"></select>
+                    <span asp-validation-for="PaymentMethod" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Δεξιά: μικρή Ημ/νία, δεξιά στοίχιση -->
+        <div class="col-md-3 ms-auto">
+            <label asp-for="IssueDate" class="form-label d-block text-end"></label>
+            <input asp-for="IssueDate" type="date" class="form-control form-control-sm text-end" />
+            <span asp-validation-for="IssueDate" class="text-danger d-block text-end"></span>
+        </div>
+    </div>
+
+    <hr />
+
+    <h5>Γραμμές</h5>
+    <table class="table table-sm" id="linesTable">
+        <thead>
+            <tr>
+                <th style="width:28%">Είδος</th>
+                <th class="text-end" style="width:10%">Ποσότητα</th>
+                <th class="text-end" style="width:14%">Τιμή</th>
+                <th class="text-end" style="width:10%">ΦΠΑ %</th>
+                <th style="width:28%">Σχόλια</th>
+                <th style="width:6%"></th>
+            </tr>
+        </thead>
+        <tbody id="linesBody">
+            @for (int i = 0; i < Model.Lines.Count; i++)
+            {
+                    <tr>
+                        <!-- Είδος -->
+                        <td>
+                            <select class="form-control" asp-for="Lines[i].ItemId" asp-items="Model.Items">
+                                <option value="">-- Επιλέξτε --</option>
+                            </select>
+                        </td>
+
+                        <!-- Ποσότητα -->
+                        <td><input asp-for="Lines[i].Quantity" class="form-control text-end" /></td>
+
+                        <!-- Τιμή -->
+                        <td><input asp-for="Lines[i].UnitPrice" class="form-control text-end" /></td>
+
+                        <!-- ΦΠΑ % (dropdown 24/13/0) -->
+                        <td>
+                            <select class="form-control text-end" name="Lines[@i].VatRate">
+                            @if (Model.Lines[i].VatRate == 24)
+                            {
+                                        <option value="24" selected="selected">24</option>
+                            }
+                            else
+                            {
+                                        <option value="24">24</option>
+                            }
+                            @if (Model.Lines[i].VatRate == 13)
+                            {
+                                        <option value="13" selected="selected">13</option>
+                            }
+                            else
+                            {
+                                        <option value="13">13</option>
+                            }
+                            @if (Model.Lines[i].VatRate == 0)
+                            {
+                                        <option value="0" selected="selected">0</option>
+                            }
+                            else
+                            {
+                                        <option value="0">0</option>
+                            }
+                            </select>
+                        </td>
+
+                        <!-- Σχόλια (πρώην Περιγραφή) τέρμα δεξιά -->
+                        <td><input asp-for="Lines[i].Description" class="form-control" placeholder="Σχόλια" /></td>
+
+                        <!-- remove -->
+                        <td><button type="button" class="btn btn-outline-danger btn-sm" onclick="removeLine(this)">✕</button></td>
+                    </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="d-flex justify-content-between">
+        <button type="button" class="btn btn-outline-secondary" id="addLineBtn">+ Γραμμή</button>
+        <button type="submit" class="btn btn-primary">Αποθήκευση</button>
+    </div>
+</form>
+
+@section Scripts {
+        <script>
+          const tbody = document.getElementById('linesBody');
+          const itemsOptionsHtml = `@Html.Raw(string.Join("", Model.Items.Select(it => $"<option value='{it.Value}'>{it.Text}</option>")))`;
+          const vatOptionsHtml = "<option value='24'>24</option><option value='13'>13</option><option value='0'>0</option>";
+
+          document.getElementById('addLineBtn').addEventListener('click', () => {
+            const idx = tbody.querySelectorAll('tr').length;
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+              <td>
+                <select name="Lines[${idx}].ItemId" class="form-control">
+                  <option value="">-- Επιλέξτε --</option>
+                  ${itemsOptionsHtml}
+                </select>
+              </td>
+              <td><input name="Lines[${idx}].Quantity" class="form-control text-end" value="1"/></td>
+              <td><input name="Lines[${idx}].UnitPrice" class="form-control text-end" value="0"/></td>
+              <td>
+                <select name="Lines[${idx}].VatRate" class="form-control text-end">
+                  ${vatOptionsHtml}
+                </select>
+              </td>
+              <td><input name="Lines[${idx}].Description" class="form-control" placeholder="Σχόλια"/></td>
+              <td><button type="button" class="btn btn-outline-danger btn-sm" onclick="removeLine(this)">✕</button></td>`;
+            tbody.appendChild(tr);
+          });
+
+          function removeLine(btn){ btn.closest('tr').remove(); }
+        </script>
+}

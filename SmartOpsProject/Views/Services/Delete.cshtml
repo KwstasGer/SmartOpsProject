@@ -1,39 +1,25 @@
 ﻿@model SmartOpsProject.Models.Service
-
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     ViewData["Title"] = "Διαγραφή Υπηρεσίας";
 }
 
-<h1>@ViewData["Title"]</h1>
+<h2 class="text-danger">Διαγραφή Υπηρεσίας</h2>
+<p>Είστε σίγουροι ότι θέλετε να διαγράψετε την παρακάτω υπηρεσία;</p>
 
-<h4 class="text-danger">Είσαι σίγουρος ότι θέλεις να διαγράψεις αυτή την υπηρεσία;</h4>
-
-<div class="card mt-3 mb-3">
+<div class="card mb-3">
     <div class="card-body">
-        <dl class="row">
-            <dt class="col-sm-3">Κωδικός</dt>
-            <dd class="col-sm-9">@Model.ServiceCode</dd>
-
-            <dt class="col-sm-3">Περιγραφή</dt>
-            <dd class="col-sm-9">@Model.Description</dd>
-
-            <dt class="col-sm-3">Μονάδα</dt>
-            <dd class="col-sm-9">@Model.Unit</dd>
-
-            <dt class="col-sm-3">ΦΠΑ</dt>
-            <dd class="col-sm-9">@Model.VAT %</dd>
-
-            <dt class="col-sm-3">Λιανική Τιμή</dt>
-            <dd class="col-sm-9">@Model.RetailPrice?.ToString("0.00")</dd>
-
-            <dt class="col-sm-3">Χονδρική Τιμή</dt>
-            <dd class="col-sm-9">@Model.WholesalePrice?.ToString("0.00")</dd>
-        </dl>
+        <h5 class="card-title">@Model.ServiceCode — @Model.Description</h5>
+        <p class="card-text mb-1"><strong>Μ.Μ.:</strong> @Model.Unit</p>
+        <p class="card-text mb-1"><strong>ΦΠΑ:</strong> @Model.VAT</p>
+        <p class="card-text mb-1"><strong>Λιανική:</strong> @Model.RetailPrice</p>
+        <p class="card-text mb-0"><strong>Χονδρική:</strong> @Model.WholesalePrice</p>
     </div>
 </div>
 
 <form asp-action="Delete" method="post">
+    @Html.AntiForgeryToken()
     <input type="hidden" asp-for="Id" />
-    <button type="submit" class="btn btn-danger">Διαγραφή</button>
-    <a asp-action="Index" class="btn btn-secondary">Ακύρωση</a>
+    <button type="submit" class="btn btn-danger">Οριστική Διαγραφή</button>
+    <a asp-action="Index" class="btn btn-outline-secondary">Ακύρωση</a>
 </form>

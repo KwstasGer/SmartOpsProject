@@ -1,50 +1,127 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    var uid = HttpContextAccessor.HttpContext?.Session.GetInt32("UserId") ?? 0;
+    var uname = HttpContextAccessor.HttpContext?.Session.GetString("UserName") ?? "";
+}
+
+<!DOCTYPE html>
+<html lang="el">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - SmartOpsProject</title>
+
+    <!-- Bootstrap & custom styles -->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/SmartOpsProject.styles.css" asp-append-version="true" />
 </head>
 
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">SmartOpsProject</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+<header>
+    <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container-fluid">
+            <a class="navbar-brand" asp-controller="Home" asp-action="Index">SmartOps ERP</a>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - SmartOpsProject - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                    aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div id="mainNavbar" class="collapse navbar-collapse">
+                <!-- Αριστερά: κύρια μενού (μόνο όταν είναι συνδεδεμένος ο χρήστης) -->
+                <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+                        @if (!string.IsNullOrEmpty(Context.Session.GetString("UserEmail")))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Dashboard" asp-action="Index">Στατιστικά Στοιχεία</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Customers" asp-action="Index">Πελάτες</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Suppliers" asp-action="Index">Προμηθευτές</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Items" asp-action="Index">Είδη</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Services" asp-action="Index">Υπηρεσίες</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Invoices" asp-action="Index">Τα Παραστατικά μου</a>
+                            </li>
+                        }
+                </ul>
+
+                <!-- Δεξιά: auth / χρήστης -->
+                <ul class="navbar-nav ms-auto mb-2 mb-sm-0">
+                        @if (string.IsNullOrEmpty(Context.Session.GetString("UserEmail")))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Account" asp-action="Login">Σύνδεση</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Account" asp-action="Register">Εγγραφή</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-dark" href="#" id="userDropdown"
+                                   role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    👤 @(uname?.Length > 0 ? uname : Context.Session.GetString("UserEmail"))
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                    <li>
+                                        <form asp-controller="Account" asp-action="Logout" method="post" class="px-3">
+                                            @Html.AntiForgeryToken()
+                                            <button type="submit" class="dropdown-item text-danger">Αποσύνδεση</button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+                </ul>
+            </div>
         </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    </nav>
+</header>
+
+<div class="container">
+    <main role="main" class="pb-3">
+            @RenderBody()
+
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <div id="successMessage" class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+                    @TempData["SuccessMessage"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+
+                <script>
+                    setTimeout(function () {
+                        var alert = document.getElementById("successMessage");
+                        if (alert) {
+                            var bsAlert = bootstrap.Alert.getOrCreateInstance(alert);
+                            bsAlert.close();
+                        }
+                    }, 4000);
+                </script>
+            }
+    </main>
+</div>
+
+<footer class="border-top footer text-muted">
+    <div class="container">
+        &copy; 2025 - SmartOps ERP - <a asp-controller="Home" asp-action="Privacy">Privacy</a>
+    </div>
+</footer>
+
+<!-- JS scripts -->
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

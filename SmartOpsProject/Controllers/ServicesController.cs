@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SmartOpsProject.Models;
 using SmartOpsProject.Services;
+using System.Threading.Tasks;
 
 namespace SmartOps.Controllers
 {
@@ -14,118 +16,123 @@ namespace SmartOps.Controllers
             _serviceService = serviceService;
         }
 
+        private int CurrentUserId => HttpContext.Session.GetInt32("UserId") ?? 0;
+
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var services = await _serviceService.GetAllAsync();
+            if (CurrentUserId == 0) return RedirectToAction("Login", "Account");
+            var services = await _serviceService.GetAllByUserAsync(CurrentUserId);
             return View(services);
         }
 
+        [HttpGet]
         public IActionResult Create()
         {
-            SetDropDowns();
-            return View();
+            if (CurrentUserId == 0) return RedirectToAction("Login", "Account");
+            SetUnits(); // <-- dropdown για Unit
+            var model = new Service { UserId = CurrentUserId };
+            return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Service service)
         {
-            if (ModelState.IsValid)
-            {
-                service.RetailPrice ??= 0.00m;
-                service.WholesalePrice ??= 0.00m;
+            var uid = HttpContext.Session.GetInt32("UserId") ?? 0;
+            if (uid == 0) return RedirectToAction("Login", "Account");
 
-                await _serviceService.AddAsync(service);
-                TempData["SuccessMessage"] = "Η υπηρεσία δημιουργήθηκε με επιτυχία.";
-                return RedirectToAction(nameof(Index));
+            ModelState.Remove(nameof(Service.User));
+            if (!ModelState.IsValid)
+            {
+                SetUnits(service.Unit); // <-- ξαναγέμισε dropdown με επιλεγμένη τιμή
+                return View(service);
             }
 
-            SetDropDowns();
-            return View(service);
+            service.UserId = uid;
+            await _serviceService.AddAsync(service);
+            TempData["SuccessMessage"] = "Η υπηρεσία δημιουργήθηκε.";
+            return RedirectToAction(nameof(Index));
         }
 
+        [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
-            if (id <= 0)
-                return BadRequest();
+            if (CurrentUserId == 0) return RedirectToAction("Login", "Account");
+            var service = await _serviceService.GetByIdForUserAsync(id, CurrentUserId);
+            if (service == null) return NotFound();
 
-            var service = await _serviceService.GetByIdAsync(id);
-            if (service == null)
-                return NotFound();
-
-            SetDropDowns();
+            SetUnits(service.Unit); // <-- dropdown με selected
             return View(service);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Service service)
+        public async Task<IActionResult> Edit(int id, Service input)
         {
-            if (id != service.Id)
-                return BadRequest();
+            var uid = HttpContext.Session.GetInt32("UserId") ?? 0;
+            if (uid == 0) return RedirectToAction("Login", "Account");
+            if (id != input.Id) return BadRequest();
 
-            if (ModelState.IsValid)
+            var service = await _serviceService.GetByIdForUserAsync(id, uid);
+            if (service == null) return NotFound();
+
+            ModelState.Remove(nameof(Service.User));
+            if (!ModelState.IsValid)
             {
-                service.RetailPrice ??= 0.00m;
-                service.WholesalePrice ??= 0.00m;
-
-                await _serviceService.UpdateAsync(service);
-                TempData["SuccessMessage"] = "Η υπηρεσία ενημερώθηκε με επιτυχία.";
-                return RedirectToAction(nameof(Index));
+                SetUnits(input.Unit); // <-- διατήρηση επιλογής
+                return View(input);
             }
+            service.UserId = uid;
+            service.ServiceCode = input.ServiceCode;
+            service.Description = input.Description;
+            service.Unit = input.Unit;
+            service.VAT = input.VAT;
+            service.RetailPrice = input.RetailPrice;
+            service.WholesalePrice = input.WholesalePrice;
 
-            SetDropDowns();
-            return View(service);
+            await _serviceService.UpdateAsync(service);
+            TempData["SuccessMessage"] = "Η υπηρεσία ενημερώθηκε.";
+            return RedirectToAction(nameof(Index));
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Details(int id)
+        {
+            if (CurrentUserId == 0) return RedirectToAction("Login", "Account");
+            var service = await _serviceService.GetByIdForUserAsync(id, CurrentUserId);
+            return service == null ? NotFound() : View(service);
+        }
+
+        [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
-            if (id <= 0)
-                return BadRequest();
-
-            var service = await _serviceService.GetByIdAsync(id);
-            return service == null ? NotFound() : View(service);
+            if (CurrentUserId == 0) return RedirectToAction("Login", "Account");
+            var service = await _serviceService.GetByIdForUserAsync(id, CurrentUserId);
+            if (service == null) return NotFound();
+            return View(service);
         }
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var service = await _serviceService.GetByIdAsync(id);
-            if (service == null)
-                return NotFound();
+            if (CurrentUserId == 0) return RedirectToAction("Login", "Account");
+            var service = await _serviceService.GetByIdForUserAsync(id, CurrentUserId);
+            if (service == null) return NotFound();
 
-            await _serviceService.DeleteAsync(id);
-            TempData["SuccessMessage"] = "Η υπηρεσία διαγράφηκε με επιτυχία.";
+            await _serviceService.DeleteAsync(service);
+            TempData["SuccessMessage"] = "Η υπηρεσία διαγράφηκε.";
             return RedirectToAction(nameof(Index));
         }
 
-        public async Task<IActionResult> Details(int id)
-        {
-            if (id <= 0)
-                return BadRequest();
 
-            var service = await _serviceService.GetByIdAsync(id);
-            return service == null ? NotFound() : View(service);
-        }
-
-        private void SetDropDowns()
-        {
-            ViewBag.Units = new List<SelectListItem>
+        private void SetUnits(string? selected = null)
             {
-                new SelectListItem { Value = "Τεμάχια", Text = "Τεμάχια" },
-                new SelectListItem { Value = "Κιλά", Text = "Κιλά" },
-                new SelectListItem { Value = "Λίτρα", Text = "Λίτρα" },
-                new SelectListItem { Value = "Μέτρα", Text = "Μέτρα" }
-            };
+                // Βάλε εδώ τις μονάδες που θέλεις να υποστηρίζεις
+                var units = new List<string> { "ώρα", "ημέρα", "μήνας", "έργο", "τεμάχιο" };
+                ViewBag.Units = new SelectList(units, selected);
+            }
 
-            ViewBag.VATOptions = new List<SelectListItem>
-            {
-                new SelectListItem { Text = "0%", Value = "0" },
-                new SelectListItem { Text = "6%", Value = "6" },
-                new SelectListItem { Text = "13%", Value = "13" },
-                new SelectListItem { Text = "24%", Value = "24" }
-            };
-        }
-    }
+}
 }

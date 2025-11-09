@@ -1,31 +1,33 @@
-using Microsoft.EntityFrameworkCore;
+ο»Ώusing Microsoft.EntityFrameworkCore;
 using SmartOps.Data;
 using SmartOps.Services;
 using SmartOpsProject.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Προσθήκη υπηρεσιών στο container
+// π”Ή Add services to the container
 builder.Services.AddControllersWithViews();
+builder.Services.AddHttpContextAccessor();  // <-- ΞΞ•Ξ
+builder.Services.AddSession();
 
-
-
-// Σύνδεση με τη βάση δεδομένων
+// π”Ή Database connection
 builder.Services.AddDbContext<SmartOpsDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-
-builder.Services.AddControllersWithViews();
+// π”Ή Custom services
 builder.Services.AddScoped<ItemService>();
 builder.Services.AddScoped<CustomerService>();
+builder.Services.AddScoped<SupplierService>();
 builder.Services.AddScoped<ServiceService>();
-//builder.Services.AddDbContext > ();
+builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<InvoiceService>();     
+builder.Services.AddScoped<IDashboardService, DashboardService>();
 
 
 
 var app = builder.Build();
 
-// Middleware pipeline
+// π”Ή Middleware pipeline
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -37,10 +39,13 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+// β… Ξ ΟΞ­Ο€ΞµΞΉ Ξ½Ξ± ΞµΞ½ΞµΟΞ³ΞΏΟ€ΞΏΞΉΞ·ΞΈΞµΞ― Ο€ΟΞΉΞ½ Ο„Ξ·Ξ½ Ο€Ξ»ΞΏΞ®Ξ³Ξ·ΟƒΞ·
+app.UseSession();
+
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Account}/{action=Login}/{id?}");
 
 app.Run();

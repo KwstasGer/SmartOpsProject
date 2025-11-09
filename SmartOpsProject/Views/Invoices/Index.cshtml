@@ -1,0 +1,47 @@
+﻿@model IEnumerable<SmartOpsProject.Models.Invoice>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Παραστατικά";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Παραστατικά</h2>
+    <a asp-action="Create" class="btn btn-success">+ Νέο Παραστατικό</a>
+</div>
+
+<table class="table table-sm table-striped align-middle">
+    <thead>
+        <tr>
+            <th>Αρ.</th>
+            <th>Ημ/νία</th>
+            <th>Πελάτης</th>
+            <th class="text-end">Καθαρή</th>
+            <th class="text-end">ΦΠΑ</th>
+            <th class="text-end">Σύνολο</th>
+            <th style="width:140px;"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var inv in Model)
+            {
+                    <tr>
+                        <td>@($"{inv.Series}-{inv.Number}/{inv.Year}")</td>
+                        <td>@inv.IssueDate.ToString("dd/MM/yyyy")</td>
+                        <td>@inv.Customer?.Name</td>
+                        <td class="text-end">@inv.TotalNet.ToString("N2")</td>
+                        <td class="text-end">@inv.TotalVat.ToString("N2")</td>
+                        <td class="text-end">@inv.TotalGross.ToString("N2")</td>
+                        <td class="text-end">
+                            <a asp-action="Details" asp-route-id="@inv.Id" class="btn btn-outline-secondary btn-sm">Λεπτομέρειες</a>
+                        </td>
+                    </tr>
+            }
+        }
+        else
+        {
+            <tr><td colspan="7" class="text-muted">Δεν υπάρχουν παραστατικά.</td></tr>
+        }
+    </tbody>
+</table>

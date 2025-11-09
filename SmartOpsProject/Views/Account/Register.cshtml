@@ -1,0 +1,70 @@
+﻿@model SmartOps.ViewModels.RegisterViewModel
+
+@{
+    ViewData["Title"] = "SmartOps | Εγγραφή";
+    Layout = null; // Αν θέλεις full screen form
+}
+
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SmartOps | Εγγραφή</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+</head>
+<body class="bg-light">
+
+    <div class="container d-flex align-items-center justify-content-center" style="min-height: 100vh;">
+        <div class="w-100" style="max-width: 400px;">
+            <h1 class="text-center mb-4">SmartOps ERP 🚀</h1>
+
+            @if (TempData["SuccessMessage"] != null)
+            {
+                    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+            }
+
+            @if (!ViewData.ModelState.IsValid)
+            {
+                    <div class="alert alert-danger">
+                    @Html.ValidationSummary(true)
+                    </div>
+            }
+
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h4 class="card-title text-center mb-3">Εγγραφή</h4>
+
+                    <form asp-action="Register" method="post">
+                        <div class="mb-3">
+                            <label asp-for="Email" class="form-label"></label>
+                            <input asp-for="Email" class="form-control" placeholder="Email" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Password" class="form-label"></label>
+                            <input asp-for="Password" type="password" class="form-control" placeholder="Κωδικός" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="ConfirmPassword" class="form-label"></label>
+                            <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="Επιβεβαίωση Κωδικού" />
+                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                        </div>
+
+                        <button type="submit" class="btn btn-success w-100">Εγγραφή</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="text-center mt-3">
+                <span>Έχετε ήδη λογαριασμό;</span>
+                <a class="btn btn-outline-primary btn-sm mt-1" asp-controller="Account" asp-action="Login">Σύνδεση εδώ</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,154 +1,137 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SmartOps.Models;
 using SmartOps.Services;
-using System.IO;
+using SmartOpsProject.Models;
+using System.Threading.Tasks;
 
 namespace SmartOps.Controllers
 {
     public class ItemsController : Controller
     {
         private readonly ItemService _itemService;
-        private readonly IWebHostEnvironment _env;
 
-        public ItemsController(ItemService itemService, IWebHostEnvironment env)
+        public ItemsController(ItemService itemService)
         {
             _itemService = itemService;
-            _env = env;
         }
 
+        private int CurrentUserId => HttpContext.Session.GetInt32("UserId") ?? 0;
+
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var items = await _itemService.GetAllAsync();
+            if (CurrentUserId == 0) return RedirectToAction("Login", "Account");
+            var items = await _itemService.GetAllByUserAsync(CurrentUserId);
             return View(items);
         }
 
-        public async Task<IActionResult> Details(int id)
-        {
-            if (id <= 0)
-                return BadRequest();
-
-            var item = await _itemService.GetByIdAsync(id);
-            return item == null ? NotFound() : View(item);
-        }
-
+        [HttpGet]
         public IActionResult Create()
         {
-            SetDropDowns();
-            return View();
+            if (CurrentUserId == 0) return RedirectToAction("Login", "Account");
+            SetUnits(); // 👈
+            var model = new Item { UserId = CurrentUserId };
+            return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Item item, IFormFile? imageFile)
+        public async Task<IActionResult> Create(Item item)
         {
-            if (ModelState.IsValid)
+            var uid = HttpContext.Session.GetInt32("UserId") ?? 0;
+            if (uid == 0) return RedirectToAction("Login", "Account");
+
+            ModelState.Remove(nameof(Item.User));
+            if (!ModelState.IsValid)
             {
-                item.RetailPrice ??= 0.00m;
-                item.WholesalePrice ??= 0.00m;
-
-                if (imageFile != null && imageFile.Length > 0)
-                {
-                    var fileName = Guid.NewGuid() + Path.GetExtension(imageFile.FileName);
-                    var path = Path.Combine(_env.WebRootPath, "images", "products", fileName);
-
-                    using var stream = new FileStream(path, FileMode.Create);
-                    await imageFile.CopyToAsync(stream);
-                    item.ImagePath = "/images/products/" + fileName;
-                }
-
-                await _itemService.AddAsync(item);
-                TempData["SuccessMessage"] = "Το είδος δημιουργήθηκε με επιτυχία.";
-                return RedirectToAction(nameof(Index));
+                SetUnits(item.Unit);
+                return View(item);
             }
 
-            SetDropDowns();
-            return View(item);
+            item.UserId = uid;
+            await _itemService.AddAsync(item);
+            TempData["SuccessMessage"] = "Το είδος δημιουργήθηκε.";
+            return RedirectToAction(nameof(Index));
         }
 
+        [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
-            if (id <= 0)
-                return BadRequest();
-
-            var item = await _itemService.GetByIdAsync(id);
-            if (item == null)
-                return NotFound();
-
-            SetDropDowns();
+            if (CurrentUserId == 0) return RedirectToAction("Login", "Account");
+            var item = await _itemService.GetByIdForUserAsync(id, CurrentUserId);
+            if (item == null) return NotFound();
+            SetUnits(item.Unit);
             return View(item);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Item item, IFormFile? imageFile)
+        public async Task<IActionResult> Edit(int id, Item input)
         {
-            if (id != item.Id)
-                return BadRequest();
+            var uid = HttpContext.Session.GetInt32("UserId") ?? 0;
+            if (uid == 0) return RedirectToAction("Login", "Account");
+            if (id != input.Id) return BadRequest();
 
-            if (ModelState.IsValid)
-            {
-                item.RetailPrice ??= 0.00m;
-                item.WholesalePrice ??= 0.00m;
+            var item = await _itemService.GetByIdForUserAsync(id, uid);
+            if (item == null) return NotFound();
 
-                if (imageFile != null && imageFile.Length > 0)
-                {
-                    var fileName = Guid.NewGuid() + Path.GetExtension(imageFile.FileName);
-                    var path = Path.Combine(_env.WebRootPath, "images", "products", fileName);
+            ModelState.Remove(nameof(Item.User));
+            if (!ModelState.IsValid)
+                SetUnits(input.Unit);
+            return View(input);
 
-                    using var stream = new FileStream(path, FileMode.Create);
-                    await imageFile.CopyToAsync(stream);
-                    item.ImagePath = "/images/products/" + fileName;
-                }
+            item.UserId = uid;
+            item.ItemCode = input.ItemCode;
+            item.Description = input.Description;
+            item.Unit = input.Unit;
+            item.VAT = input.VAT;
+            item.RetailPrice = input.RetailPrice;
+            item.WholesalePrice = input.WholesalePrice;
+            item.ImagePath = input.ImagePath;
 
-                await _itemService.UpdateAsync(item);
-                TempData["SuccessMessage"] = "Το είδος ενημερώθηκε με επιτυχία.";
-                return RedirectToAction(nameof(Index));
-            }
-
-            SetDropDowns();
-            return View(item);
+            await _itemService.UpdateAsync(item);
+            TempData["SuccessMessage"] = "Το είδος ενημερώθηκε.";
+            return RedirectToAction(nameof(Index));
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Details(int id)
+        {
+            if (CurrentUserId == 0) return RedirectToAction("Login", "Account");
+            var item = await _itemService.GetByIdForUserAsync(id, CurrentUserId);
+            return item == null ? NotFound() : View(item);
+        }
+
+        [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
-            if (id <= 0)
-                return BadRequest();
-
-            var item = await _itemService.GetByIdAsync(id);
-            return item == null ? NotFound() : View(item);
+            if (CurrentUserId == 0) return RedirectToAction("Login", "Account");
+            var item = await _itemService.GetByIdForUserAsync(id, CurrentUserId);
+            if (item == null) return NotFound();
+            return View(item);
         }
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var item = await _itemService.GetByIdAsync(id);
-            if (item == null)
-                return NotFound();
+            if (CurrentUserId == 0) return RedirectToAction("Login", "Account");
+            var item = await _itemService.GetByIdForUserAsync(id, CurrentUserId);
+            if (item == null) return NotFound();
 
-            await _itemService.DeleteAsync(id);
-            TempData["SuccessMessage"] = "Το είδος διαγράφηκε με επιτυχία.";
+            await _itemService.DeleteAsync(item);
+            TempData["SuccessMessage"] = "Το είδος διαγράφηκε.";
             return RedirectToAction(nameof(Index));
         }
 
-        private void SetDropDowns()
+        private void SetUnits(string? selected = null)
         {
-            ViewBag.Units = new List<SelectListItem>
-            {
-                new SelectListItem { Value = "Τεμάχια", Text = "Τεμάχια" },
-                new SelectListItem { Value = "Κιλά", Text = "Κιλά" },
-                new SelectListItem { Value = "Λίτρα", Text = "Λίτρα" },
-                new SelectListItem { Value = "Μέτρα", Text = "Μέτρα" }
-            };
-
-            ViewBag.VATOptions = new List<SelectListItem>
-            {
-                new SelectListItem { Text = "0%", Value = "0" },
-                new SelectListItem { Text = "6%", Value = "6" },
-                new SelectListItem { Text = "13%", Value = "13" },
-                new SelectListItem { Text = "24%", Value = "24" }
-            };
+            var units = new List<string> { "τεμάχιο", "κιλό", "λίτρο", "μέτρο", "κουτί" };
+            ViewBag.Units = new SelectList(units, selected);
         }
+
+
     }
 }

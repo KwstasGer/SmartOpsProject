@@ -1,22 +1,71 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+    html {
+        font-size: 16px;
+    }
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+}
+
+/* SmartOps Branding */
+:root {
+    --smartops-primary: #1976d2;
+    --smartops-accent: #00796b;
+    --smartops-danger: #d32f2f;
+}
+
+.btn-primary {
+    background-color: var(--smartops-primary);
+    border-color: var(--smartops-primary);
+}
+
+    .btn-primary:hover {
+        background-color: #1565c0;
+        border-color: #1565c0;
+    }
+
+h1, h2, h3 {
+    font-weight: 600;
+    color: var(--smartops-primary);
+}
+
+.card {
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+}
+
+.form-control:focus {
+    border-color: var(--smartops-primary);
+    box-shadow: 0 0 0 0.2rem rgba(25, 118, 210, 0.25);
+}
+
+
+/* === Εμφάνιση κουμπιών ενεργειών === */
+.action-stack .btn {
+    width: 130px;
+    border-radius: 10px;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+    .action-stack .btn:last-child {
+        margin-bottom: 0;
+    }
+
+/* Ήπιο hover για outline-danger */
+.action-stack .btn-outline-danger:hover {
+    background-color: rgba(220, 53, 69, .06);
+}
+
+/* Μικρότερη γραμματοσειρά */
+.btn-group-vertical.btn-group-sm .btn {
+    padding: 4px 10px;
+    font-size: 13px;
 }

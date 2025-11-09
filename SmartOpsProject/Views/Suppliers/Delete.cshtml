@@ -1,38 +1,68 @@
 ﻿@model SmartOpsProject.Models.Supplier
-
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     ViewData["Title"] = "Διαγραφή Προμηθευτή";
 }
 
-<h2>Διαγραφή Προμηθευτή</h2>
+<h2 class="text-danger mb-3">Διαγραφή Προμηθευτή</h2>
+<p class="mb-4">Είστε σίγουροι ότι θέλετε να διαγράψετε τον παρακάτω προμηθευτή;</p>
 
-<h4>Είσαι σίγουρος ότι θέλεις να διαγράψεις αυτόν τον προμηθευτή;</h4>
-<hr />
+<div class="card shadow-sm mb-3 border-0">
+    <div class="card-body">
+        <h5 class="card-title fw-bold mb-3 text-primary">
+            @Model.SupplierCode — @Model.Name
+        </h5>
 
-<div>
-    <dl class="row">
-        <dt class="col-sm-3">Κωδικός</dt>
-        <dd class="col-sm-9">@Model.SupplierCode</dd>
+        @if (!string.IsNullOrEmpty(Model.TaxIdentificationNumber))
+        {
+            <p class="card-text mb-1"><strong>ΑΦΜ:</strong> @Model.TaxIdentificationNumber</p>
+        }
 
-        <dt class="col-sm-3">Επωνυμία</dt>
-        <dd class="col-sm-9">@Model.Name</dd>
+        @if (!string.IsNullOrEmpty(Model.Address) || !string.IsNullOrEmpty(Model.City))
+        {
+            <p class="card-text mb-1">
+                <strong>Διεύθυνση:</strong>
+                @Model.Address
+                @if (!string.IsNullOrEmpty(Model.City))
+                {
+                    <text>, @Model.City</text>
+                    ;
+                }
+                @if (!string.IsNullOrEmpty(Model.PostalCode))
+                {
+                    <text>, @Model.PostalCode</text>
+                    ;
+                }
+            </p>
+        }
 
-        <dt class="col-sm-3">ΑΦΜ</dt>
-        <dd class="col-sm-9">@Model.TaxIdentificationNumber</dd>
+        @if (!string.IsNullOrEmpty(Model.Country))
+        {
+            <p class="card-text mb-1"><strong>Χώρα:</strong> @Model.Country</p>
+        }
 
-        <dt class="col-sm-3">Χώρα</dt>
-        <dd class="col-sm-9">@Model.Country</dd>
+        @if (!string.IsNullOrEmpty(Model.SupplierCategory))
+        {
+            <p class="card-text mb-1"><strong>Κατηγορία:</strong> @Model.SupplierCategory</p>
+        }
 
-        <dt class="col-sm-3">Κατηγορία</dt>
-        <dd class="col-sm-9">@Model.SupplierCategory</dd>
-
-        <dt class="col-sm-3">Καθεστώς ΦΠΑ</dt>
-        <dd class="col-sm-9">@Model.VatStatus</dd>
-    </dl>
+        @if (!string.IsNullOrEmpty(Model.VatStatus))
+        {
+            <p class="card-text mb-0"><strong>Καθεστώς ΦΠΑ:</strong> @Model.VatStatus</p>
+        }
+    </div>
 </div>
 
 <form asp-action="Delete" method="post">
+    @Html.AntiForgeryToken()
     <input type="hidden" asp-for="Id" />
-    <button type="submit" class="btn btn-danger">Διαγραφή</button>
-    <a asp-action="Index" class="btn btn-secondary">Ακύρωση</a>
+
+    <div class="d-flex gap-2">
+        <button type="submit" class="btn btn-danger">
+            <i class="bi bi-trash"></i> Οριστική Διαγραφή
+        </button>
+        <a asp-action="Index" class="btn btn-light">
+            <i class="bi bi-arrow-left"></i> Ακύρωση
+        </a>
+    </div>
 </form>

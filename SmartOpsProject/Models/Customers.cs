@@ -1,4 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Mvc.ModelBinding;            // BindNever
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;  // ValidateNever
+using SmartOpsProject.Models;
 
 namespace SmartOps.Models
 {
@@ -6,36 +10,46 @@ namespace SmartOps.Models
     {
         public int Id { get; set; }
 
-        [Required]
+        // Υπολογιζόμενος κωδικός από τη DB (computed).
+        // Είναι null πριν το SaveChanges, γι’ αυτό ΔΕΝ είναι [Required] και είναι nullable.
+        // Προαιρετικό στη φόρμα: ο χρήστης μπορεί να δώσει τιμή ή να αφήσει "*"
+        // (αν είναι "*" ή κενό, στον controller το κάνουμε null για auto από DB)
+        [Required(ErrorMessage = "Ο Κωδικός Πελάτη είναι υποχρεωτικός.")]
         [Display(Name = "Κωδικός Πελάτη")]
-        public string CustomerCode { get; set; }
+        public string? CustomerCode { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Το Ονοματεπώνυμο / Επωνυμία είναι υποχρεωτικό.")]
+
         [Display(Name = "Ονοματεπώνυμο / Επωνυμία")]
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         [Display(Name = "ΑΦΜ")]
-        public string TaxIdentificationNumber { get; set; }
+        public string? TaxIdentificationNumber { get; set; }
 
-        [Required]
         [Display(Name = "Χώρα")]
-        public string Country { get; set; }
+        public string? Country { get; set; } 
 
         [Display(Name = "Διεύθυνση")]
-        public string Address { get; set; }
+        public string? Address { get; set; }
 
         [Display(Name = "Πόλη")]
-        public string City { get; set; }
+        public string? City { get; set; }
 
         [Display(Name = "Τ.Κ.")]
-        public string PostalCode { get; set; }
+        public string? PostalCode { get; set; }
 
         [Required]
         [Display(Name = "Καθεστώς ΦΠΑ")]
-        public string VatStatus { get; set; }
+        public string VatStatus { get; set; } = string.Empty;
 
         [Required]
         [Display(Name = "Κατηγορία Πελάτη")]
-        public string CustomerCategory { get; set; }
+        public string CustomerCategory { get; set; } = string.Empty;
+
+        [Required]
+        public int UserId { get; set; }
+
+        [ValidateNever]
+        public User? User { get; set; }
     }
 }

@@ -1,29 +1,25 @@
 ﻿@model SmartOps.Models.Item
-
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     ViewData["Title"] = "Διαγραφή Είδους";
 }
 
-<h2>Επιβεβαίωση Διαγραφής</h2>
+<h2 class="text-danger">Διαγραφή Είδους</h2>
+<p>Είστε σίγουροι ότι θέλετε να διαγράψετε το παρακάτω είδος;</p>
 
-<div class="alert alert-danger">
-    <strong>Είσαι σίγουρος ότι θέλεις να διαγράψεις αυτό το προϊόν;</strong>
+<div class="card mb-3">
+    <div class="card-body">
+        <h5 class="card-title">@Model.ItemCode — @Model.Description</h5>
+        <p class="card-text mb-1"><strong>Μ.Μ.:</strong> @Model.Unit</p>
+        <p class="card-text mb-1"><strong>ΦΠΑ:</strong> @Model.VAT</p>
+        <p class="card-text mb-1"><strong>Λιανική:</strong> @Model.RetailPrice</p>
+        <p class="card-text mb-0"><strong>Χονδρική:</strong> @Model.WholesalePrice</p>
+    </div>
 </div>
 
-<div>
-    <h4>@Model.ItemCode - @Model.Description</h4>
-    <p><strong>Τιμή Λιανικής:</strong> @Model.RetailPrice?.ToString("0.00") € </p>
-    <p><strong>Τιμή Χονδρικής:</strong> @Model.WholesalePrice?.ToString("0.00") € </p>
-    <p><strong>Μονάδα Μέτρησης:</strong> @Model.Unit</p>
-    <p><strong>ΦΠΑ:</strong> @Model.VAT %</p>
-    @if (!string.IsNullOrEmpty(Model.ImagePath))
-    {
-            <p><img src="@Model.ImagePath" width="150" /></p>
-    }
-</div>
-
-<form asp-action="Delete">
+<form asp-action="Delete" method="post">
+    @Html.AntiForgeryToken()
     <input type="hidden" asp-for="Id" />
-    <button type="submit" class="btn btn-danger">Ναι, διαγραφή</button>
-    <a asp-action="Index" class="btn btn-secondary">Ακύρωση</a>
+    <button type="submit" class="btn btn-danger">Οριστική Διαγραφή</button>
+    <a asp-action="Index" class="btn btn-outline-secondary">Ακύρωση</a>
 </form>
