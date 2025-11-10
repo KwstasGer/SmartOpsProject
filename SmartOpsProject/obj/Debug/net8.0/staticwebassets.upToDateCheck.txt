@@ -2,7 +2,6 @@ wwwroot\css\site.css
 wwwroot\favicon.ico
 wwwroot\images\products\101775b2-4fdb-447d-91d8-dd75b907254f.jpg
 wwwroot\images\products\6e5cea25-7ba9-4359-951c-6ac74f6a188e.jpg
-wwwroot\images\products\d31b9060-fa7b-4a5f-8d33-5fcbc08790ae.JPEG
 wwwroot\images\products\fb8ab896-478e-439c-9992-a6dba81e81cd.jpg
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
@@ -62,3 +61,6 @@ wwwroot\lib\jquery\dist\jquery.js
 wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
 wwwroot\lib\jquery\LICENSE.txt
+wwwroot\uploads\items\5779e85778fb4ce3a6ff2fd5cc18352c.jpg
+wwwroot\uploads\items\c3fcacd137fa46758ebb22b90b94b8ee.png
+wwwroot\uploads\items\f49b3ea60138499dac84fbdf52c97dca.jpg

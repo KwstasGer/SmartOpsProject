@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SmartOps.Data;
 
@@ -11,9 +12,11 @@ using SmartOps.Data;
 namespace SmartOpsProject.Migrations
 {
     [DbContext(typeof(SmartOpsDbContext))]
-    partial class SmartOpsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251110091654_NewUpdatesItems")]
+    partial class NewUpdatesItems
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -90,6 +93,10 @@ namespace SmartOpsProject.Migrations
                         .IsRequired()
                         .HasMaxLength(450)
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ImagePath")
+                        .HasMaxLength(512)
+                        .HasColumnType("nvarchar(512)");
 
                     b.Property<string>("ItemCode")
                         .ValueGeneratedOnAdd()

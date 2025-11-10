@@ -4,13 +4,26 @@
     ViewData["Title"] = "Λεπτομέρειες Είδους";
 }
 
-<h2>Λεπτομέρειες Είδους</h2>
+<h2 class="mb-3">Λεπτομέρειες Είδους</h2>
 
-<div class="card">
+<div class="card shadow-sm border-0">
     <div class="card-body">
-        <dl class="row">
+        <dl class="row align-items-center">
             <dt class="col-sm-3">Κωδικός</dt>
-            <dd class="col-sm-9">@Model.ItemCode</dd>
+            <dd class="col-sm-9">
+                @if (!string.IsNullOrWhiteSpace(Model.ItemCode))
+                {
+                    @Model.ItemCode
+                    if (Model.ItemCode.StartsWith("0"))
+                    {
+                        <span class="badge bg-secondary ms-1">auto</span>
+                    }
+                }
+                else
+                {
+                    <span class="text-muted">(Αυτόματος)</span>
+                }
+            </dd>
 
             <dt class="col-sm-3">Περιγραφή</dt>
             <dd class="col-sm-9">@Model.Description</dd>
@@ -19,16 +32,18 @@
             <dd class="col-sm-9">@Model.Unit</dd>
 
             <dt class="col-sm-3">ΦΠΑ</dt>
-            <dd class="col-sm-9">@Model.VAT</dd>
+            <dd class="col-sm-9">@Model.VAT.ToString("0.##")%</dd>
 
-            <dt class="col-sm-3">Λιανική</dt>
-            <dd class="col-sm-9">@Model.RetailPrice</dd>
+            <dt class="col-sm-3">Τιμή Λιανικής</dt>
+            <dd class="col-sm-9">
+                @(Model.RetailPrice.HasValue? Model.RetailPrice.Value.ToString("0.00") + " €" : "—")
+            </dd>
 
-            <dt class="col-sm-3">Χονδρική</dt>
-            <dd class="col-sm-9">@Model.WholesalePrice</dd>
+            <dt class="col-sm-3">Τιμή Χονδρικής</dt>
+            <dd class="col-sm-9">
+                @(Model.WholesalePrice.HasValue? Model.WholesalePrice.Value.ToString("0.00") + " €" : "—")
+            </dd>
 
-            <dt class="col-sm-3">Εικόνα</dt>
-            <dd class="col-sm-9">@Model.ImagePath</dd>
         </dl>
     </div>
 </div>

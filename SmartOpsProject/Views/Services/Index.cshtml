@@ -9,8 +9,44 @@
     <a asp-action="Create" class="btn btn-success">+ Νέα Υπηρεσία</a>
 </div>
 
-<table class="table table-sm table-striped align-middle">
-    <thead>
+<!-- 🔹 Μηνύματα επιτυχίας / σφάλματος -->
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @TempData["ErrorMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<!-- 🔍 Αναζήτηση -->
+<div class="card shadow-sm border-0 mb-3">
+    <div class="card-body">
+        <div class="row g-2 align-items-center">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-search"></i></span>
+                    <input id="serviceSearch" type="text" class="form-control" placeholder="Αναζήτηση υπηρεσίας… (κωδικός, περιγραφή, ΜΜ)">
+                    <button id="clearSearch" type="button" class="btn btn-outline-secondary">Καθαρισμός</button>
+                </div>
+            </div>
+            <div class="col-md-6 text-md-end mt-2 mt-md-0">
+                <small class="text-muted">
+                    Εμφανίζονται <span id="rowsCount">0</span> από <span id="rowsTotal">0</span> υπηρεσίες
+                </small>
+            </div>
+        </div>
+    </div>
+</div>
+
+<table id="servicesTable" class="table table-sm table-striped align-middle shadow-sm">
+    <thead class="table-light">
         <tr>
             <th>Κωδικός</th>
             <th>Περιγραφή</th>
@@ -18,25 +54,95 @@
             <th>ΦΠΑ</th>
             <th>Λιανική</th>
             <th>Χονδρική</th>
-            <th style="width:160px;"></th>
+            <th class="text-end" style="width:150px;">Ενέργειες</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var s in Model)
+        @if (Model != null && Model.Any())
+        {
+            foreach (var s in Model)
+            {
+                <tr>
+                    <td>@s.ServiceCode</td>
+                    <td>@s.Description</td>
+                    <td>@s.Unit</td>
+                    <td>@s.VAT</td>
+                    <td>@(s.RetailPrice?.ToString("0.00") ?? "-")</td>
+                    <td>@(s.WholesalePrice?.ToString("0.00") ?? "-")</td>
+                    <td class="text-end">
+                        <div class="btn-group-vertical btn-group-sm action-stack" role="group">
+                            <a asp-action="Details" asp-route-id="@s.Id" class="btn btn-primary">Λεπτομέρειες</a>
+                            <a asp-action="Edit" asp-route-id="@s.Id" class="btn btn-secondary">Επεξεργασία</a>
+                            <a asp-action="Delete" asp-route-id="@s.Id" class="btn btn-outline-danger">Διαγραφή</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        }
+        else
         {
             <tr>
-                <td>@s.ServiceCode</td>
-                <td>@s.Description</td>
-                <td>@s.Unit</td>
-                <td>@s.VAT</td>
-                <td>@(s.RetailPrice?.ToString("0.00"))</td>
-                <td>@(s.WholesalePrice?.ToString("0.00"))</td>
-                <td class="text-end">
-                    <a asp-action="Details" asp-route-id="@s.Id" class="btn btn-outline-secondary btn-sm">Λεπτομέρειες</a>
-                    <a asp-action="Edit" asp-route-id="@s.Id" class="btn btn-primary btn-sm">Επεξεργασία</a>
-                    <a asp-action="Delete" asp-route-id="@s.Id" class="btn btn-outline-danger btn-sm">Διαγραφή</a>
+                <td colspan="7" class="text-center text-muted py-4">
+                    Δεν υπάρχουν υπηρεσίες καταχωρημένες.
                 </td>
             </tr>
         }
     </tbody>
 </table>
+
+@section Scripts {
+    <script>
+        (function () {
+            const input = document.getElementById('serviceSearch');
+            const clearBtn = document.getElementById('clearSearch');
+            const table = document.getElementById('servicesTable');
+            const rows = Array.from(table.querySelectorAll('tbody tr'));
+            const rowsTotalEl = document.getElementById('rowsTotal');
+            const rowsCountEl = document.getElementById('rowsCount');
+
+            const dataRows = rows.filter(r => !r.querySelector('td[colspan]'));
+            rowsTotalEl.textContent = dataRows.length.toString();
+
+            const normalize = (str) => (str || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
+
+            const filterCols = [0, 1, 2];
+
+            let t = null;
+            const onSearch = () => {
+                const q = normalize(input.value);
+                let visible = 0;
+
+                dataRows.forEach(tr => {
+                    let text = '';
+                    filterCols.forEach(idx => {
+                        const td = tr.children[idx];
+                        if (td) text += ' ' + normalize(td.textContent);
+                    });
+
+                    const match = q.length === 0 || text.includes(q);
+                    tr.style.display = match ? '' : 'none';
+                    if (match) visible++;
+                });
+
+                const emptyRow = rows.find(r => r.querySelector('td[colspan]'));
+                if (emptyRow) emptyRow.style.display = (visible === 0 ? '' : 'none');
+
+                rowsCountEl.textContent = visible.toString();
+            };
+
+            const debounced = () => {
+                clearTimeout(t);
+                t = setTimeout(onSearch, 150);
+            };
+
+            input.addEventListener('input', debounced);
+            clearBtn.addEventListener('click', () => {
+                input.value = '';
+                onSearch();
+                input.focus();
+            });
+
+            onSearch();
+        })();
+    </script>
+}

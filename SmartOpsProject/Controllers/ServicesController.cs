@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System.Collections.Generic;
+using System.Globalization;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SmartOpsProject.Models;
 using SmartOpsProject.Services;
-using System.Threading.Tasks;
 
 namespace SmartOps.Controllers
 {
@@ -18,6 +20,7 @@ namespace SmartOps.Controllers
 
         private int CurrentUserId => HttpContext.Session.GetInt32("UserId") ?? 0;
 
+        // ----------------------- INDEX -----------------------
         [HttpGet]
         public async Task<IActionResult> Index()
         {
@@ -26,15 +29,20 @@ namespace SmartOps.Controllers
             return View(services);
         }
 
+        // ----------------------- CREATE (GET) ----------------
         [HttpGet]
         public IActionResult Create()
         {
             if (CurrentUserId == 0) return RedirectToAction("Login", "Account");
-            SetUnits(); // <-- dropdown για Unit
+
+            SetUnits();          // dropdown Μονάδων
+            SetVATs(null);       // dropdown ΦΠΑ (0,7,13,24)
+
             var model = new Service { UserId = CurrentUserId };
             return View(model);
         }
 
+        // ----------------------- CREATE (POST) --------------
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Service service)
@@ -42,30 +50,39 @@ namespace SmartOps.Controllers
             var uid = HttpContext.Session.GetInt32("UserId") ?? 0;
             if (uid == 0) return RedirectToAction("Login", "Account");
 
+            // να μη γίνεται validate το navigation
             ModelState.Remove(nameof(Service.User));
+
             if (!ModelState.IsValid)
             {
-                SetUnits(service.Unit); // <-- ξαναγέμισε dropdown με επιλεγμένη τιμή
+                SetUnits(service.Unit);
+                SetVATs(service.VAT);
                 return View(service);
             }
 
             service.UserId = uid;
             await _serviceService.AddAsync(service);
-            TempData["SuccessMessage"] = "Η υπηρεσία δημιουργήθηκε.";
+
+            TempData["SuccessMessage"] = "Η υπηρεσία δημιουργήθηκε με επιτυχία.";
             return RedirectToAction(nameof(Index));
         }
 
+        // ----------------------- EDIT (GET) ------------------
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
             if (CurrentUserId == 0) return RedirectToAction("Login", "Account");
+
             var service = await _serviceService.GetByIdForUserAsync(id, CurrentUserId);
             if (service == null) return NotFound();
 
-            SetUnits(service.Unit); // <-- dropdown με selected
+            SetUnits(service.Unit);
+            SetVATs(service.VAT);
+
             return View(service);
         }
 
+        // ----------------------- EDIT (POST) -----------------
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Service input)
@@ -78,13 +95,17 @@ namespace SmartOps.Controllers
             if (service == null) return NotFound();
 
             ModelState.Remove(nameof(Service.User));
+
             if (!ModelState.IsValid)
             {
-                SetUnits(input.Unit); // <-- διατήρηση επιλογής
+                SetUnits(input.Unit);
+                SetVATs(input.VAT);
                 return View(input);
             }
+
+            // Ενημέρωση επιτρεπτών πεδίων
             service.UserId = uid;
-            service.ServiceCode = input.ServiceCode;
+            service.ServiceCode = input.ServiceCode;   // στο Edit το έχεις readonly+hidden, οπότε μένει ίδιο
             service.Description = input.Description;
             service.Unit = input.Unit;
             service.VAT = input.VAT;
@@ -92,10 +113,12 @@ namespace SmartOps.Controllers
             service.WholesalePrice = input.WholesalePrice;
 
             await _serviceService.UpdateAsync(service);
-            TempData["SuccessMessage"] = "Η υπηρεσία ενημερώθηκε.";
+
+            TempData["SuccessMessage"] = "Η υπηρεσία ενημερώθηκε επιτυχώς.";
             return RedirectToAction(nameof(Index));
         }
 
+        // ----------------------- DETAILS ---------------------
         [HttpGet]
         public async Task<IActionResult> Details(int id)
         {
@@ -104,6 +127,7 @@ namespace SmartOps.Controllers
             return service == null ? NotFound() : View(service);
         }
 
+        // ----------------------- DELETE (GET) ----------------
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
@@ -113,6 +137,7 @@ namespace SmartOps.Controllers
             return View(service);
         }
 
+        // ----------------------- DELETE (POST) ---------------
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -126,13 +151,36 @@ namespace SmartOps.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        // ======================= DROPDOWNS ===================
 
         private void SetUnits(string? selected = null)
+        {
+            var units = new List<string> { "ώρα", "ημέρα", "μήνας", "έργο", "τεμάχιο" };
+            ViewBag.Units = new SelectList(units, selected);
+        }
+
+        /// <summary>
+        /// Δίνει dropdown για ΦΠΑ με ετικέτες 0%,7%,13%,24% αλλά values αριθμητικά (string) ώστε να δένουν με decimal VAT.
+        /// </summary>
+        private void SetVATs(decimal? selected = null)
+        {
+            var items = new List<SelectListItem>
             {
-                // Βάλε εδώ τις μονάδες που θέλεις να υποστηρίζεις
-                var units = new List<string> { "ώρα", "ημέρα", "μήνας", "έργο", "τεμάχιο" };
-                ViewBag.Units = new SelectList(units, selected);
+                new SelectListItem("0%",  "0"),
+                new SelectListItem("7%",  "7"),
+                new SelectListItem("13%","13"),
+                new SelectListItem("24%","24"),
+            };
+
+            if (selected.HasValue)
+            {
+                var sel = selected.Value.ToString("0.##", CultureInfo.InvariantCulture);
+                foreach (var it in items)
+                    it.Selected = it.Value == sel;
             }
 
-}
+            // Προσοχή: Τα Views πρέπει να δένουν με αυτό το όνομα (VATs)
+            ViewBag.VATs = items;
+        }
+    }
 }

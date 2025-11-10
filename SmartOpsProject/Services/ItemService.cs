@@ -16,33 +16,41 @@ namespace SmartOps.Services
             _context = context;
         }
 
-        // Λήψη όλων των αντικειμένων
+        // -------- Basic --------
         public async Task<List<Item>> GetAllAsync()
-        {
-            return await _context.Items.ToListAsync();
-        }
+            => await _context.Items.ToListAsync();
 
-        // Λήψη αντικειμένου βάσει ID
         public async Task<Item?> GetByIdAsync(int id)
-        {
-            return await _context.Items.FindAsync(id);
-        }
+            => await _context.Items.FindAsync(id);
 
-        // Προσθήκη νέου αντικειμένου
         public async Task AddAsync(Item item)
         {
             _context.Items.Add(item);
             await _context.SaveChangesAsync();
         }
 
-        // Ενημέρωση αντικειμένου
+        // ✅ ΡΗΤΗ ενημέρωση πεδίων + ImagePath (πιάνει και null)
         public async Task UpdateAsync(Item item)
         {
-            _context.Items.Update(item);
+            // Αν είναι ήδη tracked, μην κάνεις Attach δεύτερη φορά.
+            var entry = _context.Entry(item);
+            if (entry.State == EntityState.Detached)
+            {
+                _context.Attach(item);
+                entry = _context.Entry(item);
+            }
+
+            // Δεν αλλάζουμε: ItemCode, UserId (αν δεν θέλεις να αλλάζουν)
+            entry.Property(x => x.Description).IsModified = true;
+            entry.Property(x => x.Unit).IsModified = true;
+            entry.Property(x => x.VAT).IsModified = true;
+            entry.Property(x => x.RetailPrice).IsModified = true;
+            entry.Property(x => x.WholesalePrice).IsModified = true;
+
+
             await _context.SaveChangesAsync();
         }
 
-        // Διαγραφή αντικειμένου βάσει ID
         public async Task DeleteAsync(int id)
         {
             var item = await _context.Items.FindAsync(id);
@@ -53,15 +61,9 @@ namespace SmartOps.Services
             }
         }
 
-        // Έλεγχος αν υπάρχει αντικείμενο με συγκεκριμένο ID
-        public bool Exists(int id)
-        {
-            return _context.Items.Any(i => i.Id == id);
-        }
+        public bool Exists(int id) => _context.Items.Any(i => i.Id == id);
 
-        // -------------------- User-scoped μέθοδοι --------------------
-
-        // Λήψη όλων των αντικειμένων για συγκεκριμένο χρήστη
+        // -------- User-scoped --------
         public async Task<List<Item>> GetAllByUserAsync(int userId)
         {
             return await _context.Items
@@ -70,21 +72,18 @@ namespace SmartOps.Services
                 .ToListAsync();
         }
 
-        // Λήψη αντικειμένου βάσει ID μόνο αν ανήκει στον χρήστη
         public async Task<Item?> GetByIdForUserAsync(int id, int userId)
         {
             return await _context.Items
                 .FirstOrDefaultAsync(i => i.Id == id && i.UserId == userId);
         }
 
-        // Έλεγχος ύπαρξης αντικειμένου που ανήκει στον χρήστη
         public async Task<bool> ExistsForUserAsync(int id, int userId)
         {
             return await _context.Items
                 .AnyAsync(i => i.Id == id && i.UserId == userId);
         }
 
-        // Διαγραφή με entity (χρήσιμο όταν έχει προηγηθεί έλεγχος ιδιοκτησίας)
         public async Task DeleteAsync(Item item)
         {
             _context.Items.Remove(item);

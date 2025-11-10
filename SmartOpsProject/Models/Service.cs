@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Mvc.ModelBinding.Validation; // για να μη γίνεται validate το navigation User
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Microsoft.EntityFrameworkCore;
 
 namespace SmartOpsProject.Models
 {
@@ -7,31 +8,37 @@ namespace SmartOpsProject.Models
     {
         public int Id { get; set; }
 
-        [Required]
-        [Display(Name = "Κωδικός Υπηρεσίας *")]
-        public string ServiceCode { get; set; }
+        [Required(ErrorMessage = "Ο Κωδικός είναι υποχρεωτικός.")]
+        [Display(Name = "Κωδικός Υπηρεσίας")]
+        [StringLength(32)]
+        public string ServiceCode { get; set; } = string.Empty;
 
-        [Required]
-        [Display(Name = "Περιγραφή *")]
-        public string Description { get; set; }
+        [Required(ErrorMessage = "Η Περιγραφή είναι υποχρεωτική.")]
+        [Display(Name = "Περιγραφή")]
+        [StringLength(450)]
+        public string Description { get; set; } = string.Empty;
 
-        [Required]
-        [Display(Name = "Μονάδα Μέτρησης *")]
-        public string Unit { get; set; }
+        [Required(ErrorMessage = "Η Μονάδα Μέτρησης είναι υποχρεωτική.")]
+        [Display(Name = "Μονάδα Μέτρησης")]
+        [StringLength(50)]
+        public string Unit { get; set; } = string.Empty;
 
-        [Required]
-        [Display(Name = "ΦΠΑ *")]
+        [Required(ErrorMessage = "Το ΦΠΑ είναι υποχρεωτικό.")]
+        [Display(Name = "ΦΠΑ")]
+        [Range(0, 100, ErrorMessage = "Το ΦΠΑ πρέπει να είναι 0–100.")]
+        [Precision(5, 2)]
         public decimal VAT { get; set; }
 
         [Display(Name = "Τιμή Λιανικής")]
-        [Range(0, double.MaxValue)]
+        [Range(0, 1_000_000)]
+        [Precision(18, 2)]
         public decimal? RetailPrice { get; set; }
 
         [Display(Name = "Τιμή Χονδρικής")]
-        [Range(0, double.MaxValue)]
+        [Range(0, 1_000_000)]
+        [Precision(18, 2)]
         public decimal? WholesalePrice { get; set; }
 
-        // 🔹 Προσθήκες για per-user scoping
         [Required]
         public int UserId { get; set; }
 

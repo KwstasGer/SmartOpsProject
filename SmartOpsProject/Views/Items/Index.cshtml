@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<SmartOps.Models.Item>
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
-    ViewData["Title"] = "Είδη";
+    ViewData["Title"] = "Προϊόντα";
 }
 
 <div class="d-flex justify-content-between align-items-center mb-3">
@@ -9,34 +9,142 @@
     <a asp-action="Create" class="btn btn-success">+ Νέο Είδος</a>
 </div>
 
-<table class="table table-sm table-striped align-middle">
-    <thead>
-        <tr>
-            <th>Κωδικός</th>
-            <th>Περιγραφή</th>
-            <th>Μ.Μ.</th>
-            <th>ΦΠΑ</th>
-            <th>Λιανική</th>
-            <th>Χονδρική</th>
-            <th style="width:160px;"></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var it in Model)
-        {
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @TempData["ErrorMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<!-- 🔎 Αναζήτηση -->
+<div class="card shadow-sm border-0 mb-3">
+    <div class="card-body">
+        <div class="row g-2 align-items-center">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-search"></i></span>
+                    <input id="itemSearch" type="text" class="form-control" placeholder="Αναζήτηση… (κωδικός, περιγραφή, ΜΜ, τιμή)">
+                    <button id="clearSearch" type="button" class="btn btn-outline-secondary">Καθαρισμός</button>
+                </div>
+            </div>
+            <div class="col-md-6 text-md-end mt-2 mt-md-0">
+                <small class="text-muted">
+                    Εμφανίζονται <span id="rowsCount">0</span> από <span id="rowsTotal">0</span> είδη
+                </small>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table id="itemsTable" class="table table-sm table-striped align-middle shadow-sm">
+        <thead class="table-light">
             <tr>
-                <td>@it.ItemCode</td>
-                <td>@it.Description</td>
-                <td>@it.Unit</td>
-                <td>@it.VAT</td>
-                <td>@(it.RetailPrice?.ToString("0.00"))</td>
-                <td>@(it.WholesalePrice?.ToString("0.00"))</td>
-                <td class="text-end">
-                    <a asp-action="Details" asp-route-id="@it.Id" class="btn btn-outline-secondary btn-sm">Λεπτομέρειες</a>
-                    <a asp-action="Edit" asp-route-id="@it.Id" class="btn btn-primary btn-sm">Επεξεργασία</a>
-                    <a asp-action="Delete" asp-route-id="@it.Id" class="btn btn-outline-danger btn-sm">Διαγραφή</a>
-                </td>
+                <th>Κωδικός</th>
+                <th>Περιγραφή</th>
+                <th>Μ.Μ.</th>
+                <th>ΦΠΑ</th>
+                <th>Λιανική</th>
+                <th>Χονδρική</th>
+                <th class="text-end" style="width:150px;">Ενέργειες</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var it in Model)
+                {
+                    <tr>
+                        <td>
+                            @if (!string.IsNullOrEmpty(it.ItemCode))
+                            {
+                                @it.ItemCode
+                                @if (it.ItemCode.StartsWith("0"))
+                                {
+                                    <span class="badge bg-secondary ms-1">auto</span>
+                                }
+                            }
+                            else
+                            {
+                                <span class="text-muted">(Αυτόματος)</span>
+                            }
+                        </td>
+                        <td>@it.Description</td>
+                        <td>@it.Unit</td>
+                        <td>@it.VAT.ToString("0.##")%</td>
+                        <td class="text-nowrap">@((it.RetailPrice.HasValue ? it.RetailPrice.Value.ToString("0.00") : "—")) €</td>
+                        <td class="text-nowrap">@((it.WholesalePrice.HasValue ? it.WholesalePrice.Value.ToString("0.00") : "—")) €</td>
+                        <td class="text-end">
+                            <div class="btn-group-vertical btn-group-sm action-stack" role="group" aria-label="Actions">
+                                <a asp-action="Details" asp-route-id="@it.Id" class="btn btn-primary">Λεπτομέρειες</a>
+                                <a asp-action="Edit" asp-route-id="@it.Id" class="btn btn-secondary">Επεξεργασία</a>
+                                <a asp-action="Delete" asp-route-id="@it.Id" class="btn btn-outline-danger">Διαγραφή</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="7" class="text-center text-muted py-4">Δεν υπάρχουν είδη καταχωρημένα.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <script>
+        (() => {
+            const input = document.getElementById('itemSearch');
+            const clearBtn = document.getElementById('clearSearch');
+            const table = document.getElementById('itemsTable');
+            const rows = Array.from(table.querySelectorAll('tbody tr'));
+            const dataRows = rows.filter(r => !r.querySelector('td[colspan]'));
+            const rowsTotalEl = document.getElementById('rowsTotal');
+            const rowsCountEl = document.getElementById('rowsCount');
+            rowsTotalEl.textContent = dataRows.length.toString();
+
+            const norm = s => (s||'').toString()
+                .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+                .toLowerCase().trim();
+
+            const filterCols = [0,1,2,4,5]; // Κωδ, Περιγραφή, ΜΜ, Λιανική, Χονδρική
+
+            let t=null;
+            const onSearch = () => {
+                const q = norm(input.value);
+                let visible = 0;
+
+                dataRows.forEach(tr => {
+                    let text = '';
+                    filterCols.forEach(i => {
+                        const td = tr.children[i];
+                        if (td) text += ' ' + norm(td.textContent);
+                    });
+                    const match = !q || text.includes(q);
+                    tr.style.display = match ? '' : 'none';
+                    if (match) visible++;
+                });
+
+                const emptyRow = rows.find(r => r.querySelector('td[colspan]'));
+                if (emptyRow) emptyRow.style.display = (visible === 0 ? '' : 'none');
+                rowsCountEl.textContent = visible.toString();
+            };
+
+            const deb = () => { clearTimeout(t); t = setTimeout(onSearch, 150); };
+            input.addEventListener('input', deb);
+            clearBtn.addEventListener('click', () => { input.value=''; onSearch(); input.focus(); });
+            onSearch();
+        })();
+    </script>
+}

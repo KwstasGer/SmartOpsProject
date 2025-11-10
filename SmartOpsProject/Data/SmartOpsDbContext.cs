@@ -103,6 +103,20 @@ namespace SmartOps.Data
                 e.HasIndex(x => x.CustomerCode).IsUnique();
             });
 
+            // --- ITEM AUTO CODE ---
+            modelBuilder.HasSequence<int>("ItemCodeSeq").StartsAt(1).IncrementsBy(1);
+
+            modelBuilder.Entity<Item>(e =>
+            {
+                e.HasIndex(i => new { i.UserId, i.Description });
+
+                e.Property(i => i.ItemCode)
+                 .HasDefaultValueSql(
+                    "('0' + RIGHT('00000' + CONVERT(varchar(10), NEXT VALUE FOR [ItemCodeSeq]), 5))"
+                 );
+            });
+
+
         }
 
     }

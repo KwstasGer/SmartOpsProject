@@ -4,20 +4,53 @@
     ViewData["Title"] = "Διαγραφή Είδους";
 }
 
-<h2 class="text-danger">Διαγραφή Είδους</h2>
-<p>Είστε σίγουροι ότι θέλετε να διαγράψετε το παρακάτω είδος;</p>
+<h2 class="text-danger mb-2">Διαγραφή Είδους</h2>
+<p class="mb-3">Είστε σίγουροι ότι θέλετε να διαγράψετε το παρακάτω είδος;</p>
 
-<div class="card mb-3">
+<div class="card mb-3 shadow-sm border-0">
     <div class="card-body">
-        <h5 class="card-title">@Model.ItemCode — @Model.Description</h5>
-        <p class="card-text mb-1"><strong>Μ.Μ.:</strong> @Model.Unit</p>
-        <p class="card-text mb-1"><strong>ΦΠΑ:</strong> @Model.VAT</p>
-        <p class="card-text mb-1"><strong>Λιανική:</strong> @Model.RetailPrice</p>
-        <p class="card-text mb-0"><strong>Χονδρική:</strong> @Model.WholesalePrice</p>
+        <h5 class="card-title mb-3">
+            @if (!string.IsNullOrWhiteSpace(Model.ItemCode))
+            {
+                @Model.ItemCode
+                if (Model.ItemCode.StartsWith("0"))
+                {
+                    <span class="badge bg-secondary ms-1">auto</span>
+                }
+            }
+            else
+            {
+                <span class="text-muted">(Αυτόματος)</span>
+            }
+            — @Model.Description
+        </h5>
+
+        <div class="row g-2 mb-2">
+            <div class="col-sm-6">
+                <p class="mb-1"><strong>Μ.Μ.:</strong> @Model.Unit</p>
+                <p class="mb-1"><strong>ΦΠΑ:</strong> @Model.VAT.ToString("0.##")%</p>
+            </div>
+            <div class="col-sm-6">
+                <p class="mb-1">
+                    <strong>Λιανική:</strong>
+                    @(Model.RetailPrice.HasValue? Model.RetailPrice.Value.ToString("0.00") + " €" : "—")
+                </p>
+                <p class="mb-1">
+                    <strong>Χονδρική:</strong>
+                    @(Model.WholesalePrice.HasValue? Model.WholesalePrice.Value.ToString("0.00") + " €" : "—")
+                </p>
+            </div>
+        </div>
+
+        }
+
+        <div class="alert alert-warning mt-3 mb-0">
+            Η διαγραφή είναι οριστική. 
+        </div>
     </div>
 </div>
 
-<form asp-action="Delete" method="post">
+<form asp-action="Delete" method="post" class="d-flex gap-2">
     @Html.AntiForgeryToken()
     <input type="hidden" asp-for="Id" />
     <button type="submit" class="btn btn-danger">Οριστική Διαγραφή</button>

@@ -4,27 +4,28 @@
     ViewData["Title"] = "Λεπτομέρειες Υπηρεσίας";
 }
 
-<h2>Λεπτομέρειες Υπηρεσίας</h2>
+<h2 class="mb-3">Λεπτομέρειες Υπηρεσίας</h2>
+<hr />
 
-<div class="card">
+<div class="card shadow-sm border-0">
     <div class="card-body">
-        <dl class="row">
-            <dt class="col-sm-3">Κωδικός</dt>
+        <dl class="row mb-0">
+            <dt class="col-sm-3 fw-semibold">Κωδικός</dt>
             <dd class="col-sm-9">@Model.ServiceCode</dd>
 
-            <dt class="col-sm-3">Περιγραφή</dt>
+            <dt class="col-sm-3 fw-semibold">Περιγραφή</dt>
             <dd class="col-sm-9">@Model.Description</dd>
 
-            <dt class="col-sm-3">Μονάδα Μέτρησης</dt>
+            <dt class="col-sm-3 fw-semibold">Μονάδα Μέτρησης</dt>
             <dd class="col-sm-9">@Model.Unit</dd>
 
-            <dt class="col-sm-3">ΦΠΑ</dt>
+            <dt class="col-sm-3 fw-semibold">ΦΠΑ</dt>
             <dd class="col-sm-9">@Model.VAT</dd>
 
-            <dt class="col-sm-3">Λιανική</dt>
+            <dt class="col-sm-3 fw-semibold">Τιμή Λιανικής</dt>
             <dd class="col-sm-9">@Model.RetailPrice</dd>
 
-            <dt class="col-sm-3">Χονδρική</dt>
+            <dt class="col-sm-3 fw-semibold">Τιμή Χονδρικής</dt>
             <dd class="col-sm-9">@Model.WholesalePrice</dd>
         </dl>
     </div>

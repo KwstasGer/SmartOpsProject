@@ -28,18 +28,32 @@
             <label asp-for="Unit" class="form-label"></label>
             @if (ViewBag.Units != null)
             {
-                    <select asp-for="Unit" class="form-select" asp-items="ViewBag.Units"></select>
+                <select asp-for="Unit" class="form-select" asp-items="ViewBag.Units"></select>
             }
             else
             {
-                    <input asp-for="Unit" class="form-control" />
+                <input asp-for="Unit" class="form-control" />
             }
             <span asp-validation-for="Unit" class="text-danger"></span>
         </div>
 
+        <!-- VAT ως dropdown: 0%, 7%, 13%, 24% -->
         <div class="col-md-4">
             <label asp-for="VAT" class="form-label"></label>
-            <input asp-for="VAT" class="form-control" type="number" step="0.01" />
+            @if (ViewBag.VATs != null)
+            {
+                <select asp-for="VAT" class="form-select" asp-items="ViewBag.VATs"></select>
+            }
+            else
+            {
+                <!-- Fallback με numeric values (σωστό binding σε decimal) -->
+                <select asp-for="VAT" class="form-select">
+                    <option value="0">0%</option>
+                    <option value="7">7%</option>
+                    <option value="13">13%</option>
+                    <option value="24">24%</option>
+                </select>
+            }
             <span asp-validation-for="VAT" class="text-danger"></span>
         </div>
 
@@ -65,5 +79,5 @@
 </form>
 
 @section Scripts {
-        <partial name="_ValidationScriptsPartial" />
+    <partial name="_ValidationScriptsPartial" />
 }

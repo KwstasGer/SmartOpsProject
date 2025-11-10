@@ -1,6 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Mvc.ModelBinding.Validation; // για να μην γίνεται validate το navigation User
-using SmartOpsProject.Models;                            // τύπος User
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Microsoft.EntityFrameworkCore;
+using SmartOpsProject.Models;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SmartOps.Models
 {
@@ -8,32 +10,36 @@ namespace SmartOps.Models
     {
         public int Id { get; set; }
 
-        [Required]
         [Display(Name = "Κωδικός Είδους")]
-        public string ItemCode { get; set; }
+        [StringLength(32)]
+        public string? ItemCode { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Η Περιγραφή είναι υποχρεωτική.")]
         [Display(Name = "Περιγραφή")]
-        public string Description { get; set; }
+        [StringLength(450)]
+        public string Description { get; set; } = string.Empty;
 
-        [Required]
+        [Required(ErrorMessage = "Η Μονάδα Μέτρησης είναι υποχρεωτική.")]
         [Display(Name = "Μονάδα Μέτρησης")]
-        public string Unit { get; set; }
+        [StringLength(50)]
+        public string Unit { get; set; } = string.Empty;
 
-        [Required]
+        [Required(ErrorMessage = "Το ΦΠΑ είναι υποχρεωτικό.")]
         [Display(Name = "ΦΠΑ")]
+        [Range(0, 100, ErrorMessage = "Το ΦΠΑ πρέπει να είναι 0–100.")]
+        [Precision(5, 2)]
         public decimal VAT { get; set; }
 
         [Display(Name = "Τιμή Λιανικής")]
+        [Range(0, 1_000_000)]
+        [Precision(18, 2)]
         public decimal? RetailPrice { get; set; }
 
         [Display(Name = "Τιμή Χονδρικής")]
+        [Range(0, 1_000_000)]
+        [Precision(18, 2)]
         public decimal? WholesalePrice { get; set; }
 
-        [Display(Name = "Εικόνα Προϊόντος")]
-        public string? ImagePath { get; set; }
-
-        // 🔹 Προσθήκες για per-user scoping
         [Required]
         public int UserId { get; set; }
 
