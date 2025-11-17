@@ -8,6 +8,25 @@
     <p class="lead">Επιλέξτε μία ενότητα για διαχείριση:</p>
 </div>
 
+@if (TempData["SuccessMessage"] != null)
+{
+    <div id="successMessage" class="alert alert-success alert-dismissible fade show mb-3" role="alert">
+        @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <script>
+        setTimeout(function () {
+            var alert = document.getElementById("successMessage");
+            if (alert) {
+                var bsAlert = bootstrap.Alert.getOrCreateInstance(alert);
+                bsAlert.close();
+            }
+        }, 3000);
+    </script>
+}
+
+
 <div class="list-group mt-4">
     <a class="list-group-item list-group-item-action list-group-item-success" asp-controller="Invoices" asp-action="Create">
     ➕ Νέο Παραστατικού

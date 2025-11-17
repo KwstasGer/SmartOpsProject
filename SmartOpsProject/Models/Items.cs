@@ -10,7 +10,7 @@ namespace SmartOps.Models
     {
         public int Id { get; set; }
 
-        [Display(Name = "Κωδικός Είδους")]
+        [Display(Name = "Κωδικός Προϊόντος")]
         [StringLength(32)]
         public string? ItemCode { get; set; }
 

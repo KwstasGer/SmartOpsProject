@@ -1,51 +1,88 @@
-﻿@model SmartOpsProject.Models.Invoice
+﻿@model SmartOps.Models.Invoice
 @{
     ViewData["Title"] = $"Παραστατικό {Model.Series}-{Model.Number}/{Model.Year}";
 }
-<h2>@ViewData["Title"]</h2>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="mb-0">@ViewData["Title"]</h2>
+        <div class="d-flex gap-2">
+            <a asp-action="Index" class="btn btn-outline-secondary btn-sm">⟵ Πίσω</a>
+            <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-outline-danger btn-sm">Διαγραφή</a>
+            <button type="button" class="btn btn-primary btn-sm" onclick="window.print()">🖨 Εκτύπωση</button>
+        </div>
+    </div>
+
+<div class="card mb-3">
+    <div class="card-body">
+        <div class="row gy-2">
+            <div class="col-md-4"><strong>Πελάτης:</strong> @Model.Customer?.Name</div>
+            <div class="col-md-4"><strong>Ημ/νία:</strong> @Model.IssueDate.ToString("dd/MM/yyyy")</div>
+            <div class="col-md-2"><strong>Σειρά:</strong> @Model.Series</div>
+            <div class="col-md-2"><strong>Αριθμός:</strong> @Model.Number</div>
+        </div>
+    </div>
+</div>
 
 <div class="card">
-  <div class="card-body">
-    <div class="row mb-2">
-      <div class="col-md-3"><strong>Πελάτης:</strong> @Model.Customer?.Name</div>
-      <div class="col-md-3"><strong>Ημ/νία:</strong> @Model.IssueDate.ToString("dd/MM/yyyy")</div>
-      <div class="col-md-3"><strong>Σειρά:</strong> @Model.Series</div>
-      <div class="col-md-3"><strong>Αριθμός:</strong> @Model.Number</div>
-    </div>
-    <table class="table table-sm">
-      <thead>
-        <tr>
-          <th>Περιγραφή</th>
-          <th class="text-end">Ποσότητα</th>
-          <th class="text-end">Τιμή</th>
-          <th class="text-end">ΦΠΑ %</th>
-          <th class="text-end">Καθαρή</th>
-          <th class="text-end">ΦΠΑ</th>
-          <th class="text-end">Σύνολο</th>
-        </tr>
-      </thead>
-      <tbody>
-                @foreach (var li in Model.Items)
+    <div class="card-body">
+        <table class="table table-sm align-middle mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th style="width:34%">Περιγραφή</th>
+                    <th class="text-end" style="width:10%">Ποσ.</th>
+                    <th class="text-end" style="width:14%">Τιμή</th>
+                    <th class="text-end" style="width:10%">ΦΠΑ %</th>
+                    <th class="text-end" style="width:10%">Καθαρή</th>
+                    <th class="text-end" style="width:10%">ΦΠΑ</th>
+                    <th class="text-end" style="width:12%">Σύνολο</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var li in Model.Lines)
                 {
-            <tr>
-              <td>@li.Description</td>
-              <td class="text-end">@li.Quantity</td>
-              <td class="text-end">@li.UnitPrice.ToString("N2")</td>
-              <td class="text-end">@li.VatRate</td>
-              <td class="text-end">@li.LineNet.ToString("N2")</td>
-              <td class="text-end">@li.LineVat.ToString("N2")</td>
-              <td class="text-end">@li.LineGross.ToString("N2")</td>
-            </tr>
+                    <tr>
+                        <td>
+                            @{
+                                var desc = li.Item?.Description ?? li.Service?.Description ?? "";
+                            }
+                            @desc
+                        </td>
+                        <td class="text-end">@li.Quantity.ToString("N2")</td>
+                        <td class="text-end">@li.UnitPrice.ToString("N2")</td>
+                        <td class="text-end">@((li.VatRate * 100).ToString("0.#"))%</td>
+                        <td class="text-end">@li.Net.ToString("N2")</td>
+                        <td class="text-end">@li.VatAmount.ToString("N2")</td>
+                        <td class="text-end">@li.Gross.ToString("N2")</td>
+                    </tr>
                 }
-      </tbody>
-      <tfoot>
-        <tr>
-          <th colspan="4" class="text-end">Σύνολα:</th>
-          <th class="text-end">@Model.TotalNet.ToString("N2")</th>
-          <th class="text-end">@Model.TotalVat.ToString("N2")</th>
-          <th class="text-end">@Model.TotalGross.ToString("N2")</th>
-        </tr>
-      </tfoot>
-    </table>
-  </div>
+            </tbody>
+
+            <tfoot class="table-light">
+                <tr>
+                    <th colspan="4" class="text-end">Σύνολα:</th>
+                    <th class="text-end">@Model.TotalNet.ToString("N2")</th>
+                    <th class="text-end">@Model.TotalVat.ToString("N2")</th>
+                    <th class="text-end">@Model.TotalGross.ToString("N2")</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
 </div>
+
+
+<style>
+    @@media print {
+        .btn, .d-flex > a.btn, .d-flex > button.btn {
+            display: none !important;
+        }
+
+        .card {
+            border: none !important;
+            box-shadow: none !important;
+        }
+
+        .table {
+            font-size: 12px;
+        }
+    }
+</style>

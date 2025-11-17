@@ -5,13 +5,13 @@
 }
 
 <div class="d-flex justify-content-between align-items-center mb-3">
-    <h2>Είδη</h2>
-    <a asp-action="Create" class="btn btn-success">+ Νέο Είδος</a>
+    <h2>Προϊόντα</h2>
+    <a asp-action="Create" class="btn btn-success">+ Νέο Προϊόν</a>
 </div>
 
 @if (TempData["SuccessMessage"] != null)
 {
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <div id="successMessage" class="alert alert-success alert-dismissible fade show" role="alert">
         @TempData["SuccessMessage"]
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
@@ -104,6 +104,23 @@
 
 @section Scripts {
     <script>
+        // Auto-hide για μήνυμα επιτυχίας
+        window.addEventListener('DOMContentLoaded', function () {
+            setTimeout(function () {
+                var alertEl = document.getElementById("successMessage");
+                if (!alertEl) return;
+
+                if (typeof bootstrap !== "undefined" && bootstrap.Alert) {
+                    var bsAlert = bootstrap.Alert.getOrCreateInstance(alertEl);
+                    bsAlert.close();
+                } else {
+                    alertEl.style.display = "none";
+                }
+            }, 3000);
+        });
+    </script>
+
+    <script>
         (() => {
             const input = document.getElementById('itemSearch');
             const clearBtn = document.getElementById('clearSearch');
@@ -114,13 +131,14 @@
             const rowsCountEl = document.getElementById('rowsCount');
             rowsTotalEl.textContent = dataRows.length.toString();
 
-            const norm = s => (s||'').toString()
-                .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+            const norm = s => (s || '')
+                .toString()
+                .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
                 .toLowerCase().trim();
 
-            const filterCols = [0,1,2,4,5]; // Κωδ, Περιγραφή, ΜΜ, Λιανική, Χονδρική
+            const filterCols = [0, 1, 2, 4, 5]; // Κωδ, Περιγραφή, ΜΜ, Λιανική, Χονδρική
 
-            let t=null;
+            let t = null;
             const onSearch = () => {
                 const q = norm(input.value);
                 let visible = 0;
@@ -143,7 +161,7 @@
 
             const deb = () => { clearTimeout(t); t = setTimeout(onSearch, 150); };
             input.addEventListener('input', deb);
-            clearBtn.addEventListener('click', () => { input.value=''; onSearch(); input.focus(); });
+            clearBtn.addEventListener('click', () => { input.value = ''; onSearch(); input.focus(); });
             onSearch();
         })();
     </script>

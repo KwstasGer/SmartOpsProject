@@ -4,7 +4,7 @@
     ViewData["Title"] = "Νέο Προϊόν";
 }
 
-<h2 class="mb-3">Νέο Είδος</h2>
+<h2 class="mb-3">Νέο Προϊόν</h2>
 
 <form asp-action="Create" method="post" enctype="multipart/form-data">
     @Html.AntiForgeryToken()
@@ -12,7 +12,7 @@
     <div asp-validation-summary="All" class="text-danger mb-3"></div>
 
     <div class="alert alert-info">
-        Μπορείτε να ορίσετε δικό σας <strong>Κωδικό Είδους</strong> ή να αφήσετε το πεδίο
+        Μπορείτε να ορίσετε δικό σας <strong>Κωδικό Προϊόντος</strong> ή να αφήσετε το πεδίο
         με <strong>*</strong> (ή κενό) για αυτόματη δημιουργία.
     </div>
 
@@ -29,7 +29,7 @@
         <!-- Περιγραφή -->
         <div class="col-md-8">
             <label asp-for="Description" class="form-label"></label>
-            <input asp-for="Description" class="form-control" placeholder="Περιγραφή είδους" />
+            <input asp-for="Description" class="form-control" />
             <span asp-validation-for="Description" class="text-danger"></span>
         </div>
 

@@ -1,9 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using SmartOpsProject.Models;
 using SmartOpsProject.Services;
 
@@ -36,9 +39,14 @@ namespace SmartOps.Controllers
             if (CurrentUserId == 0) return RedirectToAction("Login", "Account");
 
             SetUnits();          // dropdown Μονάδων
-            SetVATs(null);       // dropdown ΦΠΑ (0,7,13,24)
+            SetVATs(null);       // dropdown ΦΠΑ (0,6,13,24)
 
-            var model = new Service { UserId = CurrentUserId };
+            var model = new Service
+            {
+                UserId = CurrentUserId,
+                ServiceCode = "*"   // * = αυτόματος κωδικός, όπως στους πελάτες/προμηθευτές
+            };
+
             return View(model);
         }
 
@@ -53,18 +61,57 @@ namespace SmartOps.Controllers
             // να μη γίνεται validate το navigation
             ModelState.Remove(nameof(Service.User));
 
+            service.UserId = uid;
+
+            // Τι έγραψε ο χρήστης στο πεδίο κωδικού;
+            var codeInput = service.ServiceCode?.Trim();
+            var autoCode = string.IsNullOrEmpty(codeInput) || codeInput == "*" || codeInput == "-";
+
+            // ⭐ Αν είναι *, -, κενό => αυτόματη αρίθμηση (0001, 0002, ...)
+            if (autoCode)
+            {
+                service.ServiceCode = await GenerateNextServiceCodeAsync(uid);
+            }
+
+            // Re-validate με τον τελικό κωδικό
+            ModelState.Clear();
+            TryValidateModel(service);
+
             if (!ModelState.IsValid)
             {
                 SetUnits(service.Unit);
                 SetVATs(service.VAT);
+
+                // Να ξαναφαίνεται * στο UI αν είχε ζητήσει auto
+                if (autoCode) service.ServiceCode = "*";
+
                 return View(service);
             }
 
-            service.UserId = uid;
-            await _serviceService.AddAsync(service);
+            try
+            {
+                await _serviceService.AddAsync(service);
+                TempData["SuccessMessage"] = "Η υπηρεσία δημιουργήθηκε με επιτυχία.";
+                return RedirectToAction(nameof(Index));
+            }
+            // Unique violation στο ServiceCode (αν έχεις unique index)
+            catch (DbUpdateException ex) when (ex.InnerException is SqlException sql &&
+                                               (sql.Number == 2601 || sql.Number == 2627))
+            {
+                if (autoCode)
+                    ModelState.AddModelError(string.Empty, "Παρουσιάστηκε σφάλμα στην αυτόματη δημιουργία κωδικού.");
+                else
+                    ModelState.AddModelError(nameof(Service.ServiceCode), "Ο κωδικός χρησιμοποιείται ήδη.");
+            }
+            catch (DbUpdateException ex)
+            {
+                ModelState.AddModelError(string.Empty, "DB error: " + (ex.InnerException?.Message ?? ex.Message));
+            }
 
-            TempData["SuccessMessage"] = "Η υπηρεσία δημιουργήθηκε με επιτυχία.";
-            return RedirectToAction(nameof(Index));
+            SetUnits(service.Unit);
+            SetVATs(service.VAT);
+            if (autoCode) service.ServiceCode = "*";
+            return View(service);
         }
 
         // ----------------------- EDIT (GET) ------------------
@@ -105,7 +152,7 @@ namespace SmartOps.Controllers
 
             // Ενημέρωση επιτρεπτών πεδίων
             service.UserId = uid;
-            service.ServiceCode = input.ServiceCode;   // στο Edit το έχεις readonly+hidden, οπότε μένει ίδιο
+            service.ServiceCode = input.ServiceCode;   // στο Edit είναι readonly+hidden, άρα μένει ίδιο
             service.Description = input.Description;
             service.Unit = input.Unit;
             service.VAT = input.VAT;
@@ -160,14 +207,14 @@ namespace SmartOps.Controllers
         }
 
         /// <summary>
-        /// Δίνει dropdown για ΦΠΑ με ετικέτες 0%,7%,13%,24% αλλά values αριθμητικά (string) ώστε να δένουν με decimal VAT.
+        /// Δίνει dropdown για ΦΠΑ με ετικέτες 0%,6%,13%,24% αλλά values αριθμητικά (string) ώστε να δένουν με decimal VAT.
         /// </summary>
         private void SetVATs(decimal? selected = null)
         {
             var items = new List<SelectListItem>
             {
                 new SelectListItem("0%",  "0"),
-                new SelectListItem("7%",  "7"),
+                new SelectListItem("6%",  "6"),
                 new SelectListItem("13%","13"),
                 new SelectListItem("24%","24"),
             };
@@ -181,6 +228,22 @@ namespace SmartOps.Controllers
 
             // Προσοχή: Τα Views πρέπει να δένουν με αυτό το όνομα (VATs)
             ViewBag.VATs = items;
+        }
+
+        // ======================= HELPERS =====================
+
+        // Υπολογισμός επόμενου κωδικού Υπηρεσίας (0001, 0002, ...)
+        private async Task<string> GenerateNextServiceCodeAsync(int userId)
+        {
+            var allForUser = await _serviceService.GetAllByUserAsync(userId);
+
+            var numeric = allForUser
+                .Where(s => !string.IsNullOrWhiteSpace(s.ServiceCode) &&
+                            s.ServiceCode.All(char.IsDigit))
+                .Select(s => int.TryParse(s.ServiceCode, out var n) ? n : 0);
+
+            var next = (numeric.Any() ? numeric.Max() : 0) + 1;
+            return next.ToString("D4");
         }
     }
 }

@@ -7,81 +7,102 @@
 <h2>Dashboard</h2>
 
 <ul class="nav nav-tabs" id="dashTabs" role="tablist">
-  <li class="nav-item" role="presentation">
-    <button class="nav-link active" id="top-tab" data-bs-toggle="tab" data-bs-target="#top" type="button" role="tab">Top 5 Πελάτες</button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link" id="sales-tab" data-bs-toggle="tab" data-bs-target="#sales" type="button" role="tab">Πωλήσεις @Model.Year</button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link" id="open-tab" data-bs-toggle="tab" data-bs-target="#open" type="button" role="tab">Ανεξόφλητα Υπόλοιπα</button>
-  </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="top-tab" data-bs-toggle="tab" data-bs-target="#top" type="button" role="tab">
+            Top 5 Πελάτες
+        </button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="sales-tab" data-bs-toggle="tab" data-bs-target="#sales" type="button" role="tab">
+            Πωλήσεις @Model.Year
+        </button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="items-tab" data-bs-toggle="tab" data-bs-target="#items" type="button" role="tab">
+            Top 5 Είδη
+        </button>
+    </li>
 </ul>
 
 <div class="tab-content mt-3">
-  <!-- Tab 1: Top 5 -->
-  <div class="tab-pane fade show active" id="top" role="tabpanel">
-    <table class="table table-sm table-striped align-middle">
-      <thead><tr><th>#</th><th>Πελάτης</th><th class="text-end">Ποσό</th></tr></thead>
-      <tbody>
+    <!-- Tab 1: Top 5 Πελάτες -->
+    <div class="tab-pane fade show active" id="top" role="tabpanel">
+        <table class="table table-sm table-striped align-middle">
+            <thead>
+                <tr>
+                    <th style="width:5%;">#</th>
+                    <th>Πελάτης</th>
+                    <th class="text-end">Ποσό</th>
+                </tr>
+            </thead>
+            <tbody>
                 @if (Model.TopCustomers.Any())
                 {
                     var idx = 1;
                     foreach (var row in Model.TopCustomers)
                     {
-                      <tr>
-                        <td>@idx</td>
-                        <td>@row.CustomerName</td>
-                        <td class="text-end">@row.Amount.ToString("N2")</td>
-                      </tr>
+                        <tr>
+                            <td>@idx</td>
+                            <td>@row.CustomerName</td>
+                            <td class="text-end">@row.Amount.ToString("N2")</td>
+                        </tr>
                         idx++;
                     }
                 }
                 else
                 {
-              <tr><td colspan="3" class="text-muted">Δεν βρέθηκαν δεδομένα.</td></tr>
+                    <tr><td colspan="3" class="text-muted">Δεν βρέθηκαν δεδομένα.</td></tr>
                 }
-      </tbody>
-    </table>
-  </div>
-
-  <!-- Tab 2: Sales -->
-  <div class="tab-pane fade" id="sales" role="tabpanel">
-    <div class="card">
-      <div class="card-body">
-        <h5>Μηνιαίες Πωλήσεις (@Model.Year)</h5>
-        <canvas id="salesChart" height="90"></canvas>
-      </div>
+            </tbody>
+        </table>
     </div>
-  </div>
 
-  <!-- Tab 3: Open balances -->
-  <div class="tab-pane fade" id="open" role="tabpanel">
-    <table class="table table-sm table-striped align-middle">
-      <thead><tr><th>Πελάτης</th><th class="text-end">Ανοικτό Υπόλοιπο</th></tr></thead>
-      <tbody>
-                @if (Model.OpenBalances.Any())
+    <!-- Tab 2: Πωλήσεις -->
+    <div class="tab-pane fade" id="sales" role="tabpanel">
+        <div class="card">
+            <div class="card-body">
+                <h5>Μηνιαίες Πωλήσεις (@Model.Year)</h5>
+                <canvas id="salesChart" height="90"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tab 3: Top 5 Είδη (σε ποσότητα) -->
+    <div class="tab-pane fade" id="items" role="tabpanel">
+        <table class="table table-sm table-striped align-middle">
+            <thead>
+                <tr>
+                    <th style="width:5%;">#</th>
+                    <th>Είδος</th>
+                    <th class="text-end">Ποσότητα</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.TopItems != null && Model.TopItems.Any())
                 {
-                    foreach (var row in Model.OpenBalances)
+                    var idx = 1;
+                    foreach (var row in Model.TopItems)
                     {
-                      <tr>
-                        <td>@row.CustomerName</td>
-                        <td class="text-end">@row.OpenAmount.ToString("N2")</td>
-                      </tr>
+                        <tr>
+                            <td>@idx</td>
+                            <td>@row.ItemCode - @row.ItemDescription</td>
+                            <td class="text-end">@row.Quantity.ToString("N2")</td>
+                        </tr>
+                        idx++;
                     }
                 }
                 else
                 {
-              <tr><td colspan="2" class="text-muted">Δεν υπάρχουν ανοικτά υπόλοιπα ή δεν έχει ενεργοποιηθεί η καταγραφή πληρωμών.</td></tr>
+                    <tr><td colspan="3" class="text-muted">Δεν βρέθηκαν πωλήσεις ειδών.</td></tr>
                 }
-      </tbody>
-    </table>
-  </div>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 @section Scripts {
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-      <script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
         (() => {
           const data = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.SalesByMonth));
           const ctx = document.getElementById('salesChart');
@@ -103,5 +124,5 @@
             });
           }
         })();
-      </script>
+    </script>
 }

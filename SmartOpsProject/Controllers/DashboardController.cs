@@ -1,12 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
-using SmartOps.Services;
+using SmartOps.Services;          // <= για TopItemRow & IDashboardService
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace SmartOps.Controllers
 {
     public class DashboardController : Controller
     {
         private readonly IDashboardService _dash;
+
         public DashboardController(IDashboardService dash)
         {
             _dash = dash;
@@ -17,20 +21,26 @@ namespace SmartOps.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            if (CurrentUserId == 0) return RedirectToAction("Login", "Account");
+            if (CurrentUserId == 0)
+                return RedirectToAction("Login", "Account");
 
             var year = DateTime.Today.Year;
 
-            var top = await _dash.GetTopCustomersAsync(CurrentUserId, 5);
-            var sales = await _dash.GetSalesByMonthAsync(CurrentUserId, year);
-            var open = await _dash.GetOpenBalancesAsync(CurrentUserId);
+            // Top 5 πελάτες
+            var topCustomers = await _dash.GetTopCustomersAsync(CurrentUserId, 5);
+
+            // Πωλήσεις ανά μήνα
+            var salesByMonth = await _dash.GetSalesByMonthAsync(CurrentUserId, year);
+
+            // Top 5 είδη σε ποσότητα
+            var topItems = await _dash.GetTopItemsAsync(CurrentUserId, year, 5);
 
             var vm = new DashboardVm
             {
                 Year = year,
-                TopCustomers = top,
-                SalesByMonth = sales,
-                OpenBalances = open
+                TopCustomers = topCustomers,
+                SalesByMonth = salesByMonth,
+                TopItems = topItems   // εδώ πλέον ταιριάζουν οι τύποι
             };
 
             return View(vm);
@@ -40,8 +50,17 @@ namespace SmartOps.Controllers
     public class DashboardVm
     {
         public int Year { get; set; }
-        public List<(string CustomerName, decimal Amount)> TopCustomers { get; set; } = new();
-        public decimal[] SalesByMonth { get; set; } = new decimal[12];
-        public List<(string CustomerName, decimal OpenAmount)> OpenBalances { get; set; } = new();
+
+        // Top πελάτες (ίδιο tuple με πριν)
+        public List<(string CustomerName, decimal Amount)> TopCustomers { get; set; }
+            = new();
+
+        // Πωλήσεις ανά μήνα
+        public decimal[] SalesByMonth { get; set; }
+            = new decimal[12];
+
+        // ⭐ Top 5 είδη – χρησιμοποιούμε την κλάση από SmartOps.Services
+        public List<TopItemRow> TopItems { get; set; }
+            = new();
     }
 }

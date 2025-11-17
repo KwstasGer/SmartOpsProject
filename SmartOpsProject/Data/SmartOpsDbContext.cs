@@ -11,113 +11,83 @@ namespace SmartOps.Data
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Item> Items { get; set; }
         public DbSet<Service> Services { get; set; }
-        public DbSet<Invoice> Invoices { get; set; }
-        // public DbSet<InvoiceLine> InvoiceLines { get; set; }
-        public DbSet<InvoiceItem> InvoicesItems { get; set; }
         public DbSet<Supplier> Suppliers { get; set; }
         public DbSet<User> Users { get; set; }
+
+        public DbSet<Invoice> Invoices { get; set; }
+        public DbSet<InvoiceLine> InvoiceLines { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            // -------------------- Relations --------------------
-            // Customer → Users
-            modelBuilder.Entity<Customer>()
-                .HasOne(c => c.User)
-                .WithMany()
-                .HasForeignKey(c => c.UserId)
-                .OnDelete(DeleteBehavior.Restrict);
+            // Ρητό table name για ασφάλεια
+            modelBuilder.Entity<InvoiceLine>().ToTable("InvoiceLines");
 
-            // Invoice → Users
+            // -------- Σχέσεις --------
             modelBuilder.Entity<Invoice>()
-                .HasOne(i => i.User)
-                .WithMany()
+                .HasOne(i => i.User).WithMany()
                 .HasForeignKey(i => i.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            // Supplier → Users
-            modelBuilder.Entity<Supplier>()
-                .HasOne(s => s.User)
-                .WithMany()
-                .HasForeignKey(s => s.UserId)
+            modelBuilder.Entity<Invoice>()
+                .HasOne(i => i.Customer).WithMany()
+                .HasForeignKey(i => i.CustomerId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            // Item → Users
-            modelBuilder.Entity<Item>()
-                .HasOne(i => i.User)
-                .WithMany()
-                .HasForeignKey(i => i.UserId)
+            modelBuilder.Entity<InvoiceLine>()
+                .HasOne(l => l.Invoice)
+                .WithMany(i => i.Lines)
+                .HasForeignKey(l => l.InvoiceId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<InvoiceLine>()
+                .HasOne(l => l.Item).WithMany()
+                .HasForeignKey(l => l.ItemId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            // Service → Users
-            modelBuilder.Entity<Service>()
-                .HasOne(sv => sv.User)
-                .WithMany()
-                .HasForeignKey(sv => sv.UserId)
-                .OnDelete(DeleteBehavior.Restrict);
 
-            // -------------------- Indexes --------------------
-            modelBuilder.Entity<Customer>()
-                .HasIndex(c => new { c.UserId, c.Name });
-
-            modelBuilder.Entity<Supplier>()
-                .HasIndex(s => new { s.UserId, s.Name });
-
-            modelBuilder.Entity<Item>()
-                .HasIndex(i => new { i.UserId, i.Description });
-
-            modelBuilder.Entity<Service>()
-                .HasIndex(sv => new { sv.UserId, sv.Description });
-
+            // -------- Μοναδικός δείκτης --------
             modelBuilder.Entity<Invoice>()
                 .HasIndex(i => new { i.UserId, i.Series, i.Year, i.Number })
                 .IsUnique();
 
-            // -------------------- User entity --------------------
-            modelBuilder.Entity<User>(e =>
+            // -------- Τύποι/precision --------
+            modelBuilder.Entity<Invoice>(e =>
             {
-                e.Property(u => u.Username)
-                    .HasMaxLength(160)
-                    .IsRequired();
-
-                e.Property(u => u.PasswordHash)
-                    .HasMaxLength(256)
-                    .IsRequired();
-
-                e.HasIndex(u => u.Username).IsUnique();
+                e.Property(p => p.IssueDate).HasColumnType("date");
+                e.Property(p => p.TotalNet).HasColumnType("decimal(18,2)");
+                e.Property(p => p.TotalVat).HasColumnType("decimal(18,2)");
+                e.Property(p => p.TotalGross).HasColumnType("decimal(18,2)");
+                e.Property(p => p.PaidAmount).HasColumnType("decimal(18,2)");
             });
 
-            // -------------------- Customer auto code --------------------
+            modelBuilder.Entity<InvoiceLine>(e =>
+            {
+                e.Property(p => p.Quantity).HasColumnType("decimal(18,3)");
+                e.Property(p => p.UnitPrice).HasColumnType("decimal(18,2)");
+                e.Property(p => p.VatRate).HasColumnType("decimal(6,4)");
+                // Αν κρατήσεις Description ως snapshot:
+                // e.Property(p => p.Description).HasMaxLength(200);
+            });
 
-
-            // Υπολογιζόμενος κωδικός: '0' + padding 5 ψηφίων (000001, 000002, ...)
             modelBuilder.Entity<Customer>(e =>
             {
                 e.Property(x => x.CustomerCode)
-                 .HasColumnType("varchar(16)")
-                 .IsRequired(false)
-                 .ValueGeneratedOnAdd()
-                 .HasDefaultValueSql("('0' + RIGHT('00000' + CONVERT(varchar(10), NEXT VALUE FOR dbo.CustomerCodeSeq), 5))");
+                 .HasMaxLength(32)
+                 .IsRequired()                     // αν θες not null στο schema
+                 .ValueGeneratedOnAdd()            // ΠΟΛΥ ΣΗΜΑΝΤΙΚΟ
+                 .HasDefaultValueSql("( 'C' + RIGHT('000000' + CAST(NEXT VALUE FOR dbo.CustomerCodeSeq AS varchar(6)), 6) )");
 
-                e.HasIndex(x => x.CustomerCode).IsUnique();
+                e.HasIndex(x => new { x.UserId, x.CustomerCode })
+                 .IsUnique()
+                 .HasDatabaseName("UX_Customers_UserId_CustomerCode");
+
+                e.Property(x => x.Name).HasMaxLength(160).IsRequired();
+                e.Property(x => x.VatStatus).HasMaxLength(32).IsRequired();
+                e.Property(x => x.CustomerCategory).HasMaxLength(32).IsRequired();
             });
-
-            // --- ITEM AUTO CODE ---
-            modelBuilder.HasSequence<int>("ItemCodeSeq").StartsAt(1).IncrementsBy(1);
-
-            modelBuilder.Entity<Item>(e =>
-            {
-                e.HasIndex(i => new { i.UserId, i.Description });
-
-                e.Property(i => i.ItemCode)
-                 .HasDefaultValueSql(
-                    "('0' + RIGHT('00000' + CONVERT(varchar(10), NEXT VALUE FOR [ItemCodeSeq]), 5))"
-                 );
-            });
-
 
         }
-
     }
 }

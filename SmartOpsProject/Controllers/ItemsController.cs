@@ -197,7 +197,7 @@ namespace SmartOps.Controllers
             var vatItems = new List<SelectListItem>
             {
                 new SelectListItem("0%",  "0"),
-                new SelectListItem("7%",  "7"),
+                new SelectListItem("6%",  "6"),
                 new SelectListItem("13%", "13"),
                 new SelectListItem("24%", "24")
             };

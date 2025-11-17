@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SmartOpsProject.Models.Invoice>
+﻿@model IEnumerable<SmartOps.Models.Invoice>
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     ViewData["Title"] = "Παραστατικά";
@@ -34,7 +34,10 @@
                         <td class="text-end">@inv.TotalVat.ToString("N2")</td>
                         <td class="text-end">@inv.TotalGross.ToString("N2")</td>
                         <td class="text-end">
-                            <a asp-action="Details" asp-route-id="@inv.Id" class="btn btn-outline-secondary btn-sm">Λεπτομέρειες</a>
+                            <div class="btn-group-vertical btn-group-sm action-stack" role="group" aria-label="Actions">
+                                <a asp-action="Details" asp-route-id="@inv.Id" class="btn btn-primary">Λεπτομέρειες</a>
+                                <a asp-action="Delete" asp-route-id="@inv.Id" class="btn btn-outline-danger">Διαγραφή</a>
+                            </div>
                         </td>
                     </tr>
             }

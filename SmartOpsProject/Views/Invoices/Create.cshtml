@@ -8,148 +8,331 @@
 
 <form asp-action="Create" method="post">
     @Html.AntiForgeryToken()
+    <div asp-validation-summary="All" class="text-danger mb-2"></div>
 
-    <div class="row g-3 align-items-start">
-        <!-- Αριστερά: Σειρά, Πελάτης, Τρόπος Πληρωμής -->
-        <div class="col-md-9">
-            <div class="row g-3">
-                <div class="col-md-3">
-                    <label asp-for="Series" class="form-label"></label>
-                    <select asp-for="Series" class="form-control" asp-items="ViewBag.SeriesOptions">
-                        <option value="">-- Επιλέξτε --</option>
-                    </select>
-                    <span asp-validation-for="Series" class="text-danger"></span>
-                </div>
+    <!-- Κρατάμε τον τύπο παραστατικού (Items / Services / Purchases) -->
+    <input type="hidden" asp-for="InvoiceType" />
 
-                <div class="col-md-5">
-                    <label asp-for="CustomerId" class="form-label"></label>
-                    <select asp-for="CustomerId" class="form-control" asp-items="Model.Customers">
-                        <option value="">-- Επιλέξτε --</option>
-                    </select>
-                    <span asp-validation-for="CustomerId" class="text-danger"></span>
-                </div>
-
-                <div class="col-md-4">
-                    <label asp-for="PaymentMethod" class="form-label"></label>
-                    <select asp-for="PaymentMethod" class="form-control" asp-items="ViewBag.PaymentOptions"></select>
-                    <span asp-validation-for="PaymentMethod" class="text-danger"></span>
-                </div>
-            </div>
+    <div class="row g-3">
+        <div class="col-md-3">
+            <label asp-for="Series" class="form-label">Σειρά</label>
+            <select asp-for="Series" class="form-control" asp-items="ViewBag.SeriesOptions"></select>
         </div>
-
-        <!-- Δεξιά: μικρή Ημ/νία, δεξιά στοίχιση -->
-        <div class="col-md-3 ms-auto">
-            <label asp-for="IssueDate" class="form-label d-block text-end"></label>
-            <input asp-for="IssueDate" type="date" class="form-control form-control-sm text-end" />
-            <span asp-validation-for="IssueDate" class="text-danger d-block text-end"></span>
+        <div class="col-md-4">
+            <label asp-for="CustomerId" class="form-label">
+                @(Model.InvoiceType == "Purchases" ? "Προμηθευτής" : "Πελάτης")
+            </label>
+            <select asp-for="CustomerId" class="form-control" asp-items="ViewBag.CustomerOptions">
+                <option value="">-- Επιλέξτε --</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label asp-for="PaymentMethod" class="form-label">Τρόπος Πληρωμής</label>
+            <select asp-for="PaymentMethod" class="form-control">
+                <option value="0">Μετρητά</option>
+                <option value="1">Κάρτα</option>
+                <option value="2">Τράπεζα</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <label asp-for="IssueDate" class="form-label">Ημ/νία</label>
+            <input asp-for="IssueDate" class="form-control" type="date" />
         </div>
     </div>
 
     <hr />
 
     <h5>Γραμμές</h5>
-    <table class="table table-sm" id="linesTable">
+    <table class="table table-sm align-middle">
         <thead>
             <tr>
-                <th style="width:28%">Είδος</th>
-                <th class="text-end" style="width:10%">Ποσότητα</th>
-                <th class="text-end" style="width:14%">Τιμή</th>
-                <th class="text-end" style="width:10%">ΦΠΑ %</th>
-                <th style="width:28%">Σχόλια</th>
-                <th style="width:6%"></th>
+                <th style="width:34%">
+                    @(Model.InvoiceType == "Services" ? "Υπηρεσία" : "Είδος")
+                </th>
+                <th style="width:12%">Ποσότητα</th>
+                <th style="width:14%">Τιμή</th>
+                <th style="width:10%">ΦΠΑ %</th>
+                <th style="width:14%">Σύνολο</th>
+                <th style="width:4%"></th>
             </tr>
         </thead>
-        <tbody id="linesBody">
+        <tbody id="lines-body">
             @for (int i = 0; i < Model.Lines.Count; i++)
             {
-                    <tr>
-                        <!-- Είδος -->
-                        <td>
-                            <select class="form-control" asp-for="Lines[i].ItemId" asp-items="Model.Items">
-                                <option value="">-- Επιλέξτε --</option>
-                            </select>
-                        </td>
+                <tr data-index="@i">
+                    <td>
+                        <!-- Τύπος γραμμής (Item / Service) -->
+                        <input asp-for="Lines[@i].Type" type="hidden" class="line-type" />
 
-                        <!-- Ποσότητα -->
-                        <td><input asp-for="Lines[i].Quantity" class="form-control text-end" /></td>
+                        <!-- Κατάλογος: μόνο προϊόντα ή μόνο υπηρεσίες, ανάλογα με InvoiceType -->
+                        <select asp-for="Lines[@i].CatalogId"
+                                class="form-control form-control-sm line-catalog">
+                            <option value="">-- Επιλέξτε --</option>
+                            @foreach (var c in Model.CatalogItems)
+                            {
+                                var label = $"{c.Code} - {c.Description} " +
+                                (c.Type == "Service" ? "(Υπηρεσία)" : "(Προϊόν)");
 
-                        <!-- Τιμή -->
-                        <td><input asp-for="Lines[i].UnitPrice" class="form-control text-end" /></td>
-
-                        <!-- ΦΠΑ % (dropdown 24/13/0) -->
-                        <td>
-                            <select class="form-control text-end" name="Lines[@i].VatRate">
-                            @if (Model.Lines[i].VatRate == 24)
-                            {
-                                        <option value="24" selected="selected">24</option>
+                                if (Model.Lines[i].CatalogId == c.Id)
+                                {
+                                    <option value="@c.Id"
+                                            data-type="@c.Type"
+                                            data-vat="@c.VatRate"
+                                            data-retail="@c.RetailPrice"
+                                            data-wholesale="@c.WholesalePrice"
+                                            selected>
+                                        @label
+                                    </option>
+                                }
+                                else
+                                {
+                                    <option value="@c.Id"
+                                            data-type="@c.Type"
+                                            data-vat="@c.VatRate"
+                                            data-retail="@c.RetailPrice"
+                                            data-wholesale="@c.WholesalePrice">
+                                        @label
+                                    </option>
+                                }
                             }
-                            else
-                            {
-                                        <option value="24">24</option>
-                            }
-                            @if (Model.Lines[i].VatRate == 13)
-                            {
-                                        <option value="13" selected="selected">13</option>
-                            }
-                            else
-                            {
-                                        <option value="13">13</option>
-                            }
-                            @if (Model.Lines[i].VatRate == 0)
-                            {
-                                        <option value="0" selected="selected">0</option>
-                            }
-                            else
-                            {
-                                        <option value="0">0</option>
-                            }
-                            </select>
-                        </td>
-
-                        <!-- Σχόλια (πρώην Περιγραφή) τέρμα δεξιά -->
-                        <td><input asp-for="Lines[i].Description" class="form-control" placeholder="Σχόλια" /></td>
-
-                        <!-- remove -->
-                        <td><button type="button" class="btn btn-outline-danger btn-sm" onclick="removeLine(this)">✕</button></td>
-                    </tr>
+                        </select>
+                    </td>
+                    <td>
+                        <input asp-for="Lines[@i].Quantity" class="form-control form-control-sm qty"
+                               inputmode="decimal" step="0.01" min="0" />
+                    </td>
+                    <td>
+                        <input asp-for="Lines[@i].UnitPrice" class="form-control form-control-sm price"
+                               inputmode="decimal" step="0.01" min="0" />
+                    </td>
+                    <td>
+                        <div class="input-group input-group-sm">
+                            <input asp-for="Lines[@i].VatRate"
+                                   class="form-control form-control-sm vat"
+                                   step="1"
+                                   min="0"
+                                   max="100" />
+                            <span class="input-group-text">%</span>
+                        </div>
+                    </td>
+                    <td>
+                        <input class="form-control form-control-sm total text-end" value="0.00" readonly />
+                    </td>
+                    <td class="text-end">
+                        <button type="button" class="btn btn-sm btn-outline-danger remove-line">✕</button>
+                    </td>
+                </tr>
             }
         </tbody>
     </table>
 
-    <div class="d-flex justify-content-between">
-        <button type="button" class="btn btn-outline-secondary" id="addLineBtn">+ Γραμμή</button>
+    <!-- Κουμπί προσθήκης νέας γραμμής -->
+    <div class="mb-3">
+        <button type="button" class="btn btn-sm btn-outline-primary" id="add-line">
+            + Προσθήκη γραμμής
+        </button>
+    </div>
+
+    <div class="d-flex gap-2">
         <button type="submit" class="btn btn-primary">Αποθήκευση</button>
+        <a asp-action="Index" class="btn btn-secondary">Άκυρο</a>
     </div>
 </form>
 
-@section Scripts {
-        <script>
-          const tbody = document.getElementById('linesBody');
-          const itemsOptionsHtml = `@Html.Raw(string.Join("", Model.Items.Select(it => $"<option value='{it.Value}'>{it.Text}</option>")))`;
-          const vatOptionsHtml = "<option value='24'>24</option><option value='13'>13</option><option value='0'>0</option>";
+<style>
+    .table td, .table th {
+        vertical-align: middle;
+    }
 
-          document.getElementById('addLineBtn').addEventListener('click', () => {
-            const idx = tbody.querySelectorAll('tr').length;
-            const tr = document.createElement('tr');
-            tr.innerHTML = `
-              <td>
-                <select name="Lines[${idx}].ItemId" class="form-control">
-                  <option value="">-- Επιλέξτε --</option>
-                  ${itemsOptionsHtml}
-                </select>
-              </td>
-              <td><input name="Lines[${idx}].Quantity" class="form-control text-end" value="1"/></td>
-              <td><input name="Lines[${idx}].UnitPrice" class="form-control text-end" value="0"/></td>
-              <td>
-                <select name="Lines[${idx}].VatRate" class="form-control text-end">
-                  ${vatOptionsHtml}
-                </select>
-              </td>
-              <td><input name="Lines[${idx}].Description" class="form-control" placeholder="Σχόλια"/></td>
-              <td><button type="button" class="btn btn-outline-danger btn-sm" onclick="removeLine(this)">✕</button></td>`;
-            tbody.appendChild(tr);
-          });
+    input.total {
+        background: #f8f9fa;
+        text-align: right;
+    }
 
-          function removeLine(btn){ btn.closest('tr').remove(); }
-        </script>
-}
+    input[type=number]::-webkit-outer-spin-button,
+    input[type=number]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+</style>
+
+<script>
+    (function () {
+        const body = document.getElementById('lines-body');
+        if (!body) return;
+
+        const addBtn = document.getElementById('add-line');
+        const seriesSelect = document.querySelector('[name="Series"]');
+
+        // Σειρές με τιμή ΜΕ ΦΠΑ (λιανικής) + θέλουμε RetailPrice
+        const vatIncludedSeries = ['ΑΛΠ', 'ΑΠΥ']; // σειρές με τιμή ΜΕ ΦΠΑ
+        const toDec = v => parseFloat((v || '0').toString().replace(',', '.')) || 0;
+
+        function isVatIncluded() {
+            return seriesSelect && vatIncludedSeries.includes(seriesSelect.value);
+        }
+
+        // Template γραμμής (χρησιμοποιείται όταν δεν υπάρχει καμία)
+        let templateRow = null;
+
+        function resetRow(tr) {
+            const select = tr.querySelector('.line-catalog');
+            const qty = tr.querySelector('.qty');
+            const price = tr.querySelector('.price');
+            const vat = tr.querySelector('.vat');
+            const total = tr.querySelector('.total');
+            const typeInput = tr.querySelector('.line-type');
+
+            if (select) select.selectedIndex = 0;
+            if (qty) qty.value = "1,00";
+            if (price) price.value = "0,00";
+            if (vat) vat.value = "24";   // default 24%
+            if (total) total.value = "0.00";
+            if (typeInput) typeInput.value = "";
+        }
+
+        function recalcRow(tr) {
+            if (!tr) return;
+
+            const qtyInput = tr.querySelector('.qty');
+            const priceInput = tr.querySelector('.price');
+            const vatInput = tr.querySelector('.vat');
+            const totalInput = tr.querySelector('.total');
+            if (!qtyInput || !priceInput || !vatInput || !totalInput) return;
+
+            const qty = toDec(qtyInput.value);
+            const pr = toDec(priceInput.value);
+            let vatVal = toDec(vatInput.value);
+            const rate = vatVal > 1 ? vatVal / 100 : vatVal; // δέχεται 24 ή 0.24
+
+            let total;
+            if (isVatIncluded()) {
+                total = qty * pr;              // ΑΛΠ/ΑΠΥ: τιμή = με ΦΠΑ
+            } else {
+                total = (qty * pr) * (1 + rate); // λοιπές σειρές: καθαρή + ΦΠΑ
+            }
+
+            totalInput.value = total.toFixed(2);
+        }
+
+        // Όταν αλλάζει το select, ενημερώνουμε Type + VAT + Τιμή από το είδος
+        function syncType(tr) {
+            const select = tr.querySelector('.line-catalog');
+            const typeInput = tr.querySelector('.line-type');
+            const vatInput = tr.querySelector('.vat');
+            const priceInput = tr.querySelector('.price');
+            const opt = select && select.selectedOptions.length ? select.selectedOptions[0] : null;
+
+            // Τύπος γραμμής (Item / Service)
+            if (typeInput) {
+                typeInput.value = opt ? (opt.dataset.type || '') : '';
+            }
+
+            // ΦΠΑ γραμμής από data-vat (π.χ. 24, 13, 6)
+            if (vatInput && opt && opt.dataset.vat) {
+                vatInput.value = opt.dataset.vat;
+            }
+
+            // --- Αυτόματη Τιμή: Λιανικής ή Χονδρικής ανάλογα με τη Σειρά ---
+            if (priceInput && opt) {
+                const series = seriesSelect ? seriesSelect.value : '';
+                const isRetailSeries = vatIncludedSeries.includes(series); // ΑΛΠ / ΑΠΥ
+
+                const retail = parseFloat(opt.dataset.retail || '0');
+                const wholesale = parseFloat(opt.dataset.wholesale || '0');
+
+                let unitPrice = 0;
+                if (isRetailSeries) {
+                    unitPrice = retail || 0;
+                } else {
+                    unitPrice = wholesale || 0;
+                }
+
+                priceInput.value = unitPrice.toFixed(2);
+            }
+
+            // Υπολογισμός συνολικού ποσού γραμμής
+            recalcRow(tr);
+        }
+
+        // Reindex των ονομάτων (Lines[0], Lines[1] κτλ)
+        function reindex() {
+            Array.from(body.querySelectorAll('tr')).forEach((tr, idx) => {
+                tr.dataset.index = idx;
+                tr.querySelectorAll('[name]').forEach(inp => {
+                    inp.name = inp.name.replace(/Lines\[\d+\]/, `Lines[${idx}]`);
+                    if (inp.id) inp.id = inp.id.replace(/_Lines_\d+__/, `_Lines_${idx}__`);
+                });
+            });
+        }
+
+        // Προετοιμασία template από την πρώτη γραμμή (αν υπάρχει)
+        const firstRow = body.querySelector('tr');
+        if (firstRow) {
+            templateRow = firstRow.cloneNode(true);
+            resetRow(templateRow);
+        }
+
+        // Προσθήκη νέας γραμμής
+        if (addBtn) {
+            addBtn.addEventListener('click', () => {
+                const rows = body.querySelectorAll('tr');
+                let clone;
+
+                if (!rows.length) {
+                    if (!templateRow) return;
+                    clone = templateRow.cloneNode(true);
+                } else {
+                    const last = rows[rows.length - 1];
+                    clone = last.cloneNode(true);
+                    resetRow(clone);
+                }
+
+                body.appendChild(clone);
+                reindex();
+                syncType(clone); // σετάρει Type + VAT + Τιμή
+            });
+        }
+
+        // Υπολογισμός όταν αλλάζει ποσότητα / τιμή / ΦΠΑ
+        body.addEventListener('input', e => {
+            if (e.target.matches('.qty,.price,.vat')) {
+                recalcRow(e.target.closest('tr'));
+            }
+        });
+
+        // Όταν αλλάζει ο κατάλογος, sync τύπος + ΦΠΑ + Τιμή
+        body.addEventListener('change', e => {
+            if (e.target.matches('.line-catalog')) {
+                const tr = e.target.closest('tr');
+                syncType(tr);
+            }
+        });
+
+        // Διαγραφή γραμμής
+        body.addEventListener('click', e => {
+            if (e.target.closest('.remove-line')) {
+                e.target.closest('tr').remove();
+                reindex();
+            }
+        });
+
+        // Αν αλλάξει η σειρά (ΤΔΑ / ΔΑ / ΑΛΠ / ΤΠΥ / ΑΠΥ) ξαναυπολογίζουμε & ξαναβάζουμε τιμή
+        if (seriesSelect) {
+            seriesSelect.addEventListener('change', () => {
+                Array.from(body.querySelectorAll('tr')).forEach(tr => {
+                    syncType(tr);
+                });
+            });
+        }
+
+        // Αρχικός sync (αν υπάρχει ήδη μια default γραμμή)
+        Array.from(body.querySelectorAll('tr')).forEach(tr => {
+            syncType(tr);
+        });
+    })();
+</script>

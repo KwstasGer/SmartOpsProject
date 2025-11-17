@@ -12,7 +12,7 @@
 <!-- 🔹 Μήνυμα επιτυχίας / σφάλματος -->
 @if (TempData["SuccessMessage"] != null)
 {
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <div id="successMessage" class="alert alert-success alert-dismissible fade show" role="alert">
         @TempData["SuccessMessage"]
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
@@ -32,7 +32,8 @@
             <div class="col-md-6">
                 <div class="input-group">
                     <span class="input-group-text"><i class="bi bi-search"></i></span>
-                    <input id="supplierSearch" type="text" class="form-control" placeholder="Αναζήτηση Προμηθευτή… (κωδικός, περιγραφή, ΑΦΜ, χώρα, πόλη, διεύθυνση)">
+                    <input id="supplierSearch" type="text" class="form-control"
+                           placeholder="Αναζήτηση Προμηθευτή… (κωδικός, περιγραφή, ΑΦΜ, χώρα, πόλη, διεύθυνση)">
                     <button id="clearSearch" type="button" class="btn btn-outline-secondary">Καθαρισμός</button>
                 </div>
             </div>
@@ -104,7 +105,24 @@
 
 @section Scripts {
     <script>
-        (function() {
+        // Auto-hide για μήνυμα επιτυχίας
+        window.addEventListener('DOMContentLoaded', function () {
+            setTimeout(function () {
+                var alertEl = document.getElementById("successMessage");
+                if (!alertEl) return;
+
+                if (typeof bootstrap !== "undefined" && bootstrap.Alert) {
+                    var bsAlert = bootstrap.Alert.getOrCreateInstance(alertEl);
+                    bsAlert.close();
+                } else {
+                    alertEl.style.display = "none";
+                }
+            }, 3000);
+        });
+    </script>
+
+    <script>
+        (function () {
             const input = document.getElementById('supplierSearch');
             const clearBtn = document.getElementById('clearSearch');
             const table = document.getElementById('suppliersTable');
@@ -117,18 +135,15 @@
             const dataRows = rows.filter(r => !r.querySelector('td[colspan]'));
             rowsTotalEl.textContent = dataRows.length.toString();
 
-            // Normalize κειμένου (χωρίς τόνους/κεφαλαία) για ελληνικά
             const normalize = (str) => (str || '')
                 .toString()
                 .normalize('NFD')
-                .replace(/[\u0300-\u036f]/g, '') // remove diacritics
+                .replace(/[\u0300-\u036f]/g, '')
                 .toLowerCase()
                 .trim();
 
-            // Ποιες στήλες φιλτράρουμε (0=Κωδ.,1=Περιγραφή,2=ΑΦΜ,3=Χώρα,4=Διεύθυνση,5=Πόλη)
-            const filterCols = [0,1,2,3,4,5];
+            const filterCols = [0, 1, 2, 3, 4, 5];
 
-            // Debounce
             let t = null;
             const onSearch = () => {
                 const q = normalize(input.value);
@@ -146,7 +161,6 @@
                     if (match) visible++;
                 });
 
-                // Απόκρυψη/εμφάνιση της "Δεν υπάρχουν…" γραμμής
                 const emptyRow = rows.find(r => r.querySelector('td[colspan]'));
                 if (emptyRow) emptyRow.style.display = (visible === 0 ? '' : 'none');
 
@@ -165,7 +179,6 @@
                 input.focus();
             });
 
-            // Πρώτη ενημέρωση με αρχική τιμή
             onSearch();
         })();
     </script>

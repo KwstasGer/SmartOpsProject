@@ -1,0 +1,35 @@
+﻿@model SmartOps.Models.Invoice
+@{
+    ViewData["Title"] = "Διαγραφή Παραστατικού";
+}
+
+<h2 class="text-danger mb-3">Διαγραφή Παραστατικού</h2>
+<p>Είστε σίγουροι ότι θέλετε να διαγράψετε το παρακάτω παραστατικό;</p>
+
+<div class="card mb-3">
+    <div class="card-body">
+        <div class="d-flex justify-content-between">
+            <div>
+                <strong>@($"{Model.Series}-{Model.Number}/{Model.Year}")</strong> —
+                @Model.Customer?.Name
+            </div>
+            <div><strong>Ημ/νία:</strong> @Model.IssueDate.ToString("dd/MM/yyyy")</div>
+        </div>
+    </div>
+</div>
+
+<div class="alert alert-warning">
+    Η διαγραφή είναι <strong>οριστική</strong> και δεν μπορεί να αναιρεθεί.
+</div>
+
+<form asp-action="Delete" method="post">
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-danger">Οριστική Διαγραφή</button>
+    <a asp-action="Index" class="btn btn-outline-secondary">Ακύρωση</a>
+</form>
+
+<style>
+    h2.text-danger {
+        font-weight: 700;
+    }
+</style>

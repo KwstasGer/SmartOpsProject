@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<SmartOpsProject.Models.Service>
+@using System.Linq
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     ViewData["Title"] = "Υπηρεσίες";
@@ -12,7 +13,7 @@
 <!-- 🔹 Μηνύματα επιτυχίας / σφάλματος -->
 @if (TempData["SuccessMessage"] != null)
 {
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <div id="successMessage" class="alert alert-success alert-dismissible fade show" role="alert">
         @TempData["SuccessMessage"]
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
@@ -63,7 +64,17 @@
             foreach (var s in Model)
             {
                 <tr>
-                    <td>@s.ServiceCode</td>
+                    <td>
+                        @s.ServiceCode
+
+                        @* Αν ο κωδικός είναι 4ψηφιος αριθμός (0001,0002,0003…) τον θεωρούμε auto *@
+                        @if (!string.IsNullOrWhiteSpace(s.ServiceCode)
+                                        && s.ServiceCode.Length == 4
+                                        && s.ServiceCode.All(char.IsDigit))
+                        {
+                            <span class="badge bg-secondary ms-1">auto</span>
+                        }
+                    </td>
                     <td>@s.Description</td>
                     <td>@s.Unit</td>
                     <td>@s.VAT</td>
@@ -92,6 +103,23 @@
 
 @section Scripts {
     <script>
+        // Auto-hide για μήνυμα επιτυχίας
+        window.addEventListener('DOMContentLoaded', function () {
+            setTimeout(function () {
+                var alertEl = document.getElementById("successMessage");
+                if (!alertEl) return;
+
+                if (typeof bootstrap !== "undefined" && bootstrap.Alert) {
+                    var bsAlert = bootstrap.Alert.getOrCreateInstance(alertEl);
+                    bsAlert.close();
+                } else {
+                    alertEl.style.display = "none";
+                }
+            }, 3000);
+        });
+    </script>
+
+    <script>
         (function () {
             const input = document.getElementById('serviceSearch');
             const clearBtn = document.getElementById('clearSearch');
@@ -103,7 +131,11 @@
             const dataRows = rows.filter(r => !r.querySelector('td[colspan]'));
             rowsTotalEl.textContent = dataRows.length.toString();
 
-            const normalize = (str) => (str || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
+            const normalize = (str) => (str || '')
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .toLowerCase()
+                .trim();
 
             const filterCols = [0, 1, 2];
 

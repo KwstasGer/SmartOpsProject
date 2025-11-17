@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Νέο Παραστατικό";
+}
+
+<h3>Τι θέλεις να τιμολογήσεις;</h3>
+
+<div class="mt-4 d-flex gap-3">
+    <a asp-action="Create" asp-route-type="Items" class="btn btn-primary">
+        Παραστατικό Προϊόντων Πωλήσεων
+    </a>
+
+    <a asp-action="Create" asp-route-type="Services" class="btn btn-secondary">
+        Παραστατικό Υπηρεσιών Πωλήσεων
+    </a>
+
+    <a asp-action="Create" asp-route-type="Purchases" class="btn btn-secondary">
+        Παραστατικό Αγορών
+    </a>
+</div>

@@ -1,47 +1,76 @@
-﻿using System;
+﻿using SmartOps.Models;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;   // <-- ΝΕΟ
-using Microsoft.AspNetCore.Mvc.Rendering;
-using SmartOpsProject.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace SmartOps.ViewModels
 {
     public class InvoiceCreateVm
     {
-        [Display(Name = "Σειρά")]
-        public string Series { get; set; } = "ΤΙΜ";
+        // Τύπος παραστατικού: "Items", "Services", "Purchases"
+        [Required, StringLength(20)]
+        public string InvoiceType { get; set; } = "Items";
 
-        [Display(Name = "Ημ/νία")]
+        [Required]
+        public string Series { get; set; } = "TIM";
+
+        [Required]
+        [DataType(DataType.Date)]
         public DateTime IssueDate { get; set; } = DateTime.Today;
 
-        [Display(Name = "Πελάτης")]
+        // Για πωλήσεις = Πελάτης, για αγορές = Προμηθευτής
+        [Required]
         public int CustomerId { get; set; }
 
-        [Display(Name = "Τρόπος Πληρωμής")]
+        [Required]
         public PaymentMethod PaymentMethod { get; set; } = PaymentMethod.Cash;
 
-        public List<InvoiceLineVm> Lines { get; set; } = new() { new InvoiceLineVm() };
+        // Αν θες να το χρησιμοποιήσεις στο μέλλον:
+        // true = Απόδειξη Λιανικής, false = Τιμολόγιο
+        public bool IsRetail { get; set; }
 
-        public IEnumerable<SelectListItem> Customers { get; set; } = Array.Empty<SelectListItem>();
-        public IEnumerable<SelectListItem> Items { get; set; } = Array.Empty<SelectListItem>();
-    }
+        // Γραμμές παραστατικού
+        public List<LineVm> Lines { get; set; } = new()
+        {
+            new LineVm()   // μία default γραμμή
+        };
 
-    public class InvoiceLineVm
-    {
-        [Display(Name = "Είδος")]
-        public int ItemId { get; set; }
+        public class LineVm
+        {
+            // Πληροφοριακό μόνο (Item / Service)
+            public string Type { get; set; } = "Item";
 
-        [Display(Name = "Σχόλια")]
-        public string? Description { get; set; }
+            // Id από Items ή Services, ανάλογα με το InvoiceType
+            [Required]
+            public int CatalogId { get; set; }
 
-        [Display(Name = "Ποσότητα")]
-        public decimal Quantity { get; set; } = 1;
+            [Range(0.0001, 999999)]
+            public decimal Quantity { get; set; } = 1m;
 
-        [Display(Name = "Τιμή")]
-        public decimal UnitPrice { get; set; }
+            [Range(0, 999999)]
+            public decimal UnitPrice { get; set; } = 0m;
 
-        [Display(Name = "ΦΠΑ %")]
-        public decimal VatRate { get; set; } = 24;
+            // ΦΠΑ ως ΠΟΣΟΣΤΟ (0–100). Π.χ. 24 = 24%
+            [Range(0, 100)]
+            public decimal VatRate { get; set; } = 24m;
+        }
+
+        // Λίστα ειδών/υπηρεσιών που εμφανίζονται στο dropdown
+        public List<CatalogItemVm> CatalogItems { get; set; } = new();
+
+        public class CatalogItemVm
+        {
+            public string Type { get; set; } = "Item"; // "Item" ή "Service"
+            public int Id { get; set; }                // Id από Items ή Services
+            public string Code { get; set; }           // ItemCode ή ServiceCode
+            public string Description { get; set; }    // Περιγραφή
+
+            // Τιμές από τα Items/Services
+            public decimal? RetailPrice { get; set; }      // Τιμή Λιανικής
+            public decimal? WholesalePrice { get; set; }   // Τιμή Χονδρικής
+
+            // ΦΠΑ ως ποσοστό (0–100). Π.χ. 24 = 24%
+            public decimal VatRate { get; set; }
+        }
     }
 }
-

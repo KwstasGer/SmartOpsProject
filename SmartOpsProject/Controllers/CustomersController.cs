@@ -7,6 +7,8 @@ using SmartOps.Models;
 using SmartOps.Services;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Linq;
+
 
 namespace SmartOps.Controllers
 {
@@ -49,7 +51,7 @@ namespace SmartOps.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(
-    [Bind("Name,TaxIdentificationNumber,Country,Address,City,PostalCode,VatStatus,CustomerCategory,CustomerCode")]
+            [Bind("Name,TaxIdentificationNumber,Country,Address,City,PostalCode,VatStatus,CustomerCategory,CustomerCode")]
     Customer customer)
         {
             var uid = HttpContext.Session.GetInt32("UserId") ?? 0;
@@ -62,21 +64,32 @@ namespace SmartOps.Controllers
             // navigation property δεν έρχεται από τη φόρμα
             ModelState.Remove(nameof(Customer.User));
 
-            // Αν αποτύχει validation, κράτα dropdowns και δείξε ξανά '*'
+            customer.UserId = uid;
+
+            // input του χρήστη για τον κωδικό
+            var codeInput = customer.CustomerCode?.Trim();
+            var autoCode = string.IsNullOrEmpty(codeInput) || codeInput == "*" || codeInput == "-";
+
+            // ⭐ Αν είναι *, -, κενό => αυτόματη αρίθμηση όπως στους προμηθευτές
+            if (autoCode)
+            {
+                customer.CustomerCode = await GenerateNextCustomerCodeAsync(uid);
+            }
+
+            // Επανα-validate με τον πραγματικό κωδικό
+            ModelState.Clear();
+            TryValidateModel(customer);
+
             if (!ModelState.IsValid)
             {
                 SetDropDowns(customer.VatStatus, customer.CustomerCategory);
-                if (string.IsNullOrWhiteSpace(customer.CustomerCode))
+
+                // Αν ο χρήστης είχε ζητήσει auto (*), ξαναδείξε * στο UI
+                if (autoCode)
                     customer.CustomerCode = "*";
+
                 return View(customer);
             }
-
-            customer.UserId = uid;
-
-            // ⭐ Καθάρισε τον κωδικό πριν την DB: '*' ή '-' ή κενό -> null (DB default / sequence)
-            var code = customer.CustomerCode?.Trim();
-            if (string.IsNullOrEmpty(code) || code == "*" || code == "-")
-                customer.CustomerCode = null;
 
             try
             {
@@ -88,12 +101,12 @@ namespace SmartOps.Controllers
             catch (DbUpdateException ex) when (ex.InnerException is SqlException sql &&
                                                (sql.Number == 2601 || sql.Number == 2627))
             {
-                if (customer.CustomerCode == null)
+                if (autoCode)
                     ModelState.AddModelError(string.Empty, "Παρουσιάστηκε σφάλμα στην αυτόματη δημιουργία κωδικού.");
                 else
                     ModelState.AddModelError(nameof(Customer.CustomerCode), "Ο κωδικός χρησιμοποιείται ήδη.");
             }
-            // 🧭 Άλλα DB errors (δείξε το πραγματικό μήνυμα για διάγνωση)
+            // 🧭 Άλλα DB errors
             catch (DbUpdateException ex)
             {
                 ModelState.AddModelError(string.Empty, "DB error: " + (ex.InnerException?.Message ?? ex.Message));
@@ -101,9 +114,10 @@ namespace SmartOps.Controllers
 
             // Αν φτάσουμε εδώ, μένουμε στη φόρμα
             SetDropDowns(customer.VatStatus, customer.CustomerCategory);
-            if (customer.CustomerCode is null) customer.CustomerCode = "*"; // καθαρό UX
+            if (autoCode) customer.CustomerCode = "*"; // καθαρό UX
             return View(customer);
         }
+
 
 
 
@@ -194,10 +208,19 @@ namespace SmartOps.Controllers
             var customer = await _customerService.GetByIdForUserAsync(id, CurrentUserId);
             if (customer == null) return NotFound();
 
-            await _customerService.DeleteAsync(customer);
-            TempData["SuccessMessage"] = "Ο πελάτης διαγράφηκε με επιτυχία.";
+            try
+            {
+                await _customerService.DeleteAsync(customer);
+                TempData["SuccessMessage"] = "Ο πελάτης διαγράφηκε με επιτυχία.";
+            }
+            catch (DbUpdateException ex) when (ex.InnerException is SqlException sql && sql.Number == 547) // FK
+            {
+                TempData["ErrorMessage"] = "Ο πελάτης δεν μπορεί να διαγραφεί γιατί έχει συνδεδεμένα παραστατικά.";
+            }
+
             return RedirectToAction(nameof(Index));
         }
+
 
         // ----------------------- DETAILS -----------------------
         [HttpGet]
@@ -222,6 +245,22 @@ namespace SmartOps.Controllers
                 new List<string> { "Λιανικής", "Χονδρικής" },
                 selectedCategory
             );
+
+
         }
+        // Υπολογισμός επόμενου κωδικού πελάτη (0001, 0002, ...)
+        private async Task<string> GenerateNextCustomerCodeAsync(int userId)
+        {
+            var allForUser = await _customerService.GetAllByUserAsync(userId);
+
+            var numeric = allForUser
+                .Where(c => !string.IsNullOrWhiteSpace(c.CustomerCode) &&
+                            c.CustomerCode.All(char.IsDigit))
+                .Select(c => int.TryParse(c.CustomerCode, out var n) ? n : 0);
+
+            var next = (numeric.Any() ? numeric.Max() : 0) + 1;
+            return next.ToString("D4"); // 0001, 0002, 0003...
+        }
+
     }
 }

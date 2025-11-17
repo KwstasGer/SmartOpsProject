@@ -17,9 +17,14 @@ namespace SmartOps.ViewModels
     public class DashboardTabsVm
     {
         public int Year { get; set; }
+
+        // Top 5 Πελάτες (Value = ποσό πωλήσεων)
         public List<NameValue> TopCustomers { get; set; } = new();
+
+        // Πωλήσεις ανά μήνα (ποσά)
         public decimal[] SalesByMonth { get; set; } = new decimal[12];
-        public List<CustomerBalanceDto> Receivables { get; set; } = new();
-        public decimal ReceivablesTotal => Receivables.Sum(x => x.OpenAmount);
+
+        // ⭐ ΝΕΟ: Top 5 είδη (Value = συνολική ποσότητα)
+        public List<NameValue> TopItems { get; set; } = new();
     }
 }
