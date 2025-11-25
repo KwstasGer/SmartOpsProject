@@ -7,14 +7,20 @@ using SmartOpsProject.Models;
 using SmartOpsProject.Services;
 using System.Linq;
 using System.Threading.Tasks;
+using SmartOps.Data;
 
 namespace SmartOps.Controllers
 {
     public class SuppliersController : Controller
     {
         private readonly SupplierService _supplierService;
-        public SuppliersController(SupplierService supplierService) => _supplierService = supplierService;
+        private readonly SmartOpsDbContext _db;
 
+        public SuppliersController(SupplierService supplierService, SmartOpsDbContext db)
+        {
+            _supplierService = supplierService;
+            _db = db;
+        }
         private int CurrentUserId => HttpContext.Session.GetInt32("UserId") ?? 0;
 
         // ----------------------- INDEX -----------------------
@@ -162,14 +168,29 @@ namespace SmartOps.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (CurrentUserId == 0) return RedirectToAction("Login", "Account");
+            if (CurrentUserId == 0)
+                return RedirectToAction("Login", "Account");
+
+            // 1️⃣ Έλεγχος αν υπάρχουν παραστατικά με αυτόν τον προμηθευτή
+            var hasInvoices = await _db.Invoices
+                .AnyAsync(i => i.SupplierId == id /* && i.UserId == CurrentUserId */);
+
+            if (hasInvoices)
+            {
+                TempData["ErrorMessage"] = "Ο προμηθευτής δεν μπορεί να διαγραφεί γιατί έχει συνδεδεμένα παραστατικά.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            // 2️⃣ Αν δεν έχει παραστατικά, βρίσκουμε τον προμηθευτή
             var supplier = await _supplierService.GetByIdForUserAsync(id, CurrentUserId);
             if (supplier == null) return NotFound();
 
+            // 3️⃣ Διαγραφή
             await _supplierService.DeleteAsync(supplier);
             TempData["SuccessMessage"] = "Ο προμηθευτής διαγράφηκε.";
             return RedirectToAction(nameof(Index));
         }
+
 
         // ----------------------- Helpers ---------------------
         private void SetDropDowns(string? category = null, string? vat = null)

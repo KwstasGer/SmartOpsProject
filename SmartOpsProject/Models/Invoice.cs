@@ -20,9 +20,13 @@ namespace SmartOps.Models
 
         public int Year { get; set; } = DateTime.Today.Year;
 
-        [Required]
-        public int CustomerId { get; set; }
+        
+        public int? CustomerId { get; set; }
         public Customer? Customer { get; set; }
+
+     
+        public int? SupplierId { get; set; }
+        public Supplier? Supplier { get; set; }
 
         [Required]
         public PaymentMethod PaymentMethod { get; set; } = PaymentMethod.Cash;

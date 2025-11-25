@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\SmartOpsProject.csproj": {}
+    "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\SmartOpsProject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\SmartOpsProject.csproj": {
+    "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\SmartOpsProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\SmartOpsProject.csproj",
+        "projectUniqueName": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\SmartOpsProject.csproj",
         "projectName": "SmartOpsProject",
-        "projectPath": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\SmartOpsProject.csproj",
+        "projectPath": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\SmartOpsProject.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\obj\\",
+        "outputPath": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

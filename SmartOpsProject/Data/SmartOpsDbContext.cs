@@ -46,6 +46,12 @@ namespace SmartOps.Data
                 .HasForeignKey(l => l.ItemId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            modelBuilder.Entity<Invoice>()
+                .HasOne(i => i.Supplier)
+                .WithMany()                
+                .HasForeignKey(i => i.SupplierId)
+                .OnDelete(DeleteBehavior.Restrict);
+
 
             // -------- Μοναδικός δείκτης --------
             modelBuilder.Entity<Invoice>()

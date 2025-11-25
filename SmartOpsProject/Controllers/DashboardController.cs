@@ -26,7 +26,7 @@ namespace SmartOps.Controllers
 
             var year = DateTime.Today.Year;
 
-            // Top 5 πελάτες
+            // Top 5 πελάτες σε πωλήσεις
             var topCustomers = await _dash.GetTopCustomersAsync(CurrentUserId, 5);
 
             // Πωλήσεις ανά μήνα
@@ -35,12 +35,13 @@ namespace SmartOps.Controllers
             // Top 5 είδη σε ποσότητα
             var topItems = await _dash.GetTopItemsAsync(CurrentUserId, year, 5);
 
+            // Δημιουργία του ViewModel που θα περάσει στο Dashboard view
             var vm = new DashboardVm
             {
-                Year = year,
-                TopCustomers = topCustomers,
-                SalesByMonth = salesByMonth,
-                TopItems = topItems   // εδώ πλέον ταιριάζουν οι τύποι
+                Year = year, // Το έτος που ζήτησε ο χρήστης για το dashboard
+                TopCustomers = topCustomers, // Λίστα με τους καλύτερους πελάτες (βάσει πωλήσεων)
+                SalesByMonth = salesByMonth, // Συγκεντρωτικές πωλήσεις ανά μήνα
+                TopItems = topItems  // Προϊόντα με τις περισσότερες πωλήσεις
             };
 
             return View(vm);

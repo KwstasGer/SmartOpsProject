@@ -28,8 +28,18 @@ namespace SmartOps.Services
             var dict = names.ToDictionary(x => x.Id, x => x.Name);
 
             return data
-                .Select(x => (dict.GetValueOrDefault(x.CustomerId, $"Customer {x.CustomerId}"), x.Amount))
+                .Select(x =>
+                {
+                    int key = x.CustomerId.GetValueOrDefault(); // από int? -> int
+
+                    if (!dict.TryGetValue(key, out var name))
+                        name = $"Customer {key}";
+
+                    return (name, x.Amount);
+                })
                 .ToList();
+
+
         }
 
         public async Task<decimal[]> GetSalesByMonthAsync(int userId, int year)

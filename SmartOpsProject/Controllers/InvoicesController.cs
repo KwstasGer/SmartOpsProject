@@ -27,18 +27,19 @@ namespace SmartOps.Controllers
         }
 
         // 2️⃣ Index
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             if (CurrentUserId == 0) return RedirectToAction("Login", "Account");
 
-            var list = await _db.Invoices
+            var invoices = await _db.Invoices
                 .Where(i => i.UserId == CurrentUserId)
                 .Include(i => i.Customer)
+                .Include(i => i.Supplier)        // ➕ ΠΡΟΣΘΗΚΗ
                 .OrderByDescending(i => i.IssueDate)
-                .ThenByDescending(i => i.Id)
                 .ToListAsync();
 
-            return View(list);
+            return View(invoices);
         }
 
         // 3️⃣ Details
@@ -48,6 +49,7 @@ namespace SmartOps.Controllers
 
             var inv = await _db.Invoices
                 .Include(i => i.Customer)
+                .Include(i => i.Supplier)
                 .Include(i => i.Lines).ThenInclude(l => l.Item)
                 .Include(i => i.Lines).ThenInclude(l => l.Service)
                 .FirstOrDefaultAsync(i => i.Id == id && i.UserId == CurrentUserId);
@@ -111,13 +113,16 @@ namespace SmartOps.Controllers
             return View(vm);
         }
 
-        // 5️⃣ Create (POST)
+        // CREATE (POST)
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(InvoiceCreateVm vm)
         {
-            if (CurrentUserId == 0) return RedirectToAction("Login", "Account");
+            // 1. Έλεγχος συνεδρίας
+            if (CurrentUserId == 0)
+                return RedirectToAction("Login", "Account");
 
+            // 2. Έλεγχος τύπου παραστατικού
             if (vm.InvoiceType != "Items" &&
                 vm.InvoiceType != "Services" &&
                 vm.InvoiceType != "Purchases")
@@ -125,29 +130,48 @@ namespace SmartOps.Controllers
                 return RedirectToAction(nameof(SelectType));
             }
 
-            // έγκυρες γραμμές
+            // 3. Φιλτράρισμα άδειων γραμμών
             vm.Lines = vm.Lines?
                 .Where(l => l.CatalogId > 0 && l.Quantity > 0)
                 .ToList() ?? new();
 
-            // έλεγχος "πελάτη"
-            // 👉 για Purchases θα έχουμε μέσα Προμηθευτή, αλλά στο πεδίο CustomerId
-            var customerExists = await _db.Customers
-                .AnyAsync(c => c.Id == vm.CustomerId && c.UserId == CurrentUserId);
+            // 4. Κανονικοποίηση ΦΠΑ από % (24, 13, 6) σε 0.xx
+            foreach (var l in vm.Lines)
+            {
+                if (l.VatRate > 1)
+                    l.VatRate = Math.Round(l.VatRate / 100m, 4);  // 24 -> 0.24
+            }
 
-            if (!customerExists)
-                ModelState.AddModelError(nameof(vm.CustomerId),
-                    vm.InvoiceType == "Purchases" ? "Μη έγκυρος προμηθευτής." : "Μη έγκυρος πελάτης.");
+            // 5. Έλεγχος Πελάτη ή Προμηθευτή
+            bool valid;
+            if (vm.InvoiceType == "Purchases")
+            {
+                // εδώ το CustomerId είναι στην πραγματικότητα SupplierId
+                valid = await _db.Suppliers
+                    .AnyAsync(s => s.Id == vm.CustomerId && s.UserId == CurrentUserId);
 
+                if (!valid)
+                    ModelState.AddModelError(nameof(vm.CustomerId), "Μη έγκυρος προμηθευτής.");
+            }
+            else
+            {
+                // Items / Services => κανονικός πελάτης
+                valid = await _db.Customers
+                    .AnyAsync(c => c.Id == vm.CustomerId && c.UserId == CurrentUserId);
+
+                if (!valid)
+                    ModelState.AddModelError(nameof(vm.CustomerId), "Μη έγκυρος πελάτης.");
+            }
+
+            // 6. Αν έχουμε λάθη ή δεν υπάρχουν γραμμές -> επιστροφή στο View
             if (!ModelState.IsValid || vm.Lines.Count == 0)
             {
                 if (vm.Lines.Count == 0)
                     ModelState.AddModelError("", "Προσθέστε τουλάχιστον μία γραμμή.");
 
                 await FillDropdownsAsync(vm.InvoiceType);
-
-                // Ξαναγεμίζουμε τον κατάλογο για να δουλέψουν σωστά τα dropdowns στο View
                 var uid = CurrentUserId;
+
                 if (vm.InvoiceType == "Items" || vm.InvoiceType == "Purchases")
                 {
                     vm.CatalogItems = await _db.Items
@@ -184,25 +208,25 @@ namespace SmartOps.Controllers
                 return View(vm);
             }
 
-            // ΑΛΠ / ΑΠΥ → τιμή με ΦΠΑ, τη γυρνάμε σε καθαρή
+            // 7. Αν η σειρά είναι λιανικής (τιμή ΜΕ ΦΠΑ), μετατροπή σε καθαρή
             var priceIncludesVat = vm.Series == "ΑΛΠ" || vm.Series == "ΑΠΥ";
 
             if (priceIncludesVat)
             {
                 foreach (var l in vm.Lines)
                 {
-                    // l.VatRate είναι ΠΟΣΟΣΤΟ (0–100). Αν κάποιος γράψει 0.24,
-                    // το >1 ? /100 : το καλύπτει.
-                    var rate = l.VatRate > 1 ? l.VatRate / 100m : l.VatRate;
+                    var rate = l.VatRate;    // εδώ είναι ΗΔΗ 0.24 / 0.13 / 0.06
+
                     if (rate > 0)
                     {
-                        var gross = l.UnitPrice;
-                        var net = gross / (1 + rate);
-                        l.UnitPrice = Math.Round(net, 2);
+                        var gross = l.UnitPrice;          // τιμή ΜΕ ΦΠΑ από τον κατάλογο
+                        var net = gross / (1 + rate);     // καθαρή τιμή
+                        l.UnitPrice = Math.Round(net, 2); // αποθηκεύουμε καθαρή
                     }
                 }
             }
 
+            // 8. Δημιουργία παραστατικού
             var inv = new Invoice
             {
                 UserId = CurrentUserId,
@@ -210,23 +234,35 @@ namespace SmartOps.Controllers
                 Number = await GetNextNumberAsync(vm.Series, vm.IssueDate.Year),
                 IssueDate = vm.IssueDate,
                 Year = vm.IssueDate.Year,
-                CustomerId = vm.CustomerId,        // για Purchases = προμηθευτής
+                CustomerId = vm.CustomerId,     // Purchases: εδώ είναι SupplierId
                 PaymentMethod = vm.PaymentMethod,
                 InvoiceType = vm.InvoiceType
             };
 
+            // Αν είναι Τιμολόγιο Αγοράς, δένουμε και SupplierId
+            if (vm.InvoiceType == "Purchases")
+            {
+                // Αγορές → μόνο SupplierId
+                inv.CustomerId = null;
+                inv.SupplierId = vm.CustomerId;     // εδώ είναι ο προμηθευτής
+            }
+            else
+            {
+                // Πωλήσεις / Υπηρεσίες → μόνο CustomerId
+                inv.CustomerId = vm.CustomerId;
+                inv.SupplierId = null;
+            }
+
+            // 9. Γραμμές παραστατικού
             inv.Lines = vm.Lines.Select(x =>
             {
                 var line = new InvoiceLine
                 {
                     Quantity = x.Quantity,
-                    UnitPrice = x.UnitPrice,
-                    // ⭐ Αποθηκεύουμε το ποσοστό (π.χ. 24).
-                    // Φρόντισε η RecalculateTotals() να κάνει τον ίδιο μετασχηματισμό (>1 ? /100 :).
-                    VatRate = x.VatRate
+                    UnitPrice = x.UnitPrice,  // ✅ σωστό όνομα
+                    VatRate = x.VatRate       // ✅ εδώ είναι 0.xx
                 };
 
-                // Για Items ΚΑΙ Purchases γράφουμε ItemId
                 if (vm.InvoiceType == "Items" || vm.InvoiceType == "Purchases")
                 {
                     line.ItemId = x.CatalogId;
@@ -241,7 +277,10 @@ namespace SmartOps.Controllers
                 return line;
             }).ToList();
 
+            // 10. Υπολογισμός συνόλων
             inv.RecalculateTotals();
+
+            // 11. Αποθήκευση
             _db.Invoices.Add(inv);
 
             try
@@ -252,10 +291,10 @@ namespace SmartOps.Controllers
             {
                 var msg = ex.InnerException?.Message ?? ex.Message;
                 ModelState.AddModelError("", "Αποτυχία αποθήκευσης παραστατικού. " + msg);
-                await FillDropdownsAsync(vm.InvoiceType);
 
-                // Ξαναγεμίζουμε catalog σε περίπτωση exception
+                await FillDropdownsAsync(vm.InvoiceType);
                 var uid = CurrentUserId;
+
                 if (vm.InvoiceType == "Items" || vm.InvoiceType == "Purchases")
                 {
                     vm.CatalogItems = await _db.Items
@@ -295,6 +334,8 @@ namespace SmartOps.Controllers
             TempData["Ok"] = $"Καταχωρήθηκε το παραστατικό {inv.Series}-{inv.Number}/{inv.Year}.";
             return RedirectToAction(nameof(Details), new { id = inv.Id });
         }
+
+
 
         // 6️⃣ Delete
         [HttpGet]

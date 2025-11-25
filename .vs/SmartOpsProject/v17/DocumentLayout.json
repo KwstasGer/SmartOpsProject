@@ -1,280 +1,291 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\",
+  "WorkspaceRootPath": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\controllers\\invoicescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\controllers\\invoicescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\controllers\\servicescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\controllers\\servicescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\viewmodels\\invoicecreatevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\viewmodels\\invoicecreatevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\views\\invoices\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\invoices\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\models\\items.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\models\\items.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\models\\service.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\models\\service.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\models\\suppliers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\models\\suppliers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\models\\invoiceline.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\models\\invoiceline.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\views\\items\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\items\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\views\\items\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\items\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\views\\items\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\items\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\views\\items\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\items\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\views\\items\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\items\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\views\\services\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\services\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\views\\services\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\services\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\views\\suppliers\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\suppliers\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\views\\customers\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\customers\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\controllers\\customerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\controllers\\customerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\controllers\\itemscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\controllers\\itemscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\views\\customers\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\customers\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\views\\customers\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\customers\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\views\\invoices\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\invoices\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\viewmodels\\changepassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\viewmodels\\changepassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\views\\invoices\\selecttype.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\invoices\\selecttype.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\services\\invoiceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\services\\invoiceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\viewmodels\\invoicelinevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\viewmodels\\invoicelinevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\data\\smartopsdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\data\\smartopsdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\models\\invoice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\models\\invoice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\services\\dashboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\services\\dashboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\services\\idashboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\services\\idashboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\viewmodels\\dashboardtabsvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\viewmodels\\dashboardtabsvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\views\\dashboard\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\dashboard\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\views\\invoices\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\invoices\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Migrations\\20251114100220_UpdateInvoiceLine_AddService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SmartOpsProject\\Migrations\\20251114100220_UpdateInvoiceLine_AddService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\views\\invoices\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\views\\invoices\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\invoices\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\views\\services\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\services\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\models\\invoice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\models\\invoice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\views\\services\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\services\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\controllers\\invoicescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\controllers\\invoicescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\views\\services\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\services\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\views\\invoices\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\invoices\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\controllers\\supplierscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\views\\invoices\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\invoices\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\models\\invoiceline.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\models\\invoiceline.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\viewmodels\\invoicelinevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\viewmodels\\invoicelinevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\views\\invoices\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\invoices\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\data\\smartopsdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\data\\smartopsdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\migrations\\20251124113804_fixinvoicesupplierrelation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\migrations\\20251124113804_fixinvoicesupplierrelation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\migrations\\20251124110127_addsuppliertoinvoice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\migrations\\20251124110127_addsuppliertoinvoice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\services\\dashboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\services\\dashboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\controllers\\servicescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\controllers\\servicescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\controllers\\itemscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\controllers\\itemscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\controllers\\supplierscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\controllers\\supplierscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\controllers\\customerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\controllers\\customerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\models\\customers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\models\\customers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\models\\customers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\views\\dashboard\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\dashboard\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\views\\services\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\services\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\views\\items\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\items\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\viewmodels\\invoicecreatevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\viewmodels\\invoicecreatevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\views\\invoices\\selecttype.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\invoices\\selecttype.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\views\\suppliers\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\suppliers\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\views\\customers\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\customers\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\models\\suppliers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\models\\suppliers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\views\\services\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\services\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\views\\items\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\items\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\views\\items\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\items\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\views\\items\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\items\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\models\\items.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\models\\items.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\models\\service.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\models\\service.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\views\\items\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\items\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\views\\services\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\services\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\views\\suppliers\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\suppliers\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\views\\customers\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\customers\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\views\\customers\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\customers\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\viewmodels\\changepassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\viewmodels\\changepassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\services\\invoiceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\services\\invoiceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\services\\idashboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\services\\idashboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\viewmodels\\dashboardtabsvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\viewmodels\\dashboardtabsvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Migrations\\20251114100220_UpdateInvoiceLine_AddService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\views\\services\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\services\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\views\\services\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\services\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\source\\repos\\SmartOpsProject\\SmartOpsProject\\Migrations\\20251112085953_CleanInvoicesDb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\models\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\models\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\models\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\services\\itemservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\services\\itemservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\services\\itemservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\services\\serviceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\services\\serviceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\services\\serviceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\views\\suppliers\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\suppliers\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\views\\suppliers\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\views\\suppliers\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\suppliers\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\views\\suppliers\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\views\\suppliers\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\suppliers\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\views\\suppliers\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\views\\suppliers\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\suppliers\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\views\\shared\\_layout.cshtml.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\views\\shared\\_layout.cshtml.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\shared\\_layout.cshtml.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\views\\customers\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\views\\customers\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\customers\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\views\\customers\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\views\\customers\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\customers\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\XMLSchema1.xsd||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\XMLSchema1.xsd||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:XMLSchema1.xsd||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\helpers\\passwordhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\helpers\\passwordhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\helpers\\passwordhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\services\\customerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\services\\customerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\services\\customerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\services\\supplierservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\services\\supplierservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\services\\supplierservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\views\\account\\changepassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\views\\account\\changepassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\account\\changepassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\XMLSchema1.xsd||{DEE6CEF9-3BCA-449A-82A6-FC757D6956FB}|",
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\XMLSchema1.xsd||{DEE6CEF9-3BCA-449A-82A6-FC757D6956FB}|",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:XMLSchema1.xsd||{DEE6CEF9-3BCA-449A-82A6-FC757D6956FB}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed - backup\\smartopsproject\\smartopsproject\\migrations\\20251114100512_initialclean.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|c:\\users\\user\\source\\repos\\smartopsproject_new\\smartopsproject_fixed_new\\smartopsproject\\smartopsproject\\migrations\\20251114100512_initialclean.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{37C416C5-0A19-4E28-9D7D-2E5F4C79FC28}|SmartOpsProject\\SmartOpsProject.csproj|solutionrelative:smartopsproject\\migrations\\20251114100512_initialclean.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -285,7 +296,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 59,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -297,23 +308,60 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "SmartOpsProject\\Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "SmartOpsProject\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAkwBsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-17T07:36:00.541Z"
+              "DocumentIndex": 10,
+              "Title": "20251124113804_FixInvoiceSupplierRelation.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Migrations\\20251124113804_FixInvoiceSupplierRelation.cs",
+              "RelativeDocumentMoniker": "SmartOpsProject\\Migrations\\20251124113804_FixInvoiceSupplierRelation.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Migrations\\20251124113804_FixInvoiceSupplierRelation.cs",
+              "RelativeToolTip": "SmartOpsProject\\Migrations\\20251124113804_FixInvoiceSupplierRelation.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T11:38:04.291Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 68,
+              "DocumentIndex": 11,
+              "Title": "20251124110127_AddSupplierToInvoice.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Migrations\\20251124110127_AddSupplierToInvoice.cs",
+              "RelativeDocumentMoniker": "SmartOpsProject\\Migrations\\20251124110127_AddSupplierToInvoice.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Migrations\\20251124110127_AddSupplierToInvoice.cs",
+              "RelativeToolTip": "SmartOpsProject\\Migrations\\20251124110127_AddSupplierToInvoice.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAAABkAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T11:01:27.953Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "Privacy.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Home\\Privacy.cshtml",
+              "RelativeDocumentMoniker": "SmartOpsProject\\Views\\Home\\Privacy.cshtml",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Home\\Privacy.cshtml",
+              "RelativeToolTip": "SmartOpsProject\\Views\\Home\\Privacy.cshtml",
+              "ViewState": "AgIAAE4AAAAAAAAAAAAkwGYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-17T20:19:32.673Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "SmartOpsProject\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "SmartOpsProject\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-17T07:36:00.541Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 71,
               "Title": "20251114100512_InitialClean.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Migrations\\20251114100512_InitialClean.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Migrations\\20251114100512_InitialClean.cs",
               "RelativeDocumentMoniker": "SmartOpsProject\\Migrations\\20251114100512_InitialClean.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Migrations\\20251114100512_InitialClean.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Migrations\\20251114100512_InitialClean.cs",
               "RelativeToolTip": "SmartOpsProject\\Migrations\\20251114100512_InitialClean.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -321,23 +369,23 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 46,
               "Title": "20251114100220_UpdateInvoiceLine_AddService.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Migrations\\20251114100220_UpdateInvoiceLine_AddService.cs",
-              "RelativeDocumentMoniker": "SmartOpsProject\\Migrations\\20251114100220_UpdateInvoiceLine_AddService.cs",
+              "RelativeDocumentMoniker": "..\\..\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Migrations\\20251114100220_UpdateInvoiceLine_AddService.cs",
               "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Migrations\\20251114100220_UpdateInvoiceLine_AddService.cs",
-              "RelativeToolTip": "SmartOpsProject\\Migrations\\20251114100220_UpdateInvoiceLine_AddService.cs",
+              "RelativeToolTip": "..\\..\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Migrations\\20251114100220_UpdateInvoiceLine_AddService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-14T10:02:20.594Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 24,
               "Title": "SelectType.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Invoices\\SelectType.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Invoices\\SelectType.cshtml",
               "RelativeDocumentMoniker": "SmartOpsProject\\Views\\Invoices\\SelectType.cshtml",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Invoices\\SelectType.cshtml",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Invoices\\SelectType.cshtml",
               "RelativeToolTip": "SmartOpsProject\\Views\\Invoices\\SelectType.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -345,11 +393,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 49,
               "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\appsettings.json",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\appsettings.json",
               "RelativeDocumentMoniker": "SmartOpsProject\\appsettings.json",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\appsettings.json",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\appsettings.json",
               "RelativeToolTip": "SmartOpsProject\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
@@ -357,7 +405,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 50,
               "Title": "20251112085953_CleanInvoicesDb.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject\\SmartOpsProject\\Migrations\\20251112085953_CleanInvoicesDb.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\SmartOpsProject\\SmartOpsProject\\Migrations\\20251112085953_CleanInvoicesDb.cs",
@@ -369,11 +417,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 8,
               "Title": "Delete.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Invoices\\Delete.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Invoices\\Delete.cshtml",
               "RelativeDocumentMoniker": "SmartOpsProject\\Views\\Invoices\\Delete.cshtml",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Invoices\\Delete.cshtml",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Invoices\\Delete.cshtml",
               "RelativeToolTip": "SmartOpsProject\\Views\\Invoices\\Delete.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -381,11 +429,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 51,
               "Title": "_ViewImports.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\_ViewImports.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\_ViewImports.cshtml",
               "RelativeDocumentMoniker": "SmartOpsProject\\Views\\_ViewImports.cshtml",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\_ViewImports.cshtml",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\_ViewImports.cshtml",
               "RelativeToolTip": "SmartOpsProject\\Views\\_ViewImports.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -393,11 +441,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 53,
               "Title": "ErrorViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Models\\ErrorViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Models\\ErrorViewModel.cs",
               "RelativeDocumentMoniker": "SmartOpsProject\\Models\\ErrorViewModel.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Models\\ErrorViewModel.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Models\\ErrorViewModel.cs",
               "RelativeToolTip": "SmartOpsProject\\Models\\ErrorViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -405,11 +453,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 7,
               "Title": "InvoiceLineVm.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\ViewModels\\InvoiceLineVm.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\ViewModels\\InvoiceLineVm.cs",
               "RelativeDocumentMoniker": "SmartOpsProject\\ViewModels\\InvoiceLineVm.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\ViewModels\\InvoiceLineVm.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\ViewModels\\InvoiceLineVm.cs",
               "RelativeToolTip": "SmartOpsProject\\ViewModels\\InvoiceLineVm.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -417,11 +465,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 57,
+              "DocumentIndex": 60,
               "Title": "_Layout.cshtml.css",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Shared\\_Layout.cshtml.css",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Shared\\_Layout.cshtml.css",
               "RelativeDocumentMoniker": "SmartOpsProject\\Views\\Shared\\_Layout.cshtml.css",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Shared\\_Layout.cshtml.css",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Shared\\_Layout.cshtml.css",
               "RelativeToolTip": "SmartOpsProject\\Views\\Shared\\_Layout.cshtml.css",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
@@ -429,11 +477,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 57,
               "Title": "site.css",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\wwwroot\\css\\site.css",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\wwwroot\\css\\site.css",
               "RelativeDocumentMoniker": "SmartOpsProject\\wwwroot\\css\\site.css",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\wwwroot\\css\\site.css",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\wwwroot\\css\\site.css",
               "RelativeToolTip": "SmartOpsProject\\wwwroot\\css\\site.css",
               "ViewState": "AgIAACwAAAAAAAAAAADwv0cAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
@@ -441,11 +489,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 60,
+              "DocumentIndex": 63,
               "Title": "XMLSchema1.xsd",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\XMLSchema1.xsd",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\XMLSchema1.xsd",
               "RelativeDocumentMoniker": "XMLSchema1.xsd",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\XMLSchema1.xsd",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\XMLSchema1.xsd",
               "RelativeToolTip": "XMLSchema1.xsd",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003579|",
@@ -453,11 +501,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 67,
+              "DocumentIndex": 70,
               "Title": "XMLSchema1.xsd [Design]",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\XMLSchema1.xsd",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\XMLSchema1.xsd",
               "RelativeDocumentMoniker": "XMLSchema1.xsd",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\XMLSchema1.xsd [Design]",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\XMLSchema1.xsd [Design]",
               "RelativeToolTip": "XMLSchema1.xsd [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003579|",
               "WhenOpened": "2025-10-22T21:17:58.835Z",
@@ -465,23 +513,23 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 19,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Dashboard\\Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Dashboard\\Index.cshtml",
               "RelativeDocumentMoniker": "SmartOpsProject\\Views\\Dashboard\\Index.cshtml",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Dashboard\\Index.cshtml",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Dashboard\\Index.cshtml",
               "RelativeToolTip": "SmartOpsProject\\Views\\Dashboard\\Index.cshtml",
-              "ViewState": "AgIAAFkAAAAAAAAAAAAQwIAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-09-22T11:48:28.046Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 44,
               "Title": "IDashboardService.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Services\\IDashboardService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Services\\IDashboardService.cs",
               "RelativeDocumentMoniker": "SmartOpsProject\\Services\\IDashboardService.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Services\\IDashboardService.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Services\\IDashboardService.cs",
               "RelativeToolTip": "SmartOpsProject\\Services\\IDashboardService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -489,11 +537,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 61,
+              "DocumentIndex": 64,
               "Title": "UserService.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Services\\UserService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Services\\UserService.cs",
               "RelativeDocumentMoniker": "SmartOpsProject\\Services\\UserService.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Services\\UserService.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Services\\UserService.cs",
               "RelativeToolTip": "SmartOpsProject\\Services\\UserService.cs",
               "ViewState": "AgIAAB8AAAAAAAAAAAAAAF8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -501,11 +549,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 62,
+              "DocumentIndex": 65,
               "Title": "PasswordHelper.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Helpers\\PasswordHelper.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Helpers\\PasswordHelper.cs",
               "RelativeDocumentMoniker": "SmartOpsProject\\Helpers\\PasswordHelper.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Helpers\\PasswordHelper.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Helpers\\PasswordHelper.cs",
               "RelativeToolTip": "SmartOpsProject\\Helpers\\PasswordHelper.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -513,11 +561,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 41,
               "Title": "Details.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Customers\\Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Customers\\Details.cshtml",
               "RelativeDocumentMoniker": "SmartOpsProject\\Views\\Customers\\Details.cshtml",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Customers\\Details.cshtml",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Customers\\Details.cshtml",
               "RelativeToolTip": "SmartOpsProject\\Views\\Customers\\Details.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -525,11 +573,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 58,
+              "DocumentIndex": 61,
               "Title": "Edit.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Customers\\Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Customers\\Edit.cshtml",
               "RelativeDocumentMoniker": "SmartOpsProject\\Views\\Customers\\Edit.cshtml",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Customers\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Customers\\Edit.cshtml",
               "RelativeToolTip": "SmartOpsProject\\Views\\Customers\\Edit.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -537,11 +585,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 38,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Customers\\Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Customers\\Index.cshtml",
               "RelativeDocumentMoniker": "SmartOpsProject\\Views\\Customers\\Index.cshtml",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Customers\\Index.cshtml",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Customers\\Index.cshtml",
               "RelativeToolTip": "SmartOpsProject\\Views\\Customers\\Index.cshtml",
               "ViewState": "AgIAAG0AAAAAAAAAAAAkwIcAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -549,11 +597,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 48,
               "Title": "Delete.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Services\\Delete.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Services\\Delete.cshtml",
               "RelativeDocumentMoniker": "SmartOpsProject\\Views\\Services\\Delete.cshtml",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Services\\Delete.cshtml",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Services\\Delete.cshtml",
               "RelativeToolTip": "SmartOpsProject\\Views\\Services\\Delete.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -561,11 +609,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 47,
               "Title": "Details.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Services\\Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Services\\Details.cshtml",
               "RelativeDocumentMoniker": "SmartOpsProject\\Views\\Services\\Details.cshtml",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Services\\Details.cshtml",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Services\\Details.cshtml",
               "RelativeToolTip": "SmartOpsProject\\Views\\Services\\Details.cshtml",
               "ViewState": "AgIAAA4AAAAAAAAAAAAIwB8AAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -573,11 +621,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 36,
               "Title": "Edit.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Services\\Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Services\\Edit.cshtml",
               "RelativeDocumentMoniker": "SmartOpsProject\\Views\\Services\\Edit.cshtml",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Services\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Services\\Edit.cshtml",
               "RelativeToolTip": "SmartOpsProject\\Views\\Services\\Edit.cshtml",
               "ViewState": "AgIAADwAAAAAAAAAAAAAAD8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -585,35 +633,35 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 21,
               "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Services\\Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Services\\Create.cshtml",
               "RelativeDocumentMoniker": "SmartOpsProject\\Views\\Services\\Create.cshtml",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Services\\Create.cshtml",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Services\\Create.cshtml",
               "RelativeToolTip": "SmartOpsProject\\Views\\Services\\Create.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEAAAAA4AAAAAAAAAA==",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-09-21T17:47:48.153Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 28,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Services\\Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Services\\Index.cshtml",
               "RelativeDocumentMoniker": "SmartOpsProject\\Views\\Services\\Index.cshtml",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Services\\Index.cshtml",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Services\\Index.cshtml",
               "RelativeToolTip": "SmartOpsProject\\Views\\Services\\Index.cshtml",
-              "ViewState": "AgIAAJwAAAAAAAAAAAAmwLQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAALQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-09-21T17:45:33.372Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 35,
               "Title": "Delete.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Items\\Delete.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Items\\Delete.cshtml",
               "RelativeDocumentMoniker": "SmartOpsProject\\Views\\Items\\Delete.cshtml",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Items\\Delete.cshtml",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Items\\Delete.cshtml",
               "RelativeToolTip": "SmartOpsProject\\Views\\Items\\Delete.cshtml",
               "ViewState": "AgIAACQAAAAAAAAAAAAAAAoAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -621,11 +669,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 30,
               "Title": "Details.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Items\\Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Items\\Details.cshtml",
               "RelativeDocumentMoniker": "SmartOpsProject\\Views\\Items\\Details.cshtml",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Items\\Details.cshtml",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Items\\Details.cshtml",
               "RelativeToolTip": "SmartOpsProject\\Views\\Items\\Details.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -633,11 +681,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 31,
               "Title": "Edit.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Items\\Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Items\\Edit.cshtml",
               "RelativeDocumentMoniker": "SmartOpsProject\\Views\\Items\\Edit.cshtml",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Items\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Items\\Edit.cshtml",
               "RelativeToolTip": "SmartOpsProject\\Views\\Items\\Edit.cshtml",
               "ViewState": "AgIAADAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -645,35 +693,35 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 22,
               "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Items\\Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Items\\Create.cshtml",
               "RelativeDocumentMoniker": "SmartOpsProject\\Views\\Items\\Create.cshtml",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Items\\Create.cshtml",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Items\\Create.cshtml",
               "RelativeToolTip": "SmartOpsProject\\Views\\Items\\Create.cshtml",
-              "ViewState": "AgIAAEIAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADYAAAAAAAAAAAAAAFAAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-09-21T17:42:23.666Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 29,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Items\\Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Items\\Index.cshtml",
               "RelativeDocumentMoniker": "SmartOpsProject\\Views\\Items\\Index.cshtml",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Items\\Index.cshtml",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Items\\Index.cshtml",
               "RelativeToolTip": "SmartOpsProject\\Views\\Items\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAABNAAAAAAAAAA==",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-09-21T17:42:03.906Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 56,
+              "DocumentIndex": 59,
               "Title": "Delete.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Suppliers\\Delete.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Suppliers\\Delete.cshtml",
               "RelativeDocumentMoniker": "SmartOpsProject\\Views\\Suppliers\\Delete.cshtml",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Suppliers\\Delete.cshtml",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Suppliers\\Delete.cshtml",
               "RelativeToolTip": "SmartOpsProject\\Views\\Suppliers\\Delete.cshtml",
               "ViewState": "AgIAABUAAAAAAAAAAAAQwEQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -681,11 +729,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 55,
+              "DocumentIndex": 58,
               "Title": "Details.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Suppliers\\Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Suppliers\\Details.cshtml",
               "RelativeDocumentMoniker": "SmartOpsProject\\Views\\Suppliers\\Details.cshtml",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Suppliers\\Details.cshtml",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Suppliers\\Details.cshtml",
               "RelativeToolTip": "SmartOpsProject\\Views\\Suppliers\\Details.cshtml",
               "ViewState": "AgIAAB0AAAAAAAAAAAAQwEQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -693,11 +741,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 56,
               "Title": "Edit.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Suppliers\\Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Suppliers\\Edit.cshtml",
               "RelativeDocumentMoniker": "SmartOpsProject\\Views\\Suppliers\\Edit.cshtml",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Suppliers\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Suppliers\\Edit.cshtml",
               "RelativeToolTip": "SmartOpsProject\\Views\\Suppliers\\Edit.cshtml",
               "ViewState": "AgIAAEIAAAAAAAAAAAAQwGkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -705,11 +753,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 37,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Suppliers\\Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Suppliers\\Index.cshtml",
               "RelativeDocumentMoniker": "SmartOpsProject\\Views\\Suppliers\\Index.cshtml",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Suppliers\\Index.cshtml",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Suppliers\\Index.cshtml",
               "RelativeToolTip": "SmartOpsProject\\Views\\Suppliers\\Index.cshtml",
               "ViewState": "AgIAAKEAAAAAAAAAAAAkwLkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -717,60 +765,59 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 25,
               "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Suppliers\\Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Suppliers\\Create.cshtml",
               "RelativeDocumentMoniker": "SmartOpsProject\\Views\\Suppliers\\Create.cshtml",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Suppliers\\Create.cshtml",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Suppliers\\Create.cshtml",
               "RelativeToolTip": "SmartOpsProject\\Views\\Suppliers\\Create.cshtml",
-              "ViewState": "AgIAAE0AAAAAAAAAAAAUwGcAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAAGcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-09-21T17:33:27.812Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 13,
               "Title": "ServicesController.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Controllers\\ServicesController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Controllers\\ServicesController.cs",
               "RelativeDocumentMoniker": "SmartOpsProject\\Controllers\\ServicesController.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Controllers\\ServicesController.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Controllers\\ServicesController.cs",
               "RelativeToolTip": "SmartOpsProject\\Controllers\\ServicesController.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAAUwPkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAK4AAAAAAAAAAAAuwOsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-21T17:20:34.56Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-21T17:20:34.56Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 14,
               "Title": "ItemsController.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Controllers\\ItemsController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Controllers\\ItemsController.cs",
               "RelativeDocumentMoniker": "SmartOpsProject\\Controllers\\ItemsController.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Controllers\\ItemsController.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Controllers\\ItemsController.cs",
               "RelativeToolTip": "SmartOpsProject\\Controllers\\ItemsController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAKYAAAAAAAAAAAAAwL8AAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-21T17:19:52.253Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 15,
               "Title": "SuppliersController.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Controllers\\SuppliersController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Controllers\\SuppliersController.cs",
               "RelativeDocumentMoniker": "SmartOpsProject\\Controllers\\SuppliersController.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Controllers\\SuppliersController.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Controllers\\SuppliersController.cs",
               "RelativeToolTip": "SmartOpsProject\\Controllers\\SuppliersController.cs",
-              "ViewState": "AgIAAJ8AAAAAAAAAAAAuwMQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAKYAAAAAAAAAAAAAwK8AAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-21T17:19:34.888Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 64,
+              "DocumentIndex": 67,
               "Title": "SupplierService.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Services\\SupplierService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Services\\SupplierService.cs",
               "RelativeDocumentMoniker": "SmartOpsProject\\Services\\SupplierService.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Services\\SupplierService.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Services\\SupplierService.cs",
               "RelativeToolTip": "SmartOpsProject\\Services\\SupplierService.cs",
               "ViewState": "AgIAAEMAAAAAAAAAAADwv1EAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -778,11 +825,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 54,
               "Title": "ItemService.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Services\\ItemService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Services\\ItemService.cs",
               "RelativeDocumentMoniker": "SmartOpsProject\\Services\\ItemService.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Services\\ItemService.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Services\\ItemService.cs",
               "RelativeToolTip": "SmartOpsProject\\Services\\ItemService.cs",
               "ViewState": "AgIAAEMAAAAAAAAAAADwvzAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -790,11 +837,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 55,
               "Title": "ServiceService.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Services\\ServiceService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Services\\ServiceService.cs",
               "RelativeDocumentMoniker": "SmartOpsProject\\Services\\ServiceService.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Services\\ServiceService.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Services\\ServiceService.cs",
               "RelativeToolTip": "SmartOpsProject\\Services\\ServiceService.cs",
               "ViewState": "AgIAAEIAAAAAAAAAAAAQwGkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -802,11 +849,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 59,
+              "DocumentIndex": 62,
               "Title": "Delete.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Customers\\Delete.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Customers\\Delete.cshtml",
               "RelativeDocumentMoniker": "SmartOpsProject\\Views\\Customers\\Delete.cshtml",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Customers\\Delete.cshtml",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Customers\\Delete.cshtml",
               "RelativeToolTip": "SmartOpsProject\\Views\\Customers\\Delete.cshtml",
               "ViewState": "AgIAAAUAAAAAAAAAAAAQwCwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -814,11 +861,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 52,
               "Title": "Users.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Models\\Users.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Models\\Users.cs",
               "RelativeDocumentMoniker": "SmartOpsProject\\Models\\Users.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Models\\Users.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Models\\Users.cs",
               "RelativeToolTip": "SmartOpsProject\\Models\\Users.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -826,11 +873,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 34,
               "Title": "Service.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Models\\Service.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Models\\Service.cs",
               "RelativeDocumentMoniker": "SmartOpsProject\\Models\\Service.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Models\\Service.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Models\\Service.cs",
               "RelativeToolTip": "SmartOpsProject\\Models\\Service.cs",
               "ViewState": "AgIAABIAAAAAAAAAAAAYwDAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -838,11 +885,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 33,
               "Title": "Items.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Models\\Items.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Models\\Items.cs",
               "RelativeDocumentMoniker": "SmartOpsProject\\Models\\Items.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Models\\Items.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Models\\Items.cs",
               "RelativeToolTip": "SmartOpsProject\\Models\\Items.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAUwBQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -850,35 +897,35 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 27,
               "Title": "Suppliers.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Models\\Suppliers.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Models\\Suppliers.cs",
               "RelativeDocumentMoniker": "SmartOpsProject\\Models\\Suppliers.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Models\\Suppliers.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Models\\Suppliers.cs",
               "RelativeToolTip": "SmartOpsProject\\Models\\Suppliers.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAACMAAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-17T11:29:20.789Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 26,
               "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Customers\\Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Customers\\Create.cshtml",
               "RelativeDocumentMoniker": "SmartOpsProject\\Views\\Customers\\Create.cshtml",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Customers\\Create.cshtml",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Customers\\Create.cshtml",
               "RelativeToolTip": "SmartOpsProject\\Views\\Customers\\Create.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAAAYAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-09-17T09:54:50.135Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 40,
               "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Shared\\_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "SmartOpsProject\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "SmartOpsProject\\Views\\Shared\\_Layout.cshtml",
               "ViewState": "AgIAAFkAAAAAAAAAAAAmwF8AAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -886,23 +933,23 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 16,
               "Title": "CustomersController.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Controllers\\CustomersController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Controllers\\CustomersController.cs",
               "RelativeDocumentMoniker": "SmartOpsProject\\Controllers\\CustomersController.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Controllers\\CustomersController.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Controllers\\CustomersController.cs",
               "RelativeToolTip": "SmartOpsProject\\Controllers\\CustomersController.cs",
-              "ViewState": "AgIAAEoAAAAAAAAAAAAIwDAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAM4AAAAAAAAAAAAIwNkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-17T08:15:19.429Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 63,
+              "DocumentIndex": 66,
               "Title": "CustomerService.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Services\\CustomerService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Services\\CustomerService.cs",
               "RelativeDocumentMoniker": "SmartOpsProject\\Services\\CustomerService.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Services\\CustomerService.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Services\\CustomerService.cs",
               "RelativeToolTip": "SmartOpsProject\\Services\\CustomerService.cs",
               "ViewState": "AgIAACYAAAAAAAAAAAAAwDAAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -910,23 +957,23 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 17,
               "Title": "Customers.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Models\\Customers.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Models\\Customers.cs",
               "RelativeDocumentMoniker": "SmartOpsProject\\Models\\Customers.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Models\\Customers.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Models\\Customers.cs",
               "RelativeToolTip": "SmartOpsProject\\Models\\Customers.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAABRAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-16T17:30:52.33Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 39,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Program.cs",
               "RelativeDocumentMoniker": "SmartOpsProject\\Program.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Program.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Program.cs",
               "RelativeToolTip": "SmartOpsProject\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAADIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -934,73 +981,72 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 5,
               "Title": "Details.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Invoices\\Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Invoices\\Details.cshtml",
               "RelativeDocumentMoniker": "SmartOpsProject\\Views\\Invoices\\Details.cshtml",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Invoices\\Details.cshtml",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Invoices\\Details.cshtml",
               "RelativeToolTip": "SmartOpsProject\\Views\\Invoices\\Details.cshtml",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAADoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAIwB0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-09-16T16:02:57.036Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 1,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Invoices\\Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Invoices\\Index.cshtml",
               "RelativeDocumentMoniker": "SmartOpsProject\\Views\\Invoices\\Index.cshtml",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Invoices\\Index.cshtml",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Invoices\\Index.cshtml",
               "RelativeToolTip": "SmartOpsProject\\Views\\Invoices\\Index.cshtml",
-              "ViewState": "AgIAABUAAAAAAAAAAAAAABkAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAAB0AAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-16T16:02:34.016Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Invoices\\Create.cshtml",
-              "RelativeDocumentMoniker": "SmartOpsProject\\Views\\Invoices\\Create.cshtml",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Invoices\\Create.cshtml",
-              "RelativeToolTip": "SmartOpsProject\\Views\\Invoices\\Create.cshtml",
-              "ViewState": "AgIAAC4BAAAAAAAAAAAswFIBAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-16T16:02:07.627Z",
+              "WhenOpened": "2025-09-16T16:02:34.016Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 4,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Invoices\\Create.cshtml",
+              "RelativeDocumentMoniker": "SmartOpsProject\\Views\\Invoices\\Create.cshtml",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Invoices\\Create.cshtml",
+              "RelativeToolTip": "SmartOpsProject\\Views\\Invoices\\Create.cshtml",
+              "ViewState": "AgIAAOcAAAAAAAAAAAAAAPAAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-16T16:02:07.627Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
               "Title": "DashboardController.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Controllers\\DashboardController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Controllers\\DashboardController.cs",
               "RelativeDocumentMoniker": "SmartOpsProject\\Controllers\\DashboardController.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Controllers\\DashboardController.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Controllers\\DashboardController.cs",
               "RelativeToolTip": "SmartOpsProject\\Controllers\\DashboardController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEIAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACMAAAAAAAAAAAAgwCsAAABNAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-16T06:57:00.868Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "InvoicesController.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Controllers\\InvoicesController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Controllers\\InvoicesController.cs",
               "RelativeDocumentMoniker": "SmartOpsProject\\Controllers\\InvoicesController.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Controllers\\InvoicesController.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Controllers\\InvoicesController.cs",
               "RelativeToolTip": "SmartOpsProject\\Controllers\\InvoicesController.cs",
-              "ViewState": "AgIAALUAAAAAAAAAAAAwwJQBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAOMAAAAAAAAAAAAIwP0AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-16T06:56:16.075Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-16T06:56:16.075Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 45,
               "Title": "DashboardTabsVm.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\ViewModels\\DashboardTabsVm.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\ViewModels\\DashboardTabsVm.cs",
               "RelativeDocumentMoniker": "SmartOpsProject\\ViewModels\\DashboardTabsVm.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\ViewModels\\DashboardTabsVm.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\ViewModels\\DashboardTabsVm.cs",
               "RelativeToolTip": "SmartOpsProject\\ViewModels\\DashboardTabsVm.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -1008,23 +1054,23 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 12,
               "Title": "DashboardService.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Services\\DashboardService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Services\\DashboardService.cs",
               "RelativeDocumentMoniker": "SmartOpsProject\\Services\\DashboardService.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Services\\DashboardService.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Services\\DashboardService.cs",
               "RelativeToolTip": "SmartOpsProject\\Services\\DashboardService.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAAAQwE0AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABMAAAAAAAAAAAAAACgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-16T06:49:51.501Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 43,
               "Title": "InvoiceService.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Services\\InvoiceService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Services\\InvoiceService.cs",
               "RelativeDocumentMoniker": "SmartOpsProject\\Services\\InvoiceService.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Services\\InvoiceService.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Services\\InvoiceService.cs",
               "RelativeToolTip": "SmartOpsProject\\Services\\InvoiceService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -1032,72 +1078,71 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 23,
               "Title": "InvoiceCreateVm.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\ViewModels\\InvoiceCreateVm.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\ViewModels\\InvoiceCreateVm.cs",
               "RelativeDocumentMoniker": "SmartOpsProject\\ViewModels\\InvoiceCreateVm.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\ViewModels\\InvoiceCreateVm.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\ViewModels\\InvoiceCreateVm.cs",
               "RelativeToolTip": "SmartOpsProject\\ViewModels\\InvoiceCreateVm.cs",
-              "ViewState": "AgIAACgAAAAAAAAAAAA9wEwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADwAAAAAAAAAAAA+wEwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-16T06:37:28.304Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-16T06:37:28.304Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 9,
               "Title": "SmartOpsDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Data\\SmartOpsDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Data\\SmartOpsDbContext.cs",
               "RelativeDocumentMoniker": "SmartOpsProject\\Data\\SmartOpsDbContext.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Data\\SmartOpsDbContext.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Data\\SmartOpsDbContext.cs",
               "RelativeToolTip": "SmartOpsProject\\Data\\SmartOpsDbContext.cs",
-              "ViewState": "AgIAAEgAAAAAAAAAAAAIwC8AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAIwBMAAABKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-16T06:34:43.517Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 6,
               "Title": "InvoiceLine.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Models\\InvoiceLine.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Models\\InvoiceLine.cs",
               "RelativeDocumentMoniker": "SmartOpsProject\\Models\\InvoiceLine.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Models\\InvoiceLine.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Models\\InvoiceLine.cs",
               "RelativeToolTip": "SmartOpsProject\\Models\\InvoiceLine.cs",
-              "ViewState": "AgIAACMAAAAAAAAAAAAUwC8AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABoAAAAAAAAAAAAgwC8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-16T06:32:40.753Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 2,
               "Title": "Invoice.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Models\\Invoice.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Models\\Invoice.cs",
               "RelativeDocumentMoniker": "SmartOpsProject\\Models\\Invoice.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Models\\Invoice.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Models\\Invoice.cs",
               "RelativeToolTip": "SmartOpsProject\\Models\\Invoice.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAA+wEgAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAswBYAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-16T06:29:43.402Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 18,
               "Title": "AccountController.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Controllers\\AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "SmartOpsProject\\Controllers\\AccountController.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Controllers\\AccountController.cs",
               "RelativeToolTip": "SmartOpsProject\\Controllers\\AccountController.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAAACsAAAA8AAAAAAAAAA==",
+              "ViewState": "AgIAABcAAAAAAAAAAAAkwDUAAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-15T17:58:07.862Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 42,
               "Title": "ChangePassword.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\ViewModels\\ChangePassword.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\ViewModels\\ChangePassword.cs",
               "RelativeDocumentMoniker": "SmartOpsProject\\ViewModels\\ChangePassword.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\ViewModels\\ChangePassword.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\ViewModels\\ChangePassword.cs",
               "RelativeToolTip": "SmartOpsProject\\ViewModels\\ChangePassword.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -1105,11 +1150,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 66,
+              "DocumentIndex": 69,
               "Title": "Login.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Account\\Login.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Account\\Login.cshtml",
               "RelativeDocumentMoniker": "SmartOpsProject\\Views\\Account\\Login.cshtml",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Account\\Login.cshtml",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Account\\Login.cshtml",
               "RelativeToolTip": "SmartOpsProject\\Views\\Account\\Login.cshtml",
               "ViewState": "AgIAAC0AAAAAAAAAAAAAAD8AAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -1117,11 +1162,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 65,
+              "DocumentIndex": 68,
               "Title": "ChangePassword.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Account\\ChangePassword.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Account\\ChangePassword.cshtml",
               "RelativeDocumentMoniker": "SmartOpsProject\\Views\\Account\\ChangePassword.cshtml",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed - BackUp\\SmartOpsProject\\SmartOpsProject\\Views\\Account\\ChangePassword.cshtml",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\SmartOpsProject_New\\SmartOpsProject_fixed_New\\SmartOpsProject\\SmartOpsProject\\Views\\Account\\ChangePassword.cshtml",
               "RelativeToolTip": "SmartOpsProject\\Views\\Account\\ChangePassword.cshtml",
               "ViewState": "AgIAAA8AAAAAAAAAAAAAACAAAABIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",

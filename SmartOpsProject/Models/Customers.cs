@@ -23,6 +23,7 @@ namespace SmartOps.Models
         [Display(Name = "Ονοματεπώνυμο / Επωνυμία")]
         public string Name { get; set; } = string.Empty;
 
+        [RegularExpression(@"^$|^\d{9}$", ErrorMessage = "Το ΑΦΜ πρέπει να είναι είτε κενό είτε 9 ψηφία.")]
         [Display(Name = "ΑΦΜ")]
         public string? TaxIdentificationNumber { get; set; }
 

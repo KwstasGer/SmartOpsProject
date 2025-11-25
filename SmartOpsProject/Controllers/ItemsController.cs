@@ -22,7 +22,7 @@ namespace SmartOps.Controllers
 
         private int CurrentUserId => HttpContext.Session.GetInt32("UserId") ?? 0;
 
-        // ----------------------- INDEX -----------------------
+        // INDEX 
         [HttpGet]
         public async Task<IActionResult> Index()
         {
@@ -175,14 +175,31 @@ namespace SmartOps.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (CurrentUserId == 0) return RedirectToAction("Login", "Account");
+            if (CurrentUserId == 0)
+                return RedirectToAction("Login", "Account");
+
             var item = await _itemService.GetByIdForUserAsync(id, CurrentUserId);
             if (item == null) return NotFound();
 
-            await _itemService.DeleteAsync(item);
-            TempData["SuccessMessage"] = "Το είδος διαγράφηκε.";
+            try
+            {
+                await _itemService.DeleteAsync(item);
+                TempData["SuccessMessage"] = "Το προϊόν διαγράφηκε.";
+            }
+            catch (DbUpdateException ex)
+                when (ex.InnerException is SqlException sql && sql.Number == 547) // FK conflict
+            {
+                TempData["ErrorMessage"] = "Το προϊόν δεν μπορεί να διαγραφεί γιατί υπάρχουν παραστατικά που το χρησιμοποιούν.";
+            }
+            catch (DbUpdateException ex)
+            {
+                TempData["ErrorMessage"] = "Προέκυψε σφάλμα βάσης δεδομένων κατά τη διαγραφή: " +
+                                           (ex.InnerException?.Message ?? ex.Message);
+            }
+
             return RedirectToAction(nameof(Index));
         }
+
 
         // ----------------------- Helpers ---------------------
         private void SetUnits(string? selected = null)

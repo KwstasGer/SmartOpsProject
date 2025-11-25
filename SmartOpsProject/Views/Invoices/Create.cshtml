@@ -252,8 +252,12 @@
                     unitPrice = wholesale || 0;
                 }
 
-                priceInput.value = unitPrice.toFixed(2);
-            }
+                // ✅ γράφουμε 15,00 ώστε ο server (el-GR) να το καταλάβει σωστά
+                priceInput.value = unitPrice
+                    .toFixed(2)       // "15.00"
+                    .replace('.', ','); // "15,00"
+    }
+
 
             // Υπολογισμός συνολικού ποσού γραμμής
             recalcRow(tr);
@@ -336,3 +340,4 @@
         });
     })();
 </script>
+

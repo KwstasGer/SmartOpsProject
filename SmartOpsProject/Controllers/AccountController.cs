@@ -30,34 +30,44 @@ namespace SmartOps.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
+            // Αν το μοντέλο έχει validation errors τότε επιστροφή στη φόρμα
             if (!ModelState.IsValid)
                 return View(model);
 
+            // Αναζήτηση χρήστη με βάση το email
             var user = await _userService.GetByEmailAsync(model.Email);
+
+            // Έλεγχος αν υπάρχει χρήστης και αν ο κωδικός είναι σωστός
             if (user == null || !PasswordHelper.VerifyPassword(user.PasswordHash, model.Password))
             {
                 ModelState.AddModelError(string.Empty, "Λάθος email ή κωδικός.");
                 return View(model);
             }
-            // ✅ Πρώτα καθαρίζουμε, μετά γράφουμε ΟΛΑ τα session keys
+
+            // SESSION 
+            // Πάντα πρώτα καθαρίζουμε για να μην μείνουν παλιές τιμές
             HttpContext.Session.Clear();
+
+            // Αποθηκεύουμε το Id του χρήστη (για έλεγχο σε κάθε request)
             HttpContext.Session.SetInt32("UserId", user.Id);
 
-            // Δεν αναφερόμαστε σε user.Email γιατί δεν υπάρχει στο μοντέλο.
-            // Χρησιμοποιούμε το model.Email (από το form)
+            // Προτιμάμε το email που έδωσε ο χρήστης στη φόρμα
             HttpContext.Session.SetString("UserEmail", model.Email);
 
-            // Για εμφάνιση ονόματος: προτίμησε Username αν υπάρχει, αλλιώς το email του form
+            // Αν υπάρχει Username το βάζουμε, αλλιώς fallback στο email
             HttpContext.Session.SetString("UserName",
                 string.IsNullOrWhiteSpace(user.Username) ? model.Email : user.Username);
 
-            // Αν κρατάς και ημερομηνία
+            // Αν χρησιμοποιούμε ημερομηνία εργασίας τότε την αποθηκεύουμε σε session
             HttpContext.Session.SetString("SelectedDate", model.Date.ToString("yyyy-MM-dd"));
 
-
+            // Μήνυμα επιτυχίας
             TempData["SuccessMessage"] = "Επιτυχής σύνδεση.";
+
+            // Μετά τη σύνδεση πίνακε στην αρχική σελίδα του προγράμματος
             return RedirectToAction("Index", "Home");
         }
+
 
         // GET: Account/Logout  (κρατάμε GET για να δουλεύει ο υπάρχων σύνδεσμος στο layout)
         public IActionResult Logout()

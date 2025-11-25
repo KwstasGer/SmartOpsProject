@@ -9,27 +9,58 @@
     <a asp-action="Create" class="btn btn-success">+ Νέο Παραστατικό</a>
 </div>
 
-<table class="table table-sm table-striped align-middle">
-    <thead>
-        <tr>
-            <th>Αρ.</th>
-            <th>Ημ/νία</th>
-            <th>Πελάτης</th>
-            <th class="text-end">Καθαρή</th>
-            <th class="text-end">ΦΠΑ</th>
-            <th class="text-end">Σύνολο</th>
-            <th style="width:140px;"></th>
-        </tr>
-    </thead>
-    <tbody>
-        @if (Model != null && Model.Any())
-        {
-            foreach (var inv in Model)
+<!-- 🔎 Αναζήτηση -->
+<div class="card shadow-sm border-0 mb-3">
+    <div class="card-body">
+        <div class="row g-2 align-items-center">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-search"></i></span>
+                    <input id="invoiceSearch" type="text" class="form-control"
+                           placeholder="Αναζήτηση παραστατικού… (Αρ. / Σειρά, ημερομηνία, πελάτης, ποσά)">
+                    <button id="clearInvoiceSearch" type="button" class="btn btn-outline-secondary">Καθαρισμός</button>
+                </div>
+            </div>
+            <div class="col-md-6 text-md-end mt-2 mt-md-0">
+                <small class="text-muted">
+                    Εμφανίζονται <span id="rowsCount">0</span> από <span id="rowsTotal">0</span> παραστατικά
+                </small>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table id="invoicesTable" class="table table-sm table-striped align-middle shadow-sm">
+        <thead class="table-light">
+            <tr>
+                <th>Αρ.</th>
+                <th>Ημ/νία</th>
+                <th>Πελάτης/Προμηθευτής</th>
+                <th class="text-end">Καθαρή</th>
+                <th class="text-end">ΦΠΑ</th>
+                <th class="text-end">Σύνολο</th>
+                <th style="width:140px;"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
             {
+                foreach (var inv in Model)
+                {
                     <tr>
                         <td>@($"{inv.Series}-{inv.Number}/{inv.Year}")</td>
                         <td>@inv.IssueDate.ToString("dd/MM/yyyy")</td>
-                        <td>@inv.Customer?.Name</td>
+                    <td>
+                        @if (inv.InvoiceType == "Purchases")
+                        {
+                            @inv.Supplier?.Name   <!-- Προμηθευτής για αγορές -->
+                        }
+                        else
+                        {
+                            @inv.Customer?.Name   <!-- Πελάτης για πωλήσεις/υπηρεσίες -->
+                        }
+                    </td>
                         <td class="text-end">@inv.TotalNet.ToString("N2")</td>
                         <td class="text-end">@inv.TotalVat.ToString("N2")</td>
                         <td class="text-end">@inv.TotalGross.ToString("N2")</td>
@@ -40,11 +71,79 @@
                             </div>
                         </td>
                     </tr>
+                }
             }
-        }
-        else
-        {
-            <tr><td colspan="7" class="text-muted">Δεν υπάρχουν παραστατικά.</td></tr>
-        }
-    </tbody>
-</table>
+            else
+            {
+                <tr>
+                    <td colspan="7" class="text-muted text-center py-4">Δεν υπάρχουν παραστατικά.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <script>
+        (function () {
+            const input = document.getElementById('invoiceSearch');
+            const clearBtn = document.getElementById('clearInvoiceSearch');
+            const table = document.getElementById('invoicesTable');
+            const tbody = table.querySelector('tbody');
+            const rows = Array.from(tbody.querySelectorAll('tr'));
+            const rowsTotalEl = document.getElementById('rowsTotal');
+            const rowsCountEl = document.getElementById('rowsCount');
+
+            // αγνοούμε τη γραμμή "Δεν υπάρχουν παραστατικά."
+            const dataRows = rows.filter(r => !r.querySelector('td[colspan]'));
+            rowsTotalEl.textContent = dataRows.length.toString();
+
+            const normalize = (str) => (str || '')
+                .toString()
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .toLowerCase()
+                .trim();
+
+            // 0=Αρ., 1=Ημ/νία, 2=Πελάτης, 3=Καθαρή, 4=ΦΠΑ, 5=Σύνολο
+            const filterCols = [0, 1, 2, 3, 4, 5];
+
+            let t = null;
+            const onSearch = () => {
+                const q = normalize(input.value);
+                let visible = 0;
+
+                dataRows.forEach(tr => {
+                    let text = '';
+                    filterCols.forEach(idx => {
+                        const td = tr.children[idx];
+                        if (td) text += ' ' + normalize(td.textContent);
+                    });
+
+                    const match = q.length === 0 || text.includes(q);
+                    tr.style.display = match ? '' : 'none';
+                    if (match) visible++;
+                });
+
+                const emptyRow = rows.find(r => r.querySelector('td[colspan]'));
+                if (emptyRow) emptyRow.style.display = (visible === 0 ? '' : 'none');
+
+                rowsCountEl.textContent = visible.toString();
+            };
+
+            const debounced = () => {
+                clearTimeout(t);
+                t = setTimeout(onSearch, 150);
+            };
+
+            input.addEventListener('input', debounced);
+            clearBtn.addEventListener('click', () => {
+                input.value = '';
+                onSearch();
+                input.focus();
+            });
+
+            onSearch();
+        })();
+    </script>
+}

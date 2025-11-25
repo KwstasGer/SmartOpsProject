@@ -47,13 +47,15 @@ namespace SmartOps.Controllers
             return View(model);
         }
 
-        // ----------------------- CREATE (POST) -----------------------
+        // CREATE (POST)
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(
             [Bind("Name,TaxIdentificationNumber,Country,Address,City,PostalCode,VatStatus,CustomerCategory,CustomerCode")]
     Customer customer)
         {
+         
+            // Έλεγχος αν ο χρήστης είναι συνδεδεμένος
             var uid = HttpContext.Session.GetInt32("UserId") ?? 0;
             if (uid == 0)
             {
@@ -61,62 +63,76 @@ namespace SmartOps.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
-            // navigation property δεν έρχεται από τη φόρμα
+
             ModelState.Remove(nameof(Customer.User));
 
+            // Σύνδεση του πελάτη με τον χρήστη που τον δημιούργησε
             customer.UserId = uid;
-
-            // input του χρήστη για τον κωδικό
+            
+            // Έλεγχος για manual ή αυτόματο CustomerCode
             var codeInput = customer.CustomerCode?.Trim();
+
+            // Αν ο χρήστης αφήσει κενό, "*" ή "-" → γίνεται αυτόματη αρίθμηση
             var autoCode = string.IsNullOrEmpty(codeInput) || codeInput == "*" || codeInput == "-";
 
-            // ⭐ Αν είναι *, -, κενό => αυτόματη αρίθμηση όπως στους προμηθευτές
             if (autoCode)
             {
+                // Παραγωγή του επόμενου διαθέσιμου κωδικού
                 customer.CustomerCode = await GenerateNextCustomerCodeAsync(uid);
-            }
-
-            // Επανα-validate με τον πραγματικό κωδικό
+            }        
+            // Re-validation με τον πραγματικό CustomerCode            
             ModelState.Clear();
             TryValidateModel(customer);
 
             if (!ModelState.IsValid)
             {
+                // Φόρτωση dropdowns (VAT Status & Category) για να εμφανιστούν σωστά στο View
                 SetDropDowns(customer.VatStatus, customer.CustomerCategory);
 
-                // Αν ο χρήστης είχε ζητήσει auto (*), ξαναδείξε * στο UI
+                // Αν ο χρήστης είχε ζητήσει αυτόματη αρίθμηση, ξαναδείξε "*"
                 if (autoCode)
                     customer.CustomerCode = "*";
 
                 return View(customer);
             }
-
+            // Αποθήκευση στη βάση δεδομένων
             try
             {
                 await _customerService.AddAsync(customer);
+
                 TempData["SuccessMessage"] = "Ο πελάτης δημιουργήθηκε με επιτυχία.";
                 return RedirectToAction(nameof(Index));
-            }
-            // 🔒 Unique violation στο CustomerCode
+            }           
+            // Unique violation (διπλό CustomerCode)
             catch (DbUpdateException ex) when (ex.InnerException is SqlException sql &&
                                                (sql.Number == 2601 || sql.Number == 2627))
             {
                 if (autoCode)
+                {
+                    // Σφάλμα κατά την αυτόματη δημιουργία κωδικού
                     ModelState.AddModelError(string.Empty, "Παρουσιάστηκε σφάλμα στην αυτόματη δημιουργία κωδικού.");
+                }
                 else
+                {
+                    // Ο κωδικός υπάρχει ήδη
                     ModelState.AddModelError(nameof(Customer.CustomerCode), "Ο κωδικός χρησιμοποιείται ήδη.");
+                }
             }
-            // 🧭 Άλλα DB errors
+            // Γενικά DB errors
             catch (DbUpdateException ex)
             {
-                ModelState.AddModelError(string.Empty, "DB error: " + (ex.InnerException?.Message ?? ex.Message));
+                ModelState.AddModelError(string.Empty, "Σφάλμα βάσης δεδομένων: " +
+                                                       (ex.InnerException?.Message ?? ex.Message));
             }
-
-            // Αν φτάσουμε εδώ, μένουμε στη φόρμα
+            // Επιστροφή στη φόρμα αν κάτι απέτυχε
             SetDropDowns(customer.VatStatus, customer.CustomerCategory);
-            if (autoCode) customer.CustomerCode = "*"; // καθαρό UX
+
+            if (autoCode)
+                customer.CustomerCode = "*";   // UX: εμφανίζεται όπως το έδωσε ο χρήστης
+
             return View(customer);
         }
+
 
 
 

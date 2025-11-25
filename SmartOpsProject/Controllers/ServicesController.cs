@@ -50,54 +50,66 @@ namespace SmartOps.Controllers
             return View(model);
         }
 
-        // ----------------------- CREATE (POST) --------------
+        // CREATE (POST)
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Service service)
         {
+            // Έλεγχος αν έχει λήξει η συνεδρία
             var uid = HttpContext.Session.GetInt32("UserId") ?? 0;
-            if (uid == 0) return RedirectToAction("Login", "Account");
+            if (uid == 0)
+                return RedirectToAction("Login", "Account");
 
-            // να μη γίνεται validate το navigation
+            // Δεν θέλουμε validation στο navigation property 
             ModelState.Remove(nameof(Service.User));
 
+            // Ανάθεση χρήστη στην υπηρεσία
             service.UserId = uid;
 
-            // Τι έγραψε ο χρήστης στο πεδίο κωδικού;
+            // Έλεγχος πεδίου "Κωδικός" 
+            // Τι έγραψε ο χρήστης στο input
             var codeInput = service.ServiceCode?.Trim();
-            var autoCode = string.IsNullOrEmpty(codeInput) || codeInput == "*" || codeInput == "-";
 
-            // ⭐ Αν είναι *, -, κενό => αυτόματη αρίθμηση (0001, 0002, ...)
+            // Αν είναι κενό, '*' ή '-' τότε ζητά αυτόματο κωδικό
+            var autoCode = string.IsNullOrEmpty(codeInput)
+                           || codeInput == "*"
+                           || codeInput == "-";
+
+            // Αυτόματη αρίθμηση με * στον κωδικό: 0001, 0002, 0003...
             if (autoCode)
             {
                 service.ServiceCode = await GenerateNextServiceCodeAsync(uid);
             }
 
-            // Re-validate με τον τελικό κωδικό
+            // Ξανακάνουμε validate με τον τελικό κωδικό
             ModelState.Clear();
             TryValidateModel(service);
 
+            // Αν υπάρχουν validation errors τότε επέστρεψε στη φόρμα
             if (!ModelState.IsValid)
             {
+                // Ξαναγέμισμα dropdowns
                 SetUnits(service.Unit);
                 SetVATs(service.VAT);
 
-                // Να ξαναφαίνεται * στο UI αν είχε ζητήσει auto
+                // Αν είχε ζητήσει auto, να ξαναφαίνεται '*' στην φόρμα για να μην μπερδευτεί
                 if (autoCode) service.ServiceCode = "*";
 
                 return View(service);
             }
 
+            // Αποθήκευση της υπηρεσίας
             try
             {
                 await _serviceService.AddAsync(service);
                 TempData["SuccessMessage"] = "Η υπηρεσία δημιουργήθηκε με επιτυχία.";
                 return RedirectToAction(nameof(Index));
             }
-            // Unique violation στο ServiceCode (αν έχεις unique index)
+            // Unique constraint στο ServiceCode
             catch (DbUpdateException ex) when (ex.InnerException is SqlException sql &&
-                                               (sql.Number == 2601 || sql.Number == 2627))
+                                              (sql.Number == 2601 || sql.Number == 2627))
             {
+                // έλεγχος του αυτόματου κωδικού αν υπάρξει κάποιο σφάλμα ή απλα αν χρησιμοποιείται ήδη
                 if (autoCode)
                     ModelState.AddModelError(string.Empty, "Παρουσιάστηκε σφάλμα στην αυτόματη δημιουργία κωδικού.");
                 else
@@ -105,14 +117,19 @@ namespace SmartOps.Controllers
             }
             catch (DbUpdateException ex)
             {
-                ModelState.AddModelError(string.Empty, "DB error: " + (ex.InnerException?.Message ?? ex.Message));
+                // Γενικό database error
+                ModelState.AddModelError(string.Empty,
+                    "DB error: " + (ex.InnerException?.Message ?? ex.Message));
             }
 
             SetUnits(service.Unit);
             SetVATs(service.VAT);
+
             if (autoCode) service.ServiceCode = "*";
+
             return View(service);
         }
+
 
         // ----------------------- EDIT (GET) ------------------
         [HttpGet]
@@ -189,14 +206,34 @@ namespace SmartOps.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (CurrentUserId == 0) return RedirectToAction("Login", "Account");
-            var service = await _serviceService.GetByIdForUserAsync(id, CurrentUserId);
-            if (service == null) return NotFound();
+            if (CurrentUserId == 0)
+                return RedirectToAction("Login", "Account");
 
-            await _serviceService.DeleteAsync(service);
-            TempData["SuccessMessage"] = "Η υπηρεσία διαγράφηκε.";
+            var service = await _serviceService.GetByIdForUserAsync(id, CurrentUserId);
+            if (service == null)
+                return NotFound();
+
+            try
+            {
+                await _serviceService.DeleteAsync(service);
+                TempData["SuccessMessage"] = "Η υπηρεσία διαγράφηκε.";
+            }
+            catch (DbUpdateException ex)
+                when (ex.InnerException is SqlException sql && sql.Number == 547) // FK conflict
+            {
+                TempData["ErrorMessage"] =
+                    "Η υπηρεσία δεν μπορεί να διαγραφεί γιατί υπάρχουν παραστατικά που τη χρησιμοποιούν.";
+            }
+            catch (DbUpdateException ex)
+            {
+                TempData["ErrorMessage"] =
+                    "Προέκυψε σφάλμα βάσης δεδομένων κατά τη διαγραφή: " +
+                    (ex.InnerException?.Message ?? ex.Message);
+            }
+
             return RedirectToAction(nameof(Index));
         }
+
 
         // ======================= DROPDOWNS ===================
 

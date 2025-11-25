@@ -15,7 +15,18 @@
 <div class="card mb-3">
     <div class="card-body">
         <div class="row gy-2">
-            <div class="col-md-4"><strong>Πελάτης:</strong> @Model.Customer?.Name</div>
+            <div class="col-md-4">
+                @if (Model.InvoiceType == "Purchases")
+                {
+                    <strong>Προμηθευτής:</strong> 
+                    @Model.Supplier?.Name
+                }
+                else
+                {
+                    <strong>Πελάτης:</strong> 
+                    @Model.Customer?.Name
+                }
+            </div>
             <div class="col-md-4"><strong>Ημ/νία:</strong> @Model.IssueDate.ToString("dd/MM/yyyy")</div>
             <div class="col-md-2"><strong>Σειρά:</strong> @Model.Series</div>
             <div class="col-md-2"><strong>Αριθμός:</strong> @Model.Number</div>

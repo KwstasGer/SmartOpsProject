@@ -20,6 +20,7 @@ namespace SmartOpsProject.Models
         public string Name { get; set; } = string.Empty;
 
         // ▫️ Προαιρετικά πεδία
+        [RegularExpression(@"^$|^\d{9}$", ErrorMessage = "Το ΑΦΜ πρέπει να είναι είτε κενό είτε 9 ψηφία.")]
         [Display(Name = "ΑΦΜ")]
         [StringLength(20)]
         public string? TaxIdentificationNumber { get; set; }
